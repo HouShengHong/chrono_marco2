@@ -100,13 +100,19 @@ class KeyHolderByTimeWin(KeyHolderByTime):
             try:
                 keys, hold_time = next(key_iter)
                 with pyautogui.hold(keys):  # type: ignore
+                    t1 = time.time()
                     time.sleep(random.uniform(*hold_time))
+                    t2 = time.time()
+                    print("\n", t2 - t1)
                     do()
             except StopIteration as _:
                 pass
 
         do()
+        t1 = time.time()
         time.sleep(random.uniform(*self.end_sleep_time))
+        t2 = time.time()
+        print("\n", t2 - t1)
 
 
 class KeyHolderByTimeLinux(KeyHolderByTime):
