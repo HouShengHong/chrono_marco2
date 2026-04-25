@@ -6,7 +6,7 @@ class KeyBinds:
     jump: str = "space"
     chat_npc: str = "n"
     esc: str = "esc"
-    
+
     att_0: str = "h"
     att_1: str = "j"
     att_2: str = "k"
@@ -29,6 +29,7 @@ class AttackSpeed:
     normal_6: float = 0.81
     slow_7: float = 0.87
     slow_8: float = 0.9
+
 
 class Action:
     def __init__(self):
