@@ -1,9 +1,12 @@
 import time
 import platform
+
 from chrono_marco2.key_holder import (
     KeyHolderByTimeLinux,
     KeyHolderByTimeWin,
     KeyHolderByTime,
+    KeyHolderWin,
+    KeyHolderLinux,
 )
 from chrono_marco2.key_holder.ydotool.key_controller import KeyController, KeyCodes
 
@@ -20,9 +23,13 @@ if __name__ == "__main__":
     # )
     # k.hold()
 
-    k: KeyHolderByTime = KeyHolderByTimeWin(
-        (4, 4),
-        (["d", "space"], (3, 3)),
-        (["j"], (2, 2)),
+    # k: KeyHolderByTime = KeyHolderByTimeWin(
+    #     (4, 4),
+    #     (["d", "space"], (3, 3)),
+    #     (["j"], (2, 2)),
+    # )
+    # k.hold()
+    k1: KeyHolderWin = KeyHolderWin(
+        ["d"], (5, 5), tap_key_holders=[KeyHolderWin(["w"], (0.03, 0.03), (0.03, 0.03))]
     )
-    k.hold()
+    k1.hold()
