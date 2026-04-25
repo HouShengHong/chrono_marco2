@@ -104,9 +104,9 @@ class KeyHolderByTimeWin(KeyHolderByTime):
                     do()
             except StopIteration as _:
                 pass
-            time.sleep(random.uniform(*self.end_sleep_time))
 
         do()
+        time.sleep(random.uniform(*self.end_sleep_time))
 
 
 class KeyHolderByTimeLinux(KeyHolderByTime):
