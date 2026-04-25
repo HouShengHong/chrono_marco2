@@ -103,7 +103,8 @@ class KeyHolderByTimeWin(KeyHolderByTime):
                     time.sleep(random.uniform(*hold_time))
                     do()
             except StopIteration as _:
-                time.sleep(random.uniform(*self.end_sleep_time))
+                pass
+            time.sleep(random.uniform(*self.end_sleep_time))
 
         do()
 
