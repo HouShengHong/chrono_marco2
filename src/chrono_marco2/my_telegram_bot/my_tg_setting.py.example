@@ -1,0 +1,3 @@
+class MyTelegramSetting:
+    token: str = "input your bot token 123456"
+    chat_id: int = "input your chat id 123456"

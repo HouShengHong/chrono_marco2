@@ -8,3 +8,11 @@ wheels/
 
 # Virtual environments
 .venv
+
+# myself
+*.txt
+src/chrono_marco2/my_telegram_bot/my_tg_setting.py
+data/screenshot/*
+!data/screenshot/.gitkeep
+data/cropped_photo/*
+!data/cropped_photo/.gitkeep

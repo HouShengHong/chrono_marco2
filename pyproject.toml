@@ -8,10 +8,14 @@ authors = [
 ]
 requires-python = ">=3.14"
 dependencies = [
+    "aiohttp>=3.13.5",
     "dxcam>=0.3.0",
+    "numpy>=2.4.4",
     "opencv-python>=4.13.0.92",
     "pillow>=12.2.0",
     "pyautogui>=0.9.54",
+    "pynput>=1.8.1",
+    "pytelegrambotapi>=4.33.0",
     "scikit-image>=0.26.0",
 ]
 

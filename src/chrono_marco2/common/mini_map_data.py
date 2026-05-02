@@ -14,4 +14,10 @@ class MiniMapData:
         "region": (8, 124, 256, 271),
     }
 
+    leafre_the_burning_forest: dict[str, tuple[int, int, int, int]] = {
+        "title": (59, 67, 181, 105),
+        "region": (8, 124, 205, 271),
+    }
+
+
         
