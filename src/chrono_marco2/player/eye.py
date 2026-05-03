@@ -33,8 +33,8 @@ class Eye:
         self.mini_map_title_path = mini_map_title_path
         self.mini_map_title_path.parent.mkdir(parents=True, exist_ok=True)
         self.mini_map_title_path.touch()
-        
-        self.mini_map_title: np.ndarray | None = cv2.imread(mini_map_title_path, 0)  # type: ignore
+
+        self.mini_map_title: np.ndarray | None = cv2.imread(mini_map_title_path, 0)
         self.mini_map_title_region = mini_map_title_region
         self.mini_map_region = mini_map_region
         self.ssim_same_map_score_threshold = ssim_same_map_score_threshold
@@ -45,6 +45,7 @@ class Eye:
     ) -> None:
         if self.update_current_frame() is None:
             return
+
         current_frame = (
             self.crop_current_frame(region) if region else self.status.current_frame
         )
@@ -97,7 +98,10 @@ class Eye:
         return self.status.current_frame_mini_map_title
 
     def _update_current_same_map_score(self) -> float | None:
-        if self.status.current_frame_mini_map_title is None or self.mini_map_title is None:
+        if (
+            self.status.current_frame_mini_map_title is None
+            or self.mini_map_title is None
+        ):
             self.status.current_same_map_score = None
             return None
 
@@ -126,7 +130,7 @@ class Eye:
             self.mini_map_region
         )
         return self.status.current_frame_mini_map
-    
+
     def _find_yellow_point_position_in_mini_map(self):
         if self.status.current_frame_mini_map is None:
             self.status.current_yellow_point_position_in_mini_map = None

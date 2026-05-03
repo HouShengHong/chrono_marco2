@@ -133,4 +133,3 @@ class FreeMarketKeeper(CountdownTimer):
 
     def do_something(self):
         self.auto_fm_go_into_and_sell_equips_and_leave()
-
