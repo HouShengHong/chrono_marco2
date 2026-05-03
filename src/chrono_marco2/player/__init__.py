@@ -1,17 +1,19 @@
 from .eye import Eye
 from .ear import Ear
 from .hand import Hand
-from chrono_marco2.keeper import *
+from chrono_marco2.keeper import CountdownTimer
 from chrono_marco2.alert import AlertMonitor
 from typing import Callable
 import time
-from chrono_marco2.my_telegram_bot import *
+from chrono_marco2.my_telegram_bot import run_my_tg_bot
 from chrono_marco2.common.alert import red_alert_monitor, different_map_alert_monitor
 
+
 class Player:
-    def __init__(self, 
-        eye: Eye, 
-        ear: Ear | None = None, 
+    def __init__(
+        self,
+        eye: Eye,
+        ear: Ear | None = None,
         hand: Hand | None = None,
         keepers: list[CountdownTimer] | None = None,
         alert_monitors: list[AlertMonitor] | None = None,
@@ -20,7 +22,11 @@ class Player:
         self.ear = ear if ear is not None else Ear()
         self.hand = hand if hand is not None else Hand()
         self.keepers = keepers if keepers is not None else []
-        self.alert_monitors = alert_monitors if alert_monitors is not None else [red_alert_monitor(self.eye), different_map_alert_monitor(self.eye)]
+        self.alert_monitors = (
+            alert_monitors
+            if alert_monitors is not None
+            else [red_alert_monitor(self.eye), different_map_alert_monitor(self.eye)]
+        )
 
     def run(self, how_to_play: Callable[[Player], None]):
         self.eye.update_status()
@@ -39,8 +45,9 @@ class Player:
                 continue
 
             for alert_monitor in self.alert_monitors:
-                if not alert_monitor._thread.is_alive():
-                    alert_monitor.start()
+                if alert_monitor._thread is not None:
+                    if not alert_monitor._thread.is_alive():
+                        alert_monitor.start()
 
             self.eye.update_status()
             if self.eye.status.current_is_same_map:
@@ -49,3 +56,4 @@ class Player:
             else:
                 print(self.eye.status.current_same_map_score, "Different map detected!")
                 time.sleep(1)
+
