@@ -1,14 +1,14 @@
+from .ydotool import KeyController
+
 import time
 import random
-import platform
-
-if platform.system() == "Windows":
-    import pyautogui
-    pyautogui.PAUSE = 0
-    # pyautogui.PAUSE = 0.01
 
 
-from .ydotool import KeyController
+import pyautogui
+
+pyautogui.PAUSE = 0
+# pyautogui.PAUSE = 0.01
+
 
 __all__ = [
     "KeyHolder",
@@ -27,7 +27,10 @@ class KeyHolder:
         hold_time: tuple[float, float],
         end_sleep_time: tuple[float, float] = (0, 0),
         hold_then_tap_sleep_time: tuple[float, float] = (0, 0),
-        tap_key_holders: list[KeyHolder] | None = None,
+        tap_key_holders: list[KeyHolder]
+        | list[KeyHolderWin]
+        | list[KeyHolderLinux]
+        | None = None,
     ):
         self.hold_keys = hold_keys
         self.hold_time = hold_time
@@ -46,9 +49,15 @@ class KeyHolderWin(KeyHolder):
         hold_time: tuple[float, float],
         end_sleep_time: tuple[float, float] = (0, 0),
         hold_then_tap_sleep_time: tuple[float, float] = (0, 0),
-        tap_key_holders: list["KeyHolderWin"] | None = None,
+        tap_key_holders: list[KeyHolderWin] | None = None,
     ):
-        super().__init__(hold_keys, hold_time, end_sleep_time, hold_then_tap_sleep_time, tap_key_holders)
+        super().__init__(
+            hold_keys,
+            hold_time,
+            end_sleep_time,
+            hold_then_tap_sleep_time,
+            tap_key_holders,
+        )
 
     def hold(self):
         with pyautogui.hold(self.hold_keys):  # type: ignore
@@ -72,23 +81,29 @@ class KeyHolderLinux(KeyHolder):
         hold_then_tap_sleep_time: tuple[float, float] = (0, 0),
         tap_key_holders: list[KeyHolderLinux] | None = None,
     ):
-        super().__init__(hold_keys, hold_time, end_sleep_time, hold_then_tap_sleep_time, tap_key_holders)
+        super().__init__(
+            hold_keys,
+            hold_time,
+            end_sleep_time,
+            hold_then_tap_sleep_time,
+            tap_key_holders,  # type: ignore
+        )
 
     def hold(self):
         if self.tap_key_holders is None:
             KeyController().keys_hold(
-                self.hold_keys,
+                self.hold_keys,  # type: ignore
                 self.hold_time,
                 self.end_sleep_time,
             )
         else:
-            KeyController().keys_down(self.hold_keys)
+            KeyController().keys_down(self.hold_keys)  # type: ignore
             end_time = time.time() + random.uniform(*self.hold_time)
             time.sleep(random.uniform(*self.hold_then_tap_sleep_time))
             while end_time >= time.time():
                 for tap_key_holder in self.tap_key_holders:
                     tap_key_holder.hold()
-            KeyController().keys_up(self.hold_keys)
+            KeyController().keys_up(self.hold_keys)  # type: ignore
             time.sleep(random.uniform(*self.end_sleep_time))
 
 

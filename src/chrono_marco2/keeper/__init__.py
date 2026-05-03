@@ -1,9 +1,10 @@
 import time
 from pathlib import Path
 import pyautogui
-from chrono_marco2.key_holder import KeyHolderWin, KeyHolder
+from chrono_marco2.key_holder import KeyHolderLinux, KeyHolderWin, KeyHolder
 
 __all__ = ["CountdownTimer", "BuffKeeper", "FreeMarketKeeper"]
+
 
 class CountdownTimer:
     def __init__(
@@ -40,39 +41,45 @@ class CountdownTimer:
             self.do_something()
             self.refresh()
 
+
 class BuffKeeper(CountdownTimer):
     def __init__(
         self,
         duration: float,
         refresh_file: Path | None,
-        buff_key_holders: list[KeyHolder],
-        double_buff: bool = False
+        buff_key_holders: list[KeyHolder] | list[KeyHolderWin] | list[KeyHolderLinux],
+        double_buff: bool = False,
+        pre_buff_sleep_time: float = 0,
     ):
         super().__init__(duration, refresh_file)
         self.buff_key_holders = buff_key_holders
         self.double_buff = double_buff
+        self.pre_buff_sleep_time = pre_buff_sleep_time
 
     def rebuff(self):
+        time.sleep(self.pre_buff_sleep_time)
         for key_holder in self.buff_key_holders:
             if self.double_buff:
                 origin_hold_time = key_holder.hold_time
                 origin_end_sleep_time = key_holder.end_sleep_time
-                
+
                 key_holder.hold_time = (0.03, 0.06)
                 key_holder.end_sleep_time = (0.1, 0.2)
                 key_holder.hold()
-                
+
                 key_holder.hold_time = origin_hold_time
                 key_holder.end_sleep_time = origin_end_sleep_time
 
             key_holder.hold()
-    
+
     def do_something(self):
         self.rebuff()
 
+
 class FreeMarketKeeper(CountdownTimer):
-    def __init__(self, 
-        duration: float, 
+    def __init__(
+        self,
+        duration: float,
         refresh_file: Path | None = None,
         left_key: str = "a",
         right_key: str = "d",
@@ -86,14 +93,22 @@ class FreeMarketKeeper(CountdownTimer):
         super().__init__(duration, refresh_file)
         self.left_key = left_key
         self.right_key = right_key
-        self.npc_chat_key_holder = npc_chat_key_holder if npc_chat_key_holder else KeyHolderWin(["n"], (0.05, 0.05), (0.05, 0.05))
-        self.up_key_holder = up_key_holder if up_key_holder else KeyHolderWin(["w"], (0.05, 0.05), (0.05, 0.05))
+        self.npc_chat_key_holder = (
+            npc_chat_key_holder
+            if npc_chat_key_holder
+            else KeyHolderWin(["n"], (0.05, 0.05), (0.05, 0.05))
+        )
+        self.up_key_holder = (
+            up_key_holder
+            if up_key_holder
+            else KeyHolderWin(["w"], (0.05, 0.05), (0.05, 0.05))
+        )
         self.sell_equips_walk_repeat_time = sell_equips_walk_repeat_time
         self.leave_walk_repeat_time = leave_walk_repeat_time
 
     def go_into_fm(self):
         pyautogui.click(876, 715)
-    
+
     def sell_equips(self):
         with pyautogui.hold(self.left_key):
             for _ in range(self.sell_equips_walk_repeat_time):
@@ -118,3 +133,4 @@ class FreeMarketKeeper(CountdownTimer):
 
     def do_something(self):
         self.auto_fm_go_into_and_sell_equips_and_leave()
+
