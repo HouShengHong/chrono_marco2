@@ -3,7 +3,7 @@ from chrono_marco2.player.eye import Eye
 from chrono_marco2.common.mini_map_data import MiniMapData
 from chrono_marco2.key_holder import KeyHolderWin
 from chrono_marco2.common import KeyBinds
-from chrono_marco2.keeper import CountdownTimer, FreeMarketKeeper
+from chrono_marco2.keeper import CountdownTimer
 
 import alpha_setting
 
@@ -87,6 +87,7 @@ def how_to_play(player: Player):
 
         # platform 1 left
         case (x, y) if 4 <= x <= 85 and 63 <= y <= 74:
+            player.hand.status = "r"
             left_lightning_rush.hold()
             left_lightning_rush.hold()
             lightning_attack.hold()
@@ -95,6 +96,7 @@ def how_to_play(player: Player):
 
         # platform 1 right
         case (x, y) if 123 <= x <= 204 and 63 <= y <= 74:
+            player.hand.status = "l"
             right_lightning_rush.hold()
             right_lightning_rush.hold()
             lightning_attack.hold()
