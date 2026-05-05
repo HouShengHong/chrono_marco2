@@ -84,6 +84,7 @@ class FreeMarketKeeper(CountdownTimer):
         duration: float,
         refresh_file: Path | None = None,
         # self
+        refresh_other_free_market_keepers: list[FreeMarketKeeper] | None = None,
         left_key: str = KeyBinds.left,
         right_key: str = KeyBinds.right,
         item_key: str = KeyBinds.item,
@@ -101,6 +102,7 @@ class FreeMarketKeeper(CountdownTimer):
         super().__init__(duration, refresh_file)
         self.left_key = left_key
         self.right_key = right_key
+        self.refresh_other_free_market_keepers = refresh_other_free_market_keepers
         self.item_key = item_key
         self.trade_button_position = trade_button_position
         self.sell_equips_button_position = sell_equips_button_position
@@ -129,3 +131,7 @@ class FreeMarketKeeper(CountdownTimer):
             self.after_sell_equips_sleep_time,
             self.after_leave_fm_sleep_time,
         )
+
+        if self.refresh_other_free_market_keepers is not None:
+            for keeper in self.refresh_other_free_market_keepers:
+                keeper.refresh()
