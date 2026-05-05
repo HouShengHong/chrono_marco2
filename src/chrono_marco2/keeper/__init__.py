@@ -114,6 +114,11 @@ class FreeMarketKeeper(CountdownTimer):
         with pyautogui.hold(self.left_key):
             for _ in range(self.sell_equips_walk_repeat_time):
                 self.npc_chat_key_holder.hold()
+
+        with pyautogui.hold(self.right_key):
+            for _ in range(self.sell_equips_walk_repeat_time):
+                self.npc_chat_key_holder.hold()
+
         pyautogui.click(867, 193)
         time.sleep(1)
         pyautogui.click(689, 408)
