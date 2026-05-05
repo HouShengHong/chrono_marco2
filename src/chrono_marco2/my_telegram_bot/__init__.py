@@ -45,7 +45,6 @@ def run_my_tg_bot():
 def admin_only(func):
     @wraps(func)
     async def wrapped(message, *args, **kwargs):
-        print(message.from_user.id, type(message.from_user.id))
         if message.from_user.id not in ADMIN_IDS:
             await bot.reply_to(message, "⚠️ 你沒有執行此指令的權限。")
             return
@@ -134,4 +133,3 @@ async def echo_all(message):
 # 啟動非同步循環
 if __name__ == "__main__":
     pass
-
