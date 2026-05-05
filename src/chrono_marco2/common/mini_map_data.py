@@ -29,5 +29,10 @@ class MiniMapData:
         "region": (8, 124, 205, 271),
     }
 
+    leafre_battlefield_of_fire_and_darkness: dict[str, tuple[int, int, int, int]] = {
+        "title":  (59, 67, 207, 105),
+        "region": (8, 124, 213, 271),
+    }
+
 
         
