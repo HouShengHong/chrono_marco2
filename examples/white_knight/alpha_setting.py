@@ -1,6 +1,6 @@
 from chrono_marco2.key_holder import KeyHolderWin
 from chrono_marco2.common import KeyBinds
-from chrono_marco2.keeper import BuffKeeper
+from chrono_marco2.keeper import BuffKeeper, FreeMarketKeeper
 from pathlib import Path
 
 
@@ -107,6 +107,16 @@ class BuffKeepers:
         [
             KeyHolderWin([KeyBinds.buff_pgdn], (0.1, 0.3), (0.1, 0.3)),
         ],
+    )
+
+    free_market: FreeMarketKeeper = FreeMarketKeeper(
+        700, Path(__file__).parent / "keepers" / "fm.txt"
+    )
+
+    take_a_break: FreeMarketKeeper = FreeMarketKeeper(
+        3600,
+        Path(__file__).parent / "keepers" / "take_a_break.txt",
+        after_sell_equips_sleep_time=300,
     )
 
 

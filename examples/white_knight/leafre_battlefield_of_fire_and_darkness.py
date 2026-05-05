@@ -60,6 +60,7 @@ lightning_attack = alpha_setting.lightning_attack(
     [alpha_setting.AttackKeys.charged_blow]
 )
 
+
 def how_to_play(player: Player):
 
     # if player.hand.status is None:
@@ -74,7 +75,7 @@ def how_to_play(player: Player):
             lightning_attack.hold()
             right_down_prev_jump.hold()
             lightning_attack.hold()
-        
+
         # platform 0 right
         case (x, y) if 145 <= x <= 204 and 29 <= y <= 49:
             player.hand.status = "l"
@@ -83,7 +84,7 @@ def how_to_play(player: Player):
             lightning_attack.hold()
             left_down_prev_jump.hold()
             lightning_attack.hold()
-        
+
         # platform 1 left
         case (x, y) if 4 <= x <= 85 and 63 <= y <= 74:
             left_lightning_rush.hold()
@@ -91,7 +92,7 @@ def how_to_play(player: Player):
             lightning_attack.hold()
             left_down_prev_jump.hold()
             lightning_attack.hold()
-        
+
         # platform 1 right
         case (x, y) if 123 <= x <= 204 and 63 <= y <= 74:
             right_lightning_rush.hold()
@@ -99,7 +100,7 @@ def how_to_play(player: Player):
             lightning_attack.hold()
             right_down_prev_jump.hold()
             lightning_attack.hold()
-        
+
         # platform 2 left telepoint
         case (x, y) if 15 <= x <= 19 and 90 <= y <= 114:
             if player.hand.status == "r":
@@ -107,8 +108,7 @@ def how_to_play(player: Player):
                 lightning_attack.hold()
             else:
                 little_up.hold()
-                
-                
+
         # platform 2 left telepoint left
         case (x, y) if 0 <= x <= 14 and 90 <= y <= 114:
             if player.hand.status == "r":
@@ -116,7 +116,7 @@ def how_to_play(player: Player):
                 lightning_attack.hold()
             else:
                 little_right.hold()
-        
+
         # platform 2 left telepoint right
         case (x, y) if 20 <= x <= 25 and 90 <= y <= 114:
             if player.hand.status == "r":
@@ -132,16 +132,15 @@ def how_to_play(player: Player):
                 lightning_attack.hold()
             else:
                 little_up.hold()
-                
 
-        # platform 2 right telepoint left 
+        # platform 2 right telepoint left
         case (x, y) if 184 <= x <= 189 and 90 <= y <= 114:
             if player.hand.status == "l":
                 left_lightning_rush.hold()
                 lightning_attack.hold()
             else:
                 little_right.hold()
-        
+
         # platform 2 right telepoint right
         case (x, y) if 195 <= x <= 207 and 90 <= y <= 114:
             if player.hand.status == "l":
@@ -149,17 +148,17 @@ def how_to_play(player: Player):
                 lightning_attack.hold()
             else:
                 little_left.hold()
-        
+
         # platform 2
         case (x, y) if 0 <= x <= 207 and 90 <= y <= 114:
             if player.hand.status == "r":
                 right_lightning_rush.hold()
-            else: 
+            else:
                 left_lightning_rush.hold()
 
             lightning_attack.hold()
 
-        case (x,y) :
+        case (x, y):
             if random.random() < 0.5:
                 left_down_prev_jump.hold()
             else:
@@ -179,7 +178,10 @@ def how_to_play(player: Player):
 
 if __name__ == "__main__":
     path = (
-        Path().cwd() / "data" / "mini_map_titles" / "leafre_battlefield_of_fire_and_darkness.png"
+        Path().cwd()
+        / "data"
+        / "mini_map_titles"
+        / "leafre_battlefield_of_fire_and_darkness.png"
     )
     eye: Eye = Eye(
         path,
@@ -191,7 +193,8 @@ if __name__ == "__main__":
         alpha_setting.BuffKeepers.skill_buffs,
         alpha_setting.BuffKeepers.pills,
         alpha_setting.BuffKeepers.sugar_rush_candy,
-        FreeMarketKeeper(700, Path(__file__).parent / "keepers" / "fm.txt"),
+        alpha_setting.BuffKeepers.free_market,
+        alpha_setting.BuffKeepers.take_a_break,
     ]
     player = Player(eye=eye, keepers=keepers)
 

@@ -3,6 +3,7 @@ from pathlib import Path
 import pyautogui
 from chrono_marco2.key_holder import KeyHolderLinux, KeyHolderWin, KeyHolder
 from chrono_marco2.common import KeyBinds
+from chrono_marco2.common.action import auto_fm_go_into_and_sell_equips_and_leave
 
 __all__ = ["CountdownTimer", "BuffKeeper", "FreeMarketKeeper"]
 
@@ -82,62 +83,49 @@ class FreeMarketKeeper(CountdownTimer):
         self,
         duration: float,
         refresh_file: Path | None = None,
+        # self
         left_key: str = KeyBinds.left,
         right_key: str = KeyBinds.right,
-        up_key_holder: KeyHolder | None = None,
+        item_key: str = KeyBinds.item,
+        trade_button_position: tuple[int, int] = (876, 715),
+        sell_equips_button_position: tuple[int, int] = (867, 193),
+        ok_button_position: tuple[int, int] = (689, 408),
         npc_chat_key_holder: KeyHolder | None = None,
+        up_key_holder: KeyHolder | None = None,
         sell_equips_walk_repeat_time: int = 30,
-        # 0.1sec per walk repeat, so 30 means 3 seconds of walking
         leave_walk_repeat_time: int = 40,
-        # 0.1sec per walk repeat, so 40 means 4 seconds of walking
+        after_go_into_fm_sleep_time: float = 10,
+        after_sell_equips_sleep_time: float = 1,
+        after_leave_fm_sleep_time: float = 5,
     ):
         super().__init__(duration, refresh_file)
         self.left_key = left_key
         self.right_key = right_key
-        self.npc_chat_key_holder = (
-            npc_chat_key_holder
-            if npc_chat_key_holder is not None
-            else KeyHolderWin([KeyBinds.chat_npc], (0.05, 0.05), (0.05, 0.05))
-        )
-        self.up_key_holder = (
-            up_key_holder
-            if up_key_holder is not None
-            else KeyHolderWin([KeyBinds.up], (0.05, 0.05), (0.05, 0.05))
-        )
+        self.item_key = item_key
+        self.trade_button_position = trade_button_position
+        self.sell_equips_button_position = sell_equips_button_position
+        self.ok_button_position = ok_button_position
+        self.npc_chat_key_holder = npc_chat_key_holder
+        self.up_key_holder = up_key_holder
         self.sell_equips_walk_repeat_time = sell_equips_walk_repeat_time
         self.leave_walk_repeat_time = leave_walk_repeat_time
-
-    def go_into_fm(self):
-        pyautogui.click(876, 715)
-
-    def sell_equips(self):
-        with pyautogui.hold(self.left_key):
-            for _ in range(self.sell_equips_walk_repeat_time):
-                self.npc_chat_key_holder.hold()
-
-        with pyautogui.hold(self.right_key):
-            for _ in range(self.sell_equips_walk_repeat_time):
-                self.npc_chat_key_holder.hold()
-
-        pyautogui.click(867, 193)
-        time.sleep(1)
-        pyautogui.click(689, 408)
-        time.sleep(1)
-        KeyHolderWin([KeyBinds.esc], (0.05, 0.05), (0.05, 0.05)).hold()
-        KeyHolderWin([KeyBinds.item], (0.05, 0.05), (0.05, 0.05)).hold()
-
-    def leave_fm(self):
-        with pyautogui.hold(self.right_key):
-            for _ in range(self.leave_walk_repeat_time):
-                self.up_key_holder.hold()
-
-    def auto_fm_go_into_and_sell_equips_and_leave(self):
-        self.go_into_fm()
-        time.sleep(10)
-        self.sell_equips()
-        time.sleep(1)
-        self.leave_fm()
-        time.sleep(5)
+        self.after_go_into_fm_sleep_time = after_go_into_fm_sleep_time
+        self.after_sell_equips_sleep_time = after_sell_equips_sleep_time
+        self.after_leave_fm_sleep_time = after_leave_fm_sleep_time
 
     def do_something(self):
-        self.auto_fm_go_into_and_sell_equips_and_leave()
+        auto_fm_go_into_and_sell_equips_and_leave(
+            self.left_key,
+            self.right_key,
+            self.item_key,
+            self.trade_button_position,
+            self.sell_equips_button_position,
+            self.ok_button_position,
+            self.npc_chat_key_holder,
+            self.up_key_holder,
+            self.sell_equips_walk_repeat_time,
+            self.leave_walk_repeat_time,
+            self.after_go_into_fm_sleep_time,
+            self.after_sell_equips_sleep_time,
+            self.after_leave_fm_sleep_time,
+        )
