@@ -189,12 +189,12 @@ if __name__ == "__main__":
         MiniMapData.leafre_battlefield_of_fire_and_darkness["region"],
     )
     keepers: list[CountdownTimer] = [
+        alpha_setting.BuffKeepers.take_a_break,
         alpha_setting.BuffKeepers.lightning_charge,
         alpha_setting.BuffKeepers.skill_buffs,
         alpha_setting.BuffKeepers.pills,
         alpha_setting.BuffKeepers.sugar_rush_candy,
         alpha_setting.BuffKeepers.free_market,
-        alpha_setting.BuffKeepers.take_a_break,
     ]
     player = Player(eye=eye, keepers=keepers)
 
