@@ -96,12 +96,12 @@ class FreeMarketKeeper(CountdownTimer):
         self.right_key = right_key
         self.npc_chat_key_holder = (
             npc_chat_key_holder
-            if npc_chat_key_holder
+            if npc_chat_key_holder is not None
             else KeyHolderWin([KeyBinds.chat_npc], (0.05, 0.05), (0.05, 0.05))
         )
         self.up_key_holder = (
             up_key_holder
-            if up_key_holder
+            if up_key_holder is not None
             else KeyHolderWin([KeyBinds.up], (0.05, 0.05), (0.05, 0.05))
         )
         self.sell_equips_walk_repeat_time = sell_equips_walk_repeat_time
@@ -125,7 +125,6 @@ class FreeMarketKeeper(CountdownTimer):
         with pyautogui.hold(self.right_key):
             for _ in range(self.leave_walk_repeat_time):
                 self.up_key_holder.hold()
-        time.sleep(5)
 
     def auto_fm_go_into_and_sell_equips_and_leave(self):
         self.go_into_fm()
@@ -133,6 +132,7 @@ class FreeMarketKeeper(CountdownTimer):
         self.sell_equips()
         time.sleep(1)
         self.leave_fm()
+        time.sleep(5)
 
     def do_something(self):
         self.auto_fm_go_into_and_sell_equips_and_leave()

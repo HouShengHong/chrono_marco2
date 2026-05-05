@@ -5,6 +5,8 @@ from chrono_marco2.player.eye import Eye
 from pathlib import Path
 import pyautogui
 import cv2
+from datetime import datetime
+
 
 def red_alert_monitor(eye: Eye) -> AlertMonitor:
     def check_red_alert(eye: Eye = eye) -> bool:
@@ -15,7 +17,8 @@ def red_alert_monitor(eye: Eye) -> AlertMonitor:
     def on_red_alert():
         print("Red alert!")
         my_telegram_bot.notify_user_screenshot_external_trigger(
-            MyTelegramSetting.chat_id, "Red alert!"
+            MyTelegramSetting.chat_id,
+            f"Red alert! {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
         )
 
     return AlertMonitor(
@@ -32,7 +35,8 @@ def different_map_alert_monitor(eye: Eye) -> AlertMonitor:
     def on_different_map_alert():
         print("Different map alert!")
         my_telegram_bot.notify_user_screenshot_external_trigger(
-            MyTelegramSetting.chat_id, "Different map alert!"
+            MyTelegramSetting.chat_id,
+            f"Different map alert! {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
         )
 
     return AlertMonitor(
@@ -42,8 +46,12 @@ def different_map_alert_monitor(eye: Eye) -> AlertMonitor:
         name="Different_Map_Alert_Monitor",
     )
 
-def lie_detector_alert_monitor(path: Path = Path().cwd() / "data" / "lie_detector" / "0.png") -> AlertMonitor:
+
+def lie_detector_alert_monitor(
+    path: Path = Path().cwd() / "data" / "lie_detector" / "0.png",
+) -> AlertMonitor:
     img = cv2.imread(path)
+
     def lie_detector_alert() -> bool:
         pyautogui.useImageNotFoundException(False)
         location = pyautogui.locateCenterOnScreen(img, confidence=0.8)
@@ -54,7 +62,8 @@ def lie_detector_alert_monitor(path: Path = Path().cwd() / "data" / "lie_detecto
     def on_lie_detector_alert():
         print("Different map alert!")
         my_telegram_bot.notify_user_screenshot_external_trigger(
-            MyTelegramSetting.chat_id, "Lie Detector alert!"
+            MyTelegramSetting.chat_id,
+            f"Lie Detector alert! {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
         )
 
     return AlertMonitor(
@@ -62,4 +71,3 @@ def lie_detector_alert_monitor(path: Path = Path().cwd() / "data" / "lie_detecto
         on_lie_detector_alert,
         name="Lie_Detector_Alert_Monitor",
     )
-
