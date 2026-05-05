@@ -18,8 +18,7 @@ little_right: KeyHolderWin = KeyHolderWin([KeyBinds.right], (0.2, 0.2))
 little_up: KeyHolderWin = KeyHolderWin([KeyBinds.up], (0.03, 0.06), (0.3, 0.3))
 
 left_big_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
-    direction_keys=[KeyBinds.left],
-    hold_time = (0.24, 0.27) 
+    direction_keys=[KeyBinds.left], hold_time=(0.24, 0.27)
 )
 
 right_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
@@ -45,9 +44,8 @@ right_fire_rush: KeyHolderWin = alpha_setting.normal_rush(
 
 normal_attack = alpha_setting.normal_attack([alpha_setting.AttackKeys.charged_blow])
 
+
 def how_to_play(player: Player):
-    for keeper in player.keepers:
-        keeper.do_on_finish()
     match player.eye.status.current_yellow_point_position_in_mini_map:
         # teleport point
         case (x, y) if 69 <= x <= 73 and 72 <= y <= 83:
@@ -56,7 +54,7 @@ def how_to_play(player: Player):
         # teleport point left
         case (x, y) if 64 <= x <= 69 and 72 <= y <= 83:
             little_right.hold()
-        
+
         # teleport point right
         case (x, y) if 74 <= x <= 76 and 72 <= y <= 83:
             little_left.hold()
@@ -90,7 +88,7 @@ def how_to_play(player: Player):
             right_fire_rush.hold()
             right_down_prev_jump.hold()
             normal_attack.hold()
-        
+
         # platform 0, 1, 2 right
         case (x, y) if 97 <= x <= 137 and 64 <= y <= 70:
             left_fire_rush.hold()
@@ -98,19 +96,22 @@ def how_to_play(player: Player):
             left_fire_rush.hold()
             left_down_prev_jump.hold()
             normal_attack.hold()
-            
+
         case (x, y):
             if random.random() < 0.5:
                 right_down_prev_jump.hold()
             else:
                 left_down_prev_jump.hold()
             normal_attack.hold()
-            
+
         case _:
             if random.random() < 0.5:
                 left_fire_rush.hold()
             else:
                 left_fire_rush.hold()
+
+    for keeper in player.keepers:
+        keeper.do_on_finish()
 
 
 if __name__ == "__main__":
@@ -130,5 +131,4 @@ if __name__ == "__main__":
 
     pyautogui.hotkey("alt", "tab")
     time.sleep(1)
-    player.run(how_to_play)
-
+    player.run(how_to_play, pre_do_keepers=True)

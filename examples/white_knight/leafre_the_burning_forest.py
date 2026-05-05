@@ -61,8 +61,6 @@ normal_attack_then_lightning = alpha_setting.normal_attack(
 
 
 def how_to_play(player: Player):
-    for keeper in player.keepers:
-        keeper.do_on_finish()
     match player.eye.status.current_yellow_point_position_in_mini_map:
         # teleport point
         case (x, y) if 90 <= x <= 94 and 99 <= y <= 108:
@@ -139,6 +137,9 @@ def how_to_play(player: Player):
             else:
                 right_lightning_rush.hold()
 
+    for keeper in player.keepers:
+        keeper.do_on_finish()
+
 
 if __name__ == "__main__":
     path = Path().cwd() / "data" / "mini_map_titles" / "leafre_the_burning_forest.png"
@@ -155,5 +156,4 @@ if __name__ == "__main__":
 
     pyautogui.hotkey("alt", "tab")
     time.sleep(1)
-    player.run(how_to_play)
-
+    player.run(how_to_play, pre_do_keepers=True)
