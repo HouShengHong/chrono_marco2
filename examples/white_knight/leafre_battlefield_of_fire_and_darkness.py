@@ -3,7 +3,7 @@ from chrono_marco2.player.eye import Eye
 from chrono_marco2.common.mini_map_data import MiniMapData
 from chrono_marco2.key_holder import KeyHolderWin
 from chrono_marco2.common import KeyBinds
-from chrono_marco2.keeper import CountdownTimer
+from chrono_marco2.keeper import CountdownTimer, FreeMarketKeeper
 
 import alpha_setting
 
@@ -190,6 +190,11 @@ if __name__ == "__main__":
         MiniMapData.leafre_battlefield_of_fire_and_darkness["title"],
         MiniMapData.leafre_battlefield_of_fire_and_darkness["region"],
     )
+
+    free_market_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.free_market
+    take_a_break_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.take_a_break
+    take_a_break_keeper.refresh_other_free_market_keepers = [free_market_keeper]
+
     keepers: list[CountdownTimer] = [
         alpha_setting.BuffKeepers.take_a_break,
         alpha_setting.BuffKeepers.lightning_charge,
