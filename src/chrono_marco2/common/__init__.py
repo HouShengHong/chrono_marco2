@@ -4,7 +4,8 @@ class KeyBinds:
     left: str = "a"
     right: str = "d"
     jump: str = "space"
-    
+    item: str = "c"
+
     chat_npc: str = "n"
     esc: str = "esc"
 

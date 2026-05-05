@@ -2,6 +2,7 @@ import time
 from pathlib import Path
 import pyautogui
 from chrono_marco2.key_holder import KeyHolderLinux, KeyHolderWin, KeyHolder
+from chrono_marco2.common import KeyBinds
 
 __all__ = ["CountdownTimer", "BuffKeeper", "FreeMarketKeeper"]
 
@@ -81,8 +82,8 @@ class FreeMarketKeeper(CountdownTimer):
         self,
         duration: float,
         refresh_file: Path | None = None,
-        left_key: str = "a",
-        right_key: str = "d",
+        left_key: str = KeyBinds.left,
+        right_key: str = KeyBinds.right,
         up_key_holder: KeyHolder | None = None,
         npc_chat_key_holder: KeyHolder | None = None,
         sell_equips_walk_repeat_time: int = 30,
@@ -96,12 +97,12 @@ class FreeMarketKeeper(CountdownTimer):
         self.npc_chat_key_holder = (
             npc_chat_key_holder
             if npc_chat_key_holder
-            else KeyHolderWin(["n"], (0.05, 0.05), (0.05, 0.05))
+            else KeyHolderWin([KeyBinds.chat_npc], (0.05, 0.05), (0.05, 0.05))
         )
         self.up_key_holder = (
             up_key_holder
             if up_key_holder
-            else KeyHolderWin(["w"], (0.05, 0.05), (0.05, 0.05))
+            else KeyHolderWin([KeyBinds.up], (0.05, 0.05), (0.05, 0.05))
         )
         self.sell_equips_walk_repeat_time = sell_equips_walk_repeat_time
         self.leave_walk_repeat_time = leave_walk_repeat_time
@@ -117,7 +118,8 @@ class FreeMarketKeeper(CountdownTimer):
         time.sleep(1)
         pyautogui.click(689, 408)
         time.sleep(1)
-        KeyHolderWin(["esc"], (0.05, 0.05), (0.05, 0.05)).hold()
+        KeyHolderWin([KeyBinds.esc], (0.05, 0.05), (0.05, 0.05)).hold()
+        KeyHolderWin([KeyBinds.item], (0.05, 0.05), (0.05, 0.05)).hold()
 
     def leave_fm(self):
         with pyautogui.hold(self.right_key):
