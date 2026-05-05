@@ -123,6 +123,7 @@ class FreeMarketKeeper(CountdownTimer):
         with pyautogui.hold(self.right_key):
             for _ in range(self.leave_walk_repeat_time):
                 self.up_key_holder.hold()
+        time.sleep(5)
 
     def auto_fm_go_into_and_sell_equips_and_leave(self):
         self.go_into_fm()

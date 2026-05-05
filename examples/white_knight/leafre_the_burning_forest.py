@@ -96,6 +96,7 @@ def how_to_play(player: Player):
 
         # platform 3 right
         case (x, y) if 95 <= x <= 180 and 99 <= y <= 108:
+            left_lightning_rush.hold()
             left_lightning_rush_then_ice.hold()
             then_ice.hold()
             normal_attack_then_lightning.hold()
@@ -105,7 +106,7 @@ def how_to_play(player: Player):
             right_lightning_rush_then_ice.hold()
             then_ice.hold()
             normal_attack.hold()
-            normal_attack.hold()
+            # normal_attack.hold()
             right_down_prev_jump.hold()
             normal_attack_then_lightning.hold()
 
@@ -114,7 +115,7 @@ def how_to_play(player: Player):
             right_lightning_rush_then_ice.hold()
             then_ice.hold()
             normal_attack.hold()
-            normal_attack.hold()
+            # normal_attack.hold()
             right_down_prev_jump.hold()
             normal_attack_then_lightning.hold()
 
@@ -124,7 +125,7 @@ def how_to_play(player: Player):
             right_lightning_rush_then_ice.hold()
             then_ice.hold()
             normal_attack.hold()
-            normal_attack.hold()
+            # normal_attack.hold()
             right_down_prev_jump.hold()
             normal_attack_then_lightning.hold()
 

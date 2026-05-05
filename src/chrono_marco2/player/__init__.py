@@ -6,7 +6,7 @@ from chrono_marco2.alert import AlertMonitor
 from typing import Callable
 import time
 from chrono_marco2.my_telegram_bot import run_my_tg_bot
-from chrono_marco2.common.alert import red_alert_monitor, different_map_alert_monitor
+from chrono_marco2.common.alert import red_alert_monitor, different_map_alert_monitor, lie_detector_alert_monitor
 
 
 class Player:
@@ -25,7 +25,7 @@ class Player:
         self.alert_monitors = (
             alert_monitors
             if alert_monitors is not None
-            else [red_alert_monitor(self.eye), different_map_alert_monitor(self.eye)]
+            else [red_alert_monitor(self.eye), different_map_alert_monitor(self.eye), lie_detector_alert_monitor()]
         )
 
     def run(self, how_to_play: Callable[[Player], None]):
@@ -54,6 +54,7 @@ class Player:
                 how_to_play(self)
 
             else:
+                self.hand.reset_holding_keys()
                 print(self.eye.status.current_same_map_score, "Different map detected!")
                 time.sleep(1)
 

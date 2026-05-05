@@ -33,7 +33,7 @@ class BuffKeys:
 
 class BuffKeepers:
     skill_buffs: BuffKeeper = BuffKeeper(
-        850,
+        430,
         Path(__file__).parent / "keepers" / "skill_buffs.txt",
         [
             KeyHolderWin([BuffKeys.magic_crash], (0.2, 0.3), (1.6, 1.6)),
@@ -45,28 +45,28 @@ class BuffKeepers:
         1,
     )
     magic_crash: BuffKeeper = BuffKeeper(
-        850,
+        430,
         Path(__file__).parent / "keepers" / "magic_crash.txt",
         [KeyHolderWin([BuffKeys.magic_crash], (0.2, 0.3), (1.6, 1.6))],
         True,
         1,
     )
     power_guard: BuffKeeper = BuffKeeper(
-        850,
+        430,
         Path(__file__).parent / "keepers" / "power_guard.txt",
         [KeyHolderWin([BuffKeys.power_guard], (0.2, 0.3), (0.6, 0.6))],
         True,
         1,
     )
     booster: BuffKeeper = BuffKeeper(
-        850,
+        430,
         Path(__file__).parent / "keepers" / "booster.txt",
         [KeyHolderWin([BuffKeys.booster], (0.2, 0.3), (0.4, 0.4))],
         True,
         1,
     )
     nimble_feet: BuffKeeper = BuffKeeper(
-        850,
+        430,
         Path(__file__).parent / "keepers" / "nimble_feet.txt",
         [KeyHolderWin([BuffKeys.nimble_feet], (0.2, 0.3), (1.1, 1.1))],
         True,
@@ -74,19 +74,19 @@ class BuffKeepers:
     )
 
     fire_charge: BuffKeeper = BuffKeeper(
-        850,
+        430,
         Path(__file__).parent / "keepers" / "fire_charge.txt",
         [KeyHolderWin([BuffKeys.fire_charge], (0.1, 0.3), (0.1, 0.3))],
     )
 
     ice_charge: BuffKeeper = BuffKeeper(
-        850,
+        430,
         Path(__file__).parent / "keepers" / "ice_charge.txt",
         [KeyHolderWin([BuffKeys.ice_charge], (0.1, 0.3), (0.1, 0.3))],
     )
 
     lightning_charge: BuffKeeper = BuffKeeper(
-        850,
+        430,
         Path(__file__).parent / "keepers" / "lightning_charge.txt",
         [KeyHolderWin([BuffKeys.lightning_charge], (0.1, 0.3), (0.1, 0.3))],
     )
@@ -98,6 +98,14 @@ class BuffKeepers:
             KeyHolderWin([KeyBinds.buff_ins], (0.1, 0.3), (0.1, 0.3)),
             KeyHolderWin([KeyBinds.buff_home], (0.1, 0.3), (0.1, 0.3)),
             KeyHolderWin([KeyBinds.buff_pgup], (0.1, 0.3), (0.1, 0.3)),
+        ],
+    )
+
+    sugar_rush_candy: BuffKeeper = BuffKeeper(
+        880,
+        Path(__file__).parent / "keepers" / "sugar_rush_candy.txt",
+        [
+            KeyHolderWin([KeyBinds.buff_pgdn], (0.1, 0.3), (0.1, 0.3)),
         ],
     )
 

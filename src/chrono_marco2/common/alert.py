@@ -2,7 +2,9 @@ from chrono_marco2.alert import AlertMonitor
 from chrono_marco2 import my_telegram_bot
 from chrono_marco2.my_telegram_bot.my_tg_setting import MyTelegramSetting
 from chrono_marco2.player.eye import Eye
-
+from pathlib import Path
+import pyautogui
+import cv2
 
 def red_alert_monitor(eye: Eye) -> AlertMonitor:
     def check_red_alert(eye: Eye = eye) -> bool:
@@ -38,5 +40,26 @@ def different_map_alert_monitor(eye: Eye) -> AlertMonitor:
         on_different_map_alert,
         check_args=(eye,),
         name="Different_Map_Alert_Monitor",
+    )
+
+def lie_detector_alert_monitor(path: Path = Path().cwd() / "data" / "lie_detector" / "0.png") -> AlertMonitor:
+    img = cv2.imread(path)
+    def lie_detector_alert() -> bool:
+        pyautogui.useImageNotFoundException(False)
+        location = pyautogui.locateCenterOnScreen(img, confidence=0.8)
+        if location is not None:
+            return True
+        return False
+
+    def on_lie_detector_alert():
+        print("Different map alert!")
+        my_telegram_bot.notify_user_screenshot_external_trigger(
+            MyTelegramSetting.chat_id, "Lie Detector alert!"
+        )
+
+    return AlertMonitor(
+        lie_detector_alert,
+        on_lie_detector_alert,
+        name="Lie_Detector_Alert_Monitor",
     )
 

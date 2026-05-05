@@ -7,8 +7,12 @@ from chrono_marco2.player.ear import Ear
 from chrono_marco2.common.mini_map_data import MiniMapData
 
 if __name__ == "__main__":
-    path = Path().cwd() / "data" / "mini_map_titles" / "leafre_the_burning_forest.png"
-    eye: Eye = Eye(path,MiniMapData.leafre_the_burning_forest["title"],MiniMapData.leafre_the_burning_forest["region"])
+    path = Path().cwd() / "data" / "mini_map_titles" / "hidden_street_bone_fish_cave.png"
+    eye: Eye = Eye(
+        path,
+        MiniMapData.hidden_street_bone_fish_cave["title"],
+        MiniMapData.hidden_street_bone_fish_cave["region"],
+    )
     ear = Ear()
 
     pyautogui.hotkey("alt", "tab")
