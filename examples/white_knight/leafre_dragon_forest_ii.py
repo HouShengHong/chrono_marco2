@@ -63,89 +63,91 @@ lightning_attack = alpha_setting.lightning_attack(
 
 def how_to_play(player: Player):
 
-    # if player.hand.status is None:
-    #     player.hand.status = "l"
-
     match player.eye.status.current_yellow_point_position_in_mini_map:
-        # platform teleport 
-        case (x, y) if 92 <= x <= 96 and 108 <= y <= 124:
-            little_up.hold()
-        
-        # platform teleport left
-        case (x, y) if 87 <= x <= 91 and 108 <= y <= 124:
-            little_right.hold()
-        
-        # platform teleport left
-        case (x, y) if 68 <= x <= 86 and 108 <= y <= 124:
-            right_prev_jump.hold()
-            normal_attack.hold()
-        
-        # platform teleport right
-        case (x, y) if 97 <= x <= 101 and 108 <= y <= 124:
-            little_left.hold()
-        
-        # platform teleport far right
-        case (x, y) if 102 <= x <= 110 and 108 <= y <= 124:
-            left_prev_jump.hold()
-            normal_attack.hold()
-
-        # platform most bottom left
-        case (x, y) if 0 <= x <= 55 and 108 <= y <= 124:
-            player.hand.status = "r"
-            right_fire_rush.hold()
-            right_prev_jump.hold()
-            normal_attack.hold()
-        
-        # platform most bottom right
-        case (x, y) if 141 <= x <= 200 and 108 <= y <= 124:
-            player.hand.status = "l"
-            left_fire_rush.hold()
-            left_prev_jump.hold()
-            normal_attack.hold()
-
-        # platform most bottom 
-        case (x, y) if 0 <= x <= 200 and 108 <= y <= 124:
-            if player.hand.status == "l":
-                left_fire_rush.hold()
-                left_prev_jump.hold()
-                normal_attack.hold()
-            else:
-                right_fire_rush.hold()
-                right_prev_jump.hold()
-                normal_attack.hold()
-        
-        # other platform left
-        case (x, y) if 0 <= x <= 55:
-            player.hand.status = "r"
-            right_fire_rush.hold()
+        # platform 0 right
+        case (x, y) if (59 <= x <= 65 and 6 <= y <= 18) or (0 <= x <= 41 and 10 <= y <= 22) :
             right_down_prev_jump.hold()
-            normal_attack.hold()
-        
-        # other platform right
-        case (x, y) if 141 <= x <= 200:
-            player.hand.status = "l"
+
+        # platform 1 left
+        case (x, y) if 0 <= x <= 33 and 67 <= y <= 87:
             left_fire_rush.hold()
             left_down_prev_jump.hold()
             normal_attack.hold()
 
-        # other platform
+        # platform 1
+        case (x, y) if 0 <= x <= 118 and 67 <= y <= 87:
+            left_fire_rush.hold()
+            # left_prev_jump.hold()
+            normal_attack.hold()
+                
+        # platform 2 teleport point
+        case (x, y) if 188 <= x <= 192 and 93 <= y <= 113:
+            little_up.hold()
+        
+        # platform 2 teleport point left
+        case (x, y) if 181 <= x <= 187 and 93 <= y <= 113:
+            little_right.hold()
+        
+        # platform 2 teleport point right
+        case (x, y) if 193 <= x <= 199 and 93 <= y <= 113:
+            little_left.hold()
+        
+        # platform 2 teleport point far left
+        case (x, y) if 174 <= x <= 180 and 93 <= y <= 113:
+            right_prev_jump.hold()
+            normal_attack.hold()
+        
+        # platform 2 teleport point far right
+        case (x, y) if 200 <= x <= 206 and 93 <= y <= 113:
+            left_prev_jump.hold()
+            normal_attack.hold()
+    
+        # platform 2 regular platform left
+        case (x, y) if 0 <= x <= 190 and 93 <= y <= 113:
+            right_fire_rush.hold()
+            # right_prev_jump.hold()
+            normal_attack.hold()
+
+
+        # platform 2 regular platform right
+        case (x, y) if 190 <= x <= 255 and 93 <= y <= 113:
+            left_fire_rush.hold()
+            # left_prev_jump.hold()
+            normal_attack.hold()
+        
+        # other platforms 0
+        case (x, y) if 36 <= x <= 110 and 37 <= y <= 57:
+            right_fire_rush.hold()
+            right_down_prev_jump.hold()
+            normal_attack.hold()
+        
+        # other platforms 1
+        case (x, y) if 110 <= x <= 199 and 20 <= y <= 42:
+            right_fire_rush.hold()
+            right_down_prev_jump.hold()
+            normal_attack.hold()
+        
+        # other platforms 2
+        case (x, y) if 155 <= x <= 242 and 58 <= y <= 77:
+            right_fire_rush.hold()
+            right_down_prev_jump.hold()
+            normal_attack.hold()
+
+        # any platforms
         case (x, y):
-            if player.hand.status == "l":
-                left_fire_rush.hold()
+            if random.random() < 0.5:
                 left_down_prev_jump.hold()
-                normal_attack.hold()
+            else:
+                right_down_prev_jump.hold()
+            normal_attack.hold()
+        
+        # other
+        case _:
+            if random.random() < 0.8:
+                left_fire_rush.hold()
             else:
                 right_fire_rush.hold()
-                right_down_prev_jump.hold()
-                normal_attack.hold()
-
-        case _:
-            player.hand.status = "r"
-            if random.random() < 0.3:
-                left_lightning_rush.hold()
-            else:
-                right_lightning_rush.hold()
-
+                    
     for keeper in player.keepers:
         keeper.do_on_finish()
 
@@ -155,16 +157,16 @@ if __name__ == "__main__":
         Path().cwd()
         / "data"
         / "mini_map_titles"
-        / "hidden_street_the_hidden_dragon_tomb_ii.png"
+        / "leafre_dragon_forest_ii.png"
     )
     eye: Eye = Eye(
         path,
-        MiniMapData.hidden_street_the_hidden_dragon_tomb_ii["title"],
-        MiniMapData.hidden_street_the_hidden_dragon_tomb_ii["region"],
+        MiniMapData.leafre_dragon_forest_ii["title"],
+        MiniMapData.leafre_dragon_forest_ii["region"],
     )
 
     free_market_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.free_market
-    free_market_keeper.duration = 1400
+    free_market_keeper.duration = 2000
     take_a_break_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.take_a_break
     take_a_break_keeper.refresh()
     take_a_break_keeper.refresh_other_free_market_keepers = [free_market_keeper]
