@@ -48,6 +48,6 @@ if __name__ == "__main__":
     print(f"Alert monitors restarted in {t2-t1:.10f} seconds.")
     print()
     while 1:
-        time.sleep(2)
+        time.sleep(1)
         eye.update_status()
 

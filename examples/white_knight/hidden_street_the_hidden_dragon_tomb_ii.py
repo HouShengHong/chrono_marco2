@@ -67,108 +67,80 @@ def how_to_play(player: Player):
     #     player.hand.status = "l"
 
     match player.eye.status.current_yellow_point_position_in_mini_map:
-        # platform 0 left
-        case (x, y) if 4 <= x <= 63 and 29 <= y <= 49:
+        # platform teleport 
+        case (x, y) if 92 <= x <= 96 and 108 <= y <= 124:
+            little_up.hold()
+        
+        # platform teleport left
+        case (x, y) if 87 <= x <= 91 and 108 <= y <= 124:
+            little_right.hold()
+        
+        # platform teleport left
+        case (x, y) if 68 <= x <= 86 and 108 <= y <= 124:
+            right_prev_jump.hold()
+            normal_attack.hold()
+        
+        # platform teleport right
+        case (x, y) if 97 <= x <= 101 and 108 <= y <= 124:
+            little_left.hold()
+        
+        # platform teleport far right
+        case (x, y) if 102 <= x <= 110 and 108 <= y <= 124:
+            left_prev_jump.hold()
+            normal_attack.hold()
+
+        # platform most bottom left
+        case (x, y) if 0 <= x <= 55 and 108 <= y <= 124:
             player.hand.status = "r"
-            right_lightning_rush.hold()
-            right_lightning_rush.hold()
-            lightning_attack.hold()
-            right_down_prev_jump.hold()
-            lightning_attack.hold()
-
-        # platform 0 right
-        case (x, y) if 145 <= x <= 204 and 29 <= y <= 49:
+            right_fire_rush.hold()
+            right_prev_jump.hold()
+            normal_attack.hold()
+        
+        # platform most bottom right
+        case (x, y) if 141 <= x <= 200 and 108 <= y <= 124:
             player.hand.status = "l"
-            left_lightning_rush.hold()
-            left_lightning_rush.hold()
-            lightning_attack.hold()
-            left_down_prev_jump.hold()
-            lightning_attack.hold()
+            left_fire_rush.hold()
+            left_prev_jump.hold()
+            normal_attack.hold()
 
-        # platform 1 left
-        case (x, y) if 4 <= x <= 85 and 63 <= y <= 74:
+        # platform most bottom 
+        case (x, y) if 0 <= x <= 200 and 108 <= y <= 124:
+            if player.hand.status == "l":
+                left_fire_rush.hold()
+                left_prev_jump.hold()
+                normal_attack.hold()
+            else:
+                right_fire_rush.hold()
+                right_prev_jump.hold()
+                normal_attack.hold()
+        
+        # other platform left
+        case (x, y) if 0 <= x <= 55:
             player.hand.status = "r"
-            left_lightning_rush.hold()
-            left_lightning_rush.hold()
-            lightning_attack.hold()
-            left_down_prev_jump.hold()
-            lightning_attack.hold()
-
-        # platform 1 right
-        case (x, y) if 123 <= x <= 204 and 63 <= y <= 74:
-            player.hand.status = "l"
-            right_lightning_rush.hold()
-            right_lightning_rush.hold()
-            lightning_attack.hold()
+            right_fire_rush.hold()
             right_down_prev_jump.hold()
-            lightning_attack.hold()
+            normal_attack.hold()
+        
+        # other platform right
+        case (x, y) if 141 <= x <= 200:
+            player.hand.status = "l"
+            left_fire_rush.hold()
+            left_down_prev_jump.hold()
+            normal_attack.hold()
 
-        # platform 2 left telepoint
-        case (x, y) if 15 <= x <= 19 and 90 <= y <= 114:
-            if player.hand.status == "r":
-                right_lightning_rush.hold()
-                lightning_attack.hold()
-            else:
-                little_up.hold()
-
-        # platform 2 left telepoint left
-        case (x, y) if 0 <= x <= 14 and 90 <= y <= 114:
-            if player.hand.status == "r":
-                right_lightning_rush.hold()
-                lightning_attack.hold()
-            else:
-                little_right.hold()
-
-        # platform 2 left telepoint right
-        case (x, y) if 20 <= x <= 25 and 90 <= y <= 114:
-            if player.hand.status == "r":
-                right_lightning_rush.hold()
-                lightning_attack.hold()
-            else:
-                little_left.hold()
-
-        # platform 2 right telepoint
-        case (x, y) if 190 <= x <= 194 and 90 <= y <= 114:
-            if player.hand.status == "l":
-                left_lightning_rush.hold()
-                lightning_attack.hold()
-            else:
-                little_up.hold()
-
-        # platform 2 right telepoint left
-        case (x, y) if 184 <= x <= 189 and 90 <= y <= 114:
-            if player.hand.status == "l":
-                left_lightning_rush.hold()
-                lightning_attack.hold()
-            else:
-                little_right.hold()
-
-        # platform 2 right telepoint right
-        case (x, y) if 195 <= x <= 207 and 90 <= y <= 114:
-            if player.hand.status == "l":
-                left_lightning_rush.hold()
-                lightning_attack.hold()
-            else:
-                little_left.hold()
-
-        # platform 2
-        case (x, y) if 0 <= x <= 207 and 90 <= y <= 114:
-            if player.hand.status == "r":
-                right_lightning_rush.hold()
-            else:
-                left_lightning_rush.hold()
-
-            lightning_attack.hold()
-
+        # other platform
         case (x, y):
-            if random.random() < 0.5:
+            if player.hand.status == "l":
+                left_fire_rush.hold()
                 left_down_prev_jump.hold()
+                normal_attack.hold()
             else:
+                right_fire_rush.hold()
                 right_down_prev_jump.hold()
-            lightning_attack.hold()
+                normal_attack.hold()
 
         case _:
-            player.hand.status = "l"
+            player.hand.status = "r"
             if random.random() < 0.3:
                 left_lightning_rush.hold()
             else:
@@ -183,12 +155,12 @@ if __name__ == "__main__":
         Path().cwd()
         / "data"
         / "mini_map_titles"
-        / "leafre_battlefield_of_fire_and_darkness.png"
+        / "hidden_street_the_hidden_dragon_tomb_ii.png"
     )
     eye: Eye = Eye(
         path,
-        MiniMapData.leafre_battlefield_of_fire_and_darkness["title"],
-        MiniMapData.leafre_battlefield_of_fire_and_darkness["region"],
+        MiniMapData.hidden_street_the_hidden_dragon_tomb_ii["title"],
+        MiniMapData.hidden_street_the_hidden_dragon_tomb_ii["region"],
     )
 
     free_market_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.free_market
@@ -198,7 +170,7 @@ if __name__ == "__main__":
 
     keepers: list[CountdownTimer] = [
         alpha_setting.BuffKeepers.take_a_break,
-        alpha_setting.BuffKeepers.lightning_charge,
+        alpha_setting.BuffKeepers.fire_charge,
         alpha_setting.BuffKeepers.skill_buffs,
         alpha_setting.BuffKeepers.pills,
         alpha_setting.BuffKeepers.sugar_rush_candy,

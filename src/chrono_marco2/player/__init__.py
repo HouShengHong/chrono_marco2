@@ -58,10 +58,10 @@ class Player:
                 time.sleep(1)
                 continue
 
-            # for alert_monitor in self.alert_monitors:
-            #     if alert_monitor._thread is not None:
-            #         if not alert_monitor._thread.is_alive():
-            #             alert_monitor.start()
+            for alert_monitor in self.alert_monitors:
+                if alert_monitor._thread is not None:
+                    if not alert_monitor._thread.is_alive():
+                        alert_monitor.start()
 
             self.eye.update_status()
             if self.eye.status.current_is_same_map:

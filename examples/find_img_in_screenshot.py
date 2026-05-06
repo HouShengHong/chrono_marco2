@@ -9,14 +9,16 @@ print(path)
 
 img = cv2.imread(path)
 
-pyautogui.hotkey("alt", "tab")
-time.sleep(1)
+while 1:
+    pyautogui.hotkey("alt", "tab")
+    time.sleep(1)
 
-t1 = time.time()
-pyautogui.useImageNotFoundException(False)
-location = pyautogui.locateCenterOnScreen(img, confidence=0.8)
-t2 = time.time()
+    t1 = time.time()
+    pyautogui.useImageNotFoundException(False)
+    location = pyautogui.locateCenterOnScreen(img, confidence=0.8)
+    t2 = time.time()
 
-print(t2 - t1)
-pyautogui.hotkey("alt", "tab")
-print(location)
+    print(t2 - t1)
+    pyautogui.hotkey("alt", "tab")
+    print(location)
+    time.sleep(1)

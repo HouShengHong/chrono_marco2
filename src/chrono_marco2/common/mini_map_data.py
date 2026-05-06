@@ -34,5 +34,9 @@ class MiniMapData:
         "region": (8, 124, 213, 271),
     }
 
+    hidden_street_the_hidden_dragon_tomb_ii: dict[str, tuple[int, int, int, int]] = {
+        "title":  (59, 67, 201, 105), 
+        "region": (8, 124, 205, 271),
+    }
 
         
