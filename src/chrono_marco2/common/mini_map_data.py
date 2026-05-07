@@ -39,4 +39,9 @@ class MiniMapData:
         "region": (8, 124, 205, 271),
     }
 
+    hidden_street_risell_spuid_cave: dict[str, tuple[int, int, int, int]] = {
+        "title":  (59, 67, 172, 105), 
+        "region": (8, 124, 205, 271),
+    }
+
         

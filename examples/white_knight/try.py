@@ -42,14 +42,18 @@ if __name__ == "__main__":
     )
 
 
-    normal_attack = alpha_setting.normal_attack([alpha_setting.AttackKeys.charged_blow])
+    normal_attack = alpha_setting.normal_attack(
+        [alpha_setting.AttackKeys.charged_blow],
+        hold_time=(0.03,0.03),
+        end_sleep_time=(0.64, 0.64)
+    )
     
     pyautogui.hotkey("alt", "tab")
     time.sleep(1)
-    i = 8
-    for _ in range(i):
-        left_little_jump.hold()
-        left_fire_rush.hold()
+    i = 20
+   # for _ in range(i):
+        # left_little_jump.hold()
+        # left_fire_rush.hold()
 
         # right_little_jump.hold()
         # right_fire_rush.hold()
@@ -61,12 +65,12 @@ if __name__ == "__main__":
         # left_little_jump.hold()
         # left_fire_rush.hold()
 
-        right_little_jump.hold()
-        right_fire_rush.hold()
+        # right_little_jump.hold()
+        # right_fire_rush.hold()
 
 
         # normal_attack.hold()
-        # normal_attack.hold()
+        normal_attack.hold()
     time.sleep(1)
     pyautogui.hotkey("alt", "tab")
 

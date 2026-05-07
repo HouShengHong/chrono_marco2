@@ -98,6 +98,7 @@ def how_to_play(player: Player):
             else:
                 right_lightning_rush.hold()
                 lightning_attack.hold()
+                lightning_attack.hold()
 
         case (x, y):
             if random.random() < 0.5:
@@ -120,12 +121,12 @@ def how_to_play(player: Player):
 
 if __name__ == "__main__":
     path = (
-        Path().cwd() / "data" / "mini_map_titles" / "hidden_street_bone_fish_cave.png"
+        Path().cwd() / "data" / "mini_map_titles" / "hidden_street_risell_spuid_cave.png"
     )
     eye: Eye = Eye(
         path,
-        MiniMapData.hidden_street_bone_fish_cave["title"],
-        MiniMapData.hidden_street_bone_fish_cave["region"],
+        MiniMapData.hidden_street_risell_spuid_cave["title"],
+        MiniMapData.hidden_street_risell_spuid_cave["region"],
     )
     keepers: list[CountdownTimer] = [
         alpha_setting.BuffKeepers.lightning_charge,
