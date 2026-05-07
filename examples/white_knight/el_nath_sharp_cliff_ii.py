@@ -125,7 +125,7 @@ if __name__ == "__main__":
     )
 
     free_market_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.free_market
-    free_market_keeper.duration = 600
+    free_market_keeper.duration = 500
     take_a_break_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.take_a_break
     take_a_break_keeper.refresh()
     take_a_break_keeper.refresh_other_free_market_keepers = [free_market_keeper]
