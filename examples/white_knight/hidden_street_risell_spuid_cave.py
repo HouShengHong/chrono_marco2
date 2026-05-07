@@ -121,19 +121,30 @@ def how_to_play(player: Player):
 
 if __name__ == "__main__":
     path = (
-        Path().cwd() / "data" / "mini_map_titles" / "hidden_street_risell_spuid_cave.png"
+        Path().cwd()
+        / "data"
+        / "mini_map_titles"
+        / "hidden_street_risell_spuid_cave.png"
     )
     eye: Eye = Eye(
         path,
         MiniMapData.hidden_street_risell_spuid_cave["title"],
         MiniMapData.hidden_street_risell_spuid_cave["region"],
     )
+
+    free_market_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.free_market
+    free_market_keeper.duration = 700
+    take_a_break_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.take_a_break
+    take_a_break_keeper.refresh()
+    take_a_break_keeper.refresh_other_free_market_keepers = [free_market_keeper]
+
     keepers: list[CountdownTimer] = [
+        take_a_break_keeper,
         alpha_setting.BuffKeepers.lightning_charge,
         alpha_setting.BuffKeepers.skill_buffs,
         alpha_setting.BuffKeepers.pills,
         alpha_setting.BuffKeepers.sugar_rush_candy,
-        FreeMarketKeeper(700, Path(__file__).parent / "keepers" / "fm.txt"),
+        free_market_keeper,
     ]
     player = Player(eye=eye, keepers=keepers)
 
