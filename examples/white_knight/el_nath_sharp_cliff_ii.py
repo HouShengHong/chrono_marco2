@@ -73,12 +73,12 @@ def how_to_play(player: Player):
             right_fire_rush.hold()
 
         # platform 3 left
-        case (x, y) if 55 <= x <= 96 and 90 <= y <= 97:
+        case (x, y) if 55 <= x <= 100 and 90 <= y <= 97:
             left_big_jump.hold()
             left_fire_rush.hold()
 
         # platform 3 right
-        case (x, y) if 97 <= x <= 137 and 90 <= y <= 97:
+        case (x, y) if 101 <= x <= 137 and 90 <= y <= 97:
             left_fire_rush.hold()
             left_fire_rush.hold()
             normal_attack.hold()
