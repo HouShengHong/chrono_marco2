@@ -125,7 +125,7 @@ def how_to_play(player: Player):
 
         # platform 1
         case (x, y) if 58 <= y <= 71:
-            if random.random() < 0.6:
+            if random.random() < 0.5:
                 player.hand.status[1].hold()
                 player.hand.status[4].hold()
             else:
@@ -133,10 +133,10 @@ def how_to_play(player: Player):
                 player.hand.status[4].hold()
 
             r = random.random()
-            if r < 0.3:
+            if r < 0.25:
                 player.hand.status[1].hold()
                 player.hand.status[4].hold()
-            elif r < 0.2:
+            elif r < 0.25:
                 player.hand.status[2].hold()
                 player.hand.status[4].hold()
 
