@@ -123,7 +123,6 @@ def how_to_play(player: Player):
             print(f"where am i ? ,({x}, {y})")
 
         case _:
-            player.hand.status = "l"
             if random.random() < 0.3:
                 left_lightning_rush.hold()
             else:
