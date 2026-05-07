@@ -16,6 +16,7 @@ import pyautogui
 little_left: KeyHolderWin = KeyHolderWin([KeyBinds.left], (0.2, 0.2))
 little_right: KeyHolderWin = KeyHolderWin([KeyBinds.right], (0.2, 0.2))
 little_up: KeyHolderWin = KeyHolderWin([KeyBinds.up], (0.03, 0.06), (0.3, 0.3))
+little_left_up: KeyHolderWin = KeyHolderWin([KeyBinds.left, KeyBinds.up], (0.2, 0.2))
 
 left_big_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
     direction_keys=[KeyBinds.left], hold_time=(0.24, 0.27)
@@ -61,10 +62,11 @@ def how_to_play(player: Player):
 
         # teleport point right
         case (x, y) if 77 <= x <= 80 and 72 <= y <= 83:
-            if random.random() < 0.85:
-                little_left.hold()
-            else:
-                left_prev_jump.hold()
+            little_left_up.hold()
+            # if random.random() < 0.85:
+            #     little_left.hold()
+            # else:
+            #     left_prev_jump.hold()
 
         # teleport point far left
         case (x, y) if 55 <= x <= 68 and 72 <= y <= 83:
