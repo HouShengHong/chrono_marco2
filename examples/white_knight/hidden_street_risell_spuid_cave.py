@@ -60,6 +60,14 @@ lightning_attack = alpha_setting.lightning_attack(
     [alpha_setting.AttackKeys.charged_blow]
 )
 
+fire_charge: KeyHolderWin = KeyHolderWin(
+    [alpha_setting.BuffKeys.fire_charge], (0.03, 0.06), (0.03, 0.03)
+)
+
+lightning_charge: KeyHolderWin = KeyHolderWin(
+    [alpha_setting.BuffKeys.lightning_charge], (0.03, 0.06), (0.03, 0.03)
+)
+
 r_list = [right_big_jump, right_lightning_rush]
 l_list = [left_lightning_rush, lightning_attack]
 
@@ -71,14 +79,20 @@ def how_to_play(player: Player):
 
     if player.hand.status is None:
         player.hand.status = "r"
+        fire_charge.hold()
+
     elif player.eye.status.current_yellow_point_position_in_mini_map is None:
         player.hand.status = "r"
+        fire_charge.hold()
+
     elif 0 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 44:
         # 10 <= x
         player.hand.status = "r"
+        fire_charge.hold()
     elif 155 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 200:
         # x <= 187
         player.hand.status = "l"
+        lightning_charge.hold()
 
     match player.eye.status.current_yellow_point_position_in_mini_map:
         # platform 0
@@ -96,9 +110,8 @@ def how_to_play(player: Player):
                 left_lightning_rush.hold()
                 lightning_attack.hold()
             else:
-                right_lightning_rush.hold()
-                lightning_attack.hold()
-                lightning_attack.hold()
+                right_fire_rush.hold()
+                normal_attack.hold()
 
         case (x, y):
             if random.random() < 0.5:
@@ -140,7 +153,7 @@ if __name__ == "__main__":
 
     keepers: list[CountdownTimer] = [
         take_a_break_keeper,
-        alpha_setting.BuffKeepers.lightning_charge,
+        # alpha_setting.BuffKeepers.lightning_charge,
         alpha_setting.BuffKeepers.skill_buffs,
         alpha_setting.BuffKeepers.pills,
         alpha_setting.BuffKeepers.sugar_rush_candy,
