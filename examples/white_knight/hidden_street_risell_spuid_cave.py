@@ -61,11 +61,11 @@ lightning_attack = alpha_setting.lightning_attack(
 )
 
 fire_charge: KeyHolderWin = KeyHolderWin(
-    [alpha_setting.BuffKeys.fire_charge], (0.03, 0.06), (0.03, 0.03)
+    [alpha_setting.BuffKeys.fire_charge], (0.03, 0.06), (0.1, 0.1)
 )
 
 lightning_charge: KeyHolderWin = KeyHolderWin(
-    [alpha_setting.BuffKeys.lightning_charge], (0.03, 0.06), (0.03, 0.03)
+    [alpha_setting.BuffKeys.lightning_charge], (0.03, 0.06), (0.1, 0.1)
 )
 
 r_list = [right_big_jump, right_lightning_rush]
@@ -89,6 +89,7 @@ def how_to_play(player: Player):
         # 10 <= x
         player.hand.status = "r"
         fire_charge.hold()
+
     elif 155 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 200:
         # x <= 187
         player.hand.status = "l"
