@@ -53,14 +53,14 @@ def how_to_play(player: Player):
             little_up.hold()
 
         # teleport point left
-        case (x, y) if 64 <= x <= 69 and 72 <= y <= 83:
+        case (x, y) if 62 <= x <= 68 and 72 <= y <= 83:
             little_right.hold()
 
         # teleport point right
         case (x, y) if 74 <= x <= 76 and 72 <= y <= 83:
             little_left.hold()
 
-        # teleport point right
+        # teleport point far right
         case (x, y) if 77 <= x <= 80 and 72 <= y <= 83:
             little_left_up.hold()
             # if random.random() < 0.85:
@@ -69,7 +69,7 @@ def how_to_play(player: Player):
             #     left_prev_jump.hold()
 
         # teleport point far left
-        case (x, y) if 55 <= x <= 68 and 72 <= y <= 83:
+        case (x, y) if 55 <= x <= 61 and 72 <= y <= 83:
             right_fire_rush.hold()
 
         # platform 3 left
