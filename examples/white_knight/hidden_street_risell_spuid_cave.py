@@ -109,7 +109,7 @@ def how_to_play(player: Player):
             if player.hand.status == "l":
                 left_big_jump.hold()
                 left_lightning_rush.hold()
-                lightning_attack.hold()
+                # lightning_attack.hold()
             else:
                 right_fire_rush.hold()
                 normal_attack.hold()
