@@ -85,7 +85,7 @@ def how_to_play(player: Player):
         player.hand.status = "r"
         fire_charge.hold()
 
-    elif 0 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 44:
+    elif 0 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 33:
         # 10 <= x
         player.hand.status = "r"
         fire_charge.hold()
