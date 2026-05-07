@@ -65,7 +65,9 @@ def how_to_play(player: Player):
 
     match player.eye.status.current_yellow_point_position_in_mini_map:
         # platform 0 right
-        case (x, y) if (59 <= x <= 65 and 6 <= y <= 18) or (0 <= x <= 41 and 10 <= y <= 22) :
+        case (x, y) if (59 <= x <= 65 and 6 <= y <= 18) or (
+            0 <= x <= 41 and 10 <= y <= 22
+        ):
             right_down_prev_jump.hold()
 
         # platform 1 left
@@ -79,54 +81,53 @@ def how_to_play(player: Player):
             left_fire_rush.hold()
             # left_prev_jump.hold()
             normal_attack.hold()
-                
+
         # platform 2 teleport point
         case (x, y) if 188 <= x <= 192 and 93 <= y <= 113:
             little_up.hold()
-        
+
         # platform 2 teleport point left
         case (x, y) if 181 <= x <= 187 and 93 <= y <= 113:
             little_right.hold()
-        
+
         # platform 2 teleport point right
         case (x, y) if 193 <= x <= 199 and 93 <= y <= 113:
             little_left.hold()
-        
+
         # platform 2 teleport point far left
         case (x, y) if 174 <= x <= 180 and 93 <= y <= 113:
             right_prev_jump.hold()
             normal_attack.hold()
-        
+
         # platform 2 teleport point far right
         case (x, y) if 200 <= x <= 206 and 93 <= y <= 113:
             left_prev_jump.hold()
             normal_attack.hold()
-    
+
         # platform 2 regular platform left
         case (x, y) if 0 <= x <= 190 and 93 <= y <= 113:
             right_fire_rush.hold()
             # right_prev_jump.hold()
             normal_attack.hold()
 
-
         # platform 2 regular platform right
         case (x, y) if 190 <= x <= 255 and 93 <= y <= 113:
             left_fire_rush.hold()
             # left_prev_jump.hold()
             normal_attack.hold()
-        
+
         # other platforms 0
         case (x, y) if 36 <= x <= 110 and 37 <= y <= 57:
             right_fire_rush.hold()
             right_down_prev_jump.hold()
             normal_attack.hold()
-        
+
         # other platforms 1
         case (x, y) if 110 <= x <= 199 and 20 <= y <= 42:
             right_fire_rush.hold()
             right_down_prev_jump.hold()
             normal_attack.hold()
-        
+
         # other platforms 2
         case (x, y) if 155 <= x <= 242 and 58 <= y <= 77:
             right_fire_rush.hold()
@@ -140,25 +141,20 @@ def how_to_play(player: Player):
             else:
                 right_down_prev_jump.hold()
             normal_attack.hold()
-        
+
         # other
         case _:
             if random.random() < 0.8:
                 left_fire_rush.hold()
             else:
                 right_fire_rush.hold()
-                    
+
     for keeper in player.keepers:
         keeper.do_on_finish()
 
 
 if __name__ == "__main__":
-    path = (
-        Path().cwd()
-        / "data"
-        / "mini_map_titles"
-        / "leafre_dragon_forest_ii.png"
-    )
+    path = Path().cwd() / "data" / "mini_map_titles" / "leafre_dragon_forest_ii.png"
     eye: Eye = Eye(
         path,
         MiniMapData.leafre_dragon_forest_ii["title"],
@@ -172,12 +168,12 @@ if __name__ == "__main__":
     take_a_break_keeper.refresh_other_free_market_keepers = [free_market_keeper]
 
     keepers: list[CountdownTimer] = [
-        alpha_setting.BuffKeepers.take_a_break,
+        take_a_break_keeper,
         alpha_setting.BuffKeepers.fire_charge,
         alpha_setting.BuffKeepers.skill_buffs,
         alpha_setting.BuffKeepers.pills,
         alpha_setting.BuffKeepers.sugar_rush_candy,
-        alpha_setting.BuffKeepers.free_market,
+        free_market_keeper,
     ]
     player = Player(eye=eye, keepers=keepers)
 

@@ -3,7 +3,7 @@ from chrono_marco2.player.eye import Eye
 from chrono_marco2.common.mini_map_data import MiniMapData
 from chrono_marco2.key_holder import KeyHolderWin
 from chrono_marco2.common import KeyBinds
-from chrono_marco2.keeper import CountdownTimer
+from chrono_marco2.keeper import BuffKeeper, CountdownTimer, FreeMarketKeeper
 
 import alpha_setting
 
@@ -121,11 +121,27 @@ if __name__ == "__main__":
         MiniMapData.el_nath_sharp_cliff_ii["title"],
         MiniMapData.el_nath_sharp_cliff_ii["region"],
     )
+
+    free_market_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.free_market
+    free_market_keeper.duration = 600
+    take_a_break_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.take_a_break
+    take_a_break_keeper.refresh()
+    take_a_break_keeper.refresh_other_free_market_keepers = [free_market_keeper]
+
     keepers: list[CountdownTimer] = [
+        take_a_break_keeper,
         alpha_setting.BuffKeepers.fire_charge,
         alpha_setting.BuffKeepers.skill_buffs,
         alpha_setting.BuffKeepers.pills,
         alpha_setting.BuffKeepers.sugar_rush_candy,
+        BuffKeeper(
+            880,
+            Path(__file__).parent / "keepers" / "red_bean_porridge.txt",
+            [
+                KeyHolderWin([KeyBinds.buff_end], (0.1, 0.3), (0.1, 0.3)),
+            ],
+        ),
+        free_market_keeper,
     ]
     player = Player(eye=eye, keepers=keepers)
 
