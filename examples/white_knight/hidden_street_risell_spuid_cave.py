@@ -106,6 +106,7 @@ def how_to_play(player: Player):
                 lightning_attack.hold()
             else:
                 right_lightning_rush.hold()
+                right_lightning_rush.hold()
                 lightning_attack.hold()
 
         case (x, y):
