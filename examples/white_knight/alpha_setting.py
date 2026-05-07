@@ -117,7 +117,6 @@ class BuffKeepers:
         3600,
         Path(__file__).parent / "keepers" / "take_a_break.txt",
         after_sell_equips_sleep_time=300,
-        after_leave_fm_sleep_time=10,
     )
 
 
