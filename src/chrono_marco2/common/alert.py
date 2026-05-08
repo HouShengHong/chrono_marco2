@@ -94,10 +94,11 @@ def lie_detector_alert_monitor(
             return False
 
     def on_lie_detector_alert():
-        print("Different map alert!")
-        my_telegram_bot.notify_user_screenshot_external_trigger(
+        print("Lie Detector alert!")
+        my_telegram_bot.notify_user_image_array_external_trigger(
             MyTelegramSetting.chat_id,
             f"Lie Detector alert! {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+            eye.status.current_frame,
         )
 
     return AlertMonitor(
