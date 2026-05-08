@@ -50,7 +50,9 @@ def different_map_alert_monitor(eye: Eye) -> AlertMonitor:
 
 
 lie_detector_png_path: Path = Path().cwd() / "data" / "lie_detector" / "0.png"
-lie_detector_img = cv2.imread(lie_detector_png_path)
+lie_detector_img = cv2.imread(lie_detector_png_path, cv2.IMREAD_GRAYSCALE)
+
+
 if lie_detector_img is None:
     print("lie_detector_img is None")
 else:
@@ -72,11 +74,11 @@ def lie_detector_alert_monitor(
         template_h, template_w = lie_detector_img.shape[:2]
 
         # dxcam 是 RGB，OpenCV 讀圖預設是 BGR，需統一格式
-        frame_bgr = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
+        frame_gray = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
 
         # 3. 模板匹配
         # res 是一個矩陣，代表每個位置的匹配分數
-        res = cv2.matchTemplate(frame_bgr, lie_detector_img, cv2.TM_CCOEFF_NORMED)
+        res = cv2.matchTemplate(frame_gray, lie_detector_img, cv2.TM_CCOEFF_NORMED)
 
         # 4. 找出分數最高的位置
         min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)
