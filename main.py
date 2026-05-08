@@ -1,8 +1,9 @@
-from chrono_marco2.key_holder import KeyHolderWin
-import pyautogui
-import time
+from path_try import path_a, path_b
 
 if __name__ == "__main__":
+    """
+
+
     # e = Ear()
     # while e.is_running:
     #     if e.is_paused:
@@ -11,7 +12,7 @@ if __name__ == "__main__":
     #     else:
     #         print("i am running")
     #         time.sleep(1)
-    
+
     # print("i stopped")
     kh: KeyHolderWin = KeyHolderWin(["a", "k", "p"], (0.03, 0.03), (0.64, 0.64))
     pyautogui.hotkey("alt", "tab")
@@ -25,4 +26,7 @@ if __name__ == "__main__":
         # time.sleep(1)
     time.sleep(1)
     pyautogui.hotkey("alt", "tab")
+    """
 
+    print(path_a)
+    print(path_b)

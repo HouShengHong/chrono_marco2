@@ -32,7 +32,7 @@ class Player:
             else [
                 red_alert_monitor(self.eye),
                 different_map_alert_monitor(self.eye),
-                lie_detector_alert_monitor(),
+                lie_detector_alert_monitor(self.eye),
             ]
         )
 

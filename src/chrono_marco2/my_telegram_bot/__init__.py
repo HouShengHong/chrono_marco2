@@ -115,7 +115,7 @@ def notify_user_image_array_external_trigger(
 async def take_screenshot(message):
     try:
         # 1. 告知使用者正在處理（增加互動感）
-        await bot.send_chat_action(message.chat.id, "upload_photo")
+        # await bot.send_chat_action(message.chat.id, "upload_photo")
 
         # 2. 執行截圖
         # screenshot() 會回傳一個 PIL Image 物件
