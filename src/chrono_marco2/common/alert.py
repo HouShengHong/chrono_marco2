@@ -16,9 +16,10 @@ def red_alert_monitor(eye: Eye) -> AlertMonitor:
 
     def on_red_alert():
         print("Red alert!")
-        my_telegram_bot.notify_user_screenshot_external_trigger(
+        my_telegram_bot.notify_user_image_array_external_trigger(
             MyTelegramSetting.chat_id,
             f"Red alert! {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+            eye.status.current_frame,
         )
 
     return AlertMonitor(
@@ -34,9 +35,10 @@ def different_map_alert_monitor(eye: Eye) -> AlertMonitor:
 
     def on_different_map_alert():
         print("Different map alert!")
-        my_telegram_bot.notify_user_screenshot_external_trigger(
+        my_telegram_bot.notify_user_image_array_external_trigger(
             MyTelegramSetting.chat_id,
             f"Different map alert! {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
+            eye.status.current_frame,
         )
 
     return AlertMonitor(

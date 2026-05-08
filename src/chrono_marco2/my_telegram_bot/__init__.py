@@ -1,4 +1,6 @@
 import asyncio
+from PIL import Image
+import numpy as np
 from telebot.async_telebot import AsyncTeleBot
 from .my_tg_setting import MyTelegramSetting
 import threading
@@ -54,17 +56,17 @@ def admin_only(func):
 
 
 # 定義你的主動發送邏輯
-async def notify_user(chat_id, msg_content):
+async def notify_user(chat_id: int, msg_content: str):
     await bot.send_message(chat_id, f"【系統通知】: {msg_content}")
 
 
 # 如果你在另一個執行緒，想主動發送：
-def notify_user_external_trigger(chat_id: str, msg_content: str):
+def notify_user_external_trigger(chat_id: int, msg_content: str):
     asyncio.run_coroutine_threadsafe(notify_user(chat_id, msg_content), loop)
 
 
 # 定義你的主動發送邏輯
-async def notify_user_screenshot(chat_id, msg_content):
+async def notify_user_screenshot(chat_id: int, msg_content: str):
     screen = pyautogui.screenshot()
 
     # 3. 將圖片轉換為二進位流（BytesIO），不必存檔到硬碟
@@ -80,6 +82,32 @@ async def notify_user_screenshot(chat_id, msg_content):
 # 如果你在另一個執行緒，想主動發送：
 def notify_user_screenshot_external_trigger(chat_id: int, msg_content: str):
     asyncio.run_coroutine_threadsafe(notify_user_screenshot(chat_id, msg_content), loop)
+
+
+# 定義你的主動發送邏輯
+async def notify_user_image_array(
+    chat_id: int, msg_content: str, image_array: np.ndarray | None
+):
+    if image_array is None:
+        await bot.send_message(chat_id, f"【系統通知】: {msg_content} (沒有圖片可顯示)")
+    else:
+        img = Image.fromarray(image_array.astype("uint8"))
+        buf = io.BytesIO()
+        img.save(buf, format="PNG")
+        buf.seek(0)
+
+        # 4. 發送圖片
+        # 注意：使用非同步版一定要 await
+        await bot.send_photo(chat_id, buf, caption=f"【系統通知】: {msg_content}")
+
+
+# 如果你在另一個執行緒，想主動發送：
+def notify_user_image_array_external_trigger(
+    chat_id: int, msg_content: str, image_array: np.ndarray | None
+):
+    asyncio.run_coroutine_threadsafe(
+        notify_user_image_array(chat_id, msg_content, image_array), loop
+    )
 
 
 @bot.message_handler(commands=["screenshot"])
