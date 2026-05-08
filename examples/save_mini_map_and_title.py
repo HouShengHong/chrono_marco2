@@ -9,7 +9,7 @@ if __name__ == "__main__":
     screenshot_path = path / "tmp_screenshot.png"
     mini_map_title_path = path / "tmp_mini_map_title.png"
     mini_map_path = path / "tmp_mini_map.png"
-    e = Eye(mini_map_title_path, (59, 67, 172, 105), (8, 124, 205, 271))
+    e = Eye(mini_map_title_path, (59, 67, 150, 105), (8, 124, 205, 271))
 
     pyautogui.hotkey("alt", "tab")
     time.sleep(1)

@@ -44,4 +44,8 @@ class MiniMapData:
         "region": (8, 124, 205, 271),
     }
 
-        
+    hidden_street_shark_cave: dict[str, tuple[int, int, int, int]] = {
+        "title":  (59, 67, 150, 105), 
+        "region": (8, 124, 205, 271),
+    }
+    

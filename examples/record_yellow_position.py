@@ -7,11 +7,11 @@ from chrono_marco2.player.ear import Ear
 from chrono_marco2.common.mini_map_data import MiniMapData
 
 if __name__ == "__main__":
-    path = Path().cwd() / "data" / "mini_map_titles" / "hidden_street_risell_spuid_cave.png"
+    path = Path().cwd() / "data" / "mini_map_titles" / "hidden_street_shark_cave.png"
     eye: Eye = Eye(
         path,
-        MiniMapData.hidden_street_risell_spuid_cave["title"],
-        MiniMapData.hidden_street_risell_spuid_cave["region"],
+        MiniMapData.hidden_street_shark_cave["title"],
+        MiniMapData.hidden_street_shark_cave["region"],
     )
     ear = Ear()
 
