@@ -62,7 +62,7 @@ else:
 def lie_detector_alert_monitor(
     eye: Eye,
 ) -> AlertMonitor:
-    def lie_detector_alert() -> bool:
+    def lie_detector_alert(eye: Eye = eye) -> bool:
         frame = eye.status.current_frame
         if frame is None:
             return False
