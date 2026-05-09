@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
     keepers: list[CountdownTimer] = [
         take_a_break_keeper,
-        alpha_setting.BuffKeepers.fire_charge,
+        alpha_setting.BuffKeepers.lightning_charge,
         alpha_setting.BuffKeepers.skill_buffs,
         alpha_setting.BuffKeepers.pills,
         alpha_setting.BuffKeepers.sugar_rush_candy,

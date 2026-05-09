@@ -62,22 +62,33 @@ right_fire_rush: KeyHolderWin = alpha_setting.normal_rush(
     direction_keys=[KeyBinds.right, KeyBinds.jump]
 )
 
+left_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
+    direction_keys=[KeyBinds.left, KeyBinds.jump]
+)
+
+right_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
+    direction_keys=[KeyBinds.right, KeyBinds.jump]
+)
+
 r_list = [
     right_big_jump,
     right_mid_jump,
     right_down_mid_jump,
     right_down_prev_jump,
-    right_fire_rush,
+    right_lightning_rush,
 ]
 l_list = [
     left_big_jump,
     left_mid_jump,
     left_down_mid_jump,
     left_down_prev_jump,
-    left_fire_rush,
+    left_lightning_rush,
 ]
 
 normal_attack = alpha_setting.normal_attack([alpha_setting.AttackKeys.charged_blow])
+lightning_attack = alpha_setting.lightning_attack(
+    [alpha_setting.AttackKeys.charged_blow]
+)
 
 
 def how_to_play(player: Player):
@@ -113,14 +124,14 @@ def how_to_play(player: Player):
         case (x, y) if 35 <= y <= 48:
             player.hand.status[3].hold()
             # player.hand.status[4].hold()
-            normal_attack.hold()
+            lightning_attack.hold()
             # normal_attack.hold()
 
         # platform 0
         case (x, y) if 49 <= y <= 54:
             player.hand.status[3].hold()
             # player.hand.status[4].hold()
-            normal_attack.hold()
+            lightning_attack.hold()
             # normal_attack.hold()
 
         # platform 1
@@ -148,36 +159,32 @@ def how_to_play(player: Player):
             if random.random() < 0.5:
                 player.hand.status[1].hold()
                 player.hand.status[4].hold()
-                player.hand.status[2].hold()
-                player.hand.status[4].hold()
             else:
                 player.hand.status[2].hold()
                 player.hand.status[4].hold()
-                player.hand.status[1].hold()
-                player.hand.status[4].hold()
 
-            normal_attack.hold()
-            normal_attack.hold()
+            lightning_attack.hold()
+            lightning_attack.hold()
 
         # platform 2
         case (x, y) if 73 <= y <= 90:
             player.hand.status[0].hold()
             player.hand.status[4].hold()
-            normal_attack.hold()
-            # normal_attack.hold()
+            lightning_attack.hold()
+            # lightning_attack.hold()
 
         case (x, y):
             if random.random() < 0.5:
                 right_prev_jump.hold()
             else:
                 left_prev_jump.hold()
-            normal_attack.hold()
+            lightning_attack.hold()
 
         case _:
             if random.random() < 0.7:
-                right_fire_rush.hold()
+                right_lightning_rush.hold()
             else:
-                left_fire_rush.hold()
+                right_lightning_rush.hold()
 
     for keeper in player.keepers:
         keeper.do_on_finish()
@@ -199,7 +206,7 @@ if __name__ == "__main__":
 
     keepers: list[CountdownTimer] = [
         take_a_break_keeper,
-        alpha_setting.BuffKeepers.fire_charge,
+        alpha_setting.BuffKeepers.lightning_charge,
         alpha_setting.BuffKeepers.skill_buffs,
         alpha_setting.BuffKeepers.pills,
         alpha_setting.BuffKeepers.sugar_rush_candy,
