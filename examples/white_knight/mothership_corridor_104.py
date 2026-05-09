@@ -115,6 +115,7 @@ def how_to_play(player: Player):
         #     alpha_setting.Actions.frostbolt.hold()
 
         # # rope 2
+
         # case (x, y) if (206 <= x <= 209 and 35 <= y <= 88):
         #     random_holding_keys(player)
         #     alpha_setting.Actions.jump.hold()
@@ -159,17 +160,17 @@ def how_to_play(player: Player):
             if random.random() < 0.5:
                 player.hand.status[1].hold()
                 player.hand.status[4].hold()
-                player.hand.status[2].hold()
-                player.hand.status[4].hold()
+                # player.hand.status[2].hold()
+                # player.hand.status[4].hold()
 
             else:
                 player.hand.status[2].hold()
                 player.hand.status[4].hold()
-                player.hand.status[1].hold()
-                player.hand.status[4].hold()
+                # player.hand.status[1].hold()
+                # player.hand.status[4].hold()
 
             lightning_attack.hold()
-            lightning_attack.hold()
+            # lightning_attack.hold()
 
         # platform 2
         case (x, y) if 73 <= y <= 90:
