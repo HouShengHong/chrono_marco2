@@ -54,3 +54,7 @@ class MiniMapData:
         "region": (8, 124, 205, 271),
     }
     
+    aqua_road_the_cave_of_pianus: dict[str, tuple[int, int, int, int]] = {
+        "title":  (59, 67, 180, 105), 
+        "region": (8, 124, 205, 271),
+    }
