@@ -81,7 +81,8 @@ def how_to_play(player: Player):
         player.hand.status = "r"
     elif player.eye.status.current_yellow_point_position_in_mini_map is None:
         player.hand.status = "r"
-    elif 0 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 44:
+    # elif 0 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 44:
+    elif 0 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 39:
         # 10 <= x
         player.hand.status = "r"
     elif 165 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 200:
