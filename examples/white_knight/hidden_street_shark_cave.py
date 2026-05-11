@@ -111,7 +111,7 @@ def how_to_play(player: Player):
                 # left_lightning_rush.hold()
                 lightning_attack.hold()
                 # lightning_attack.hold()
-                
+
         case (x, y):
             if random.random() < 0.5:
                 left_down_prev_jump.hold()
@@ -131,12 +131,8 @@ def how_to_play(player: Player):
 
 
 if __name__ == "__main__":
-    path = (
-        Path().cwd()
-        / "data"
-        / "mini_map_titles"
-        / "hidden_street_shark_cave.png"
-    )
+    path = Path().cwd() / "data" / "mini_map_titles" / "hidden_street_shark_cave.png"
+
     eye: Eye = Eye(
         path,
         MiniMapData.hidden_street_shark_cave["title"],

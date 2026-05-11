@@ -130,10 +130,7 @@ def how_to_play(player: Player):
 
 if __name__ == "__main__":
     path = (
-        Path().cwd()
-        / "data"
-        / "mini_map_titles"
-        / "hidden_street_cold_shark_cave.png"
+        Path().cwd() / "data" / "mini_map_titles" / "hidden_street_cold_shark_cave.png"
     )
     eye: Eye = Eye(
         path,
