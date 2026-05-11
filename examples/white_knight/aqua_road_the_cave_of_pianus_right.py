@@ -68,11 +68,11 @@ left_power_strike: KeyHolderWin = KeyHolderWin(
     [KeyBinds.left, alpha_setting.AttackKeys.power_strike], (1, 1.2), (0, 0)
 )
 
-r_list = [right_big_jump, right_lightning_rush]
-l_list = [left_lightning_rush, lightning_attack]
-
-# r_list = [right_big_jump, right_lightning_rush]
-# l_list = [left_lightning_rush, lightning_attack]
+threaten: BuffKeeper = BuffKeeper(
+    80,
+    None,
+    [KeyHolderWin([alpha_setting.AttackKeys.threaten], (1, 1.2), (0.03, 0.03))],
+)
 
 left_threaten: BuffKeeper = BuffKeeper(
     80,
@@ -93,11 +93,11 @@ def how_to_play(player: Player):
 
     match player.eye.status.current_yellow_point_position_in_mini_map:
         case (x, y) if 144 <= x <= 159 and 67 <= y <= 81:
-            right_threaten.do_on_finish()
+            threaten.do_on_finish()
             left_power_strike.hold()
 
-        case (x, y) if 130 <= x <= 143 and 67 <= y <= 81:
-            right_threaten.do_on_finish()
+        case (x, y) if 125 <= x <= 143 and 67 <= y <= 81:
+            threaten.do_on_finish()
             right_power_strike.hold()
         
         case (x, y):
@@ -137,11 +137,22 @@ if __name__ == "__main__":
         1,
     )
 
+    pills_buff: BuffKeeper = BuffKeeper(
+        580,
+        None,
+        [
+            KeyHolderWin([KeyBinds.buff_ins],  (0.03, 0.03), (0.03, 0.03)),
+            KeyHolderWin([KeyBinds.buff_home], (0.03, 0.03), (0.03, 0.03)),
+            KeyHolderWin([KeyBinds.buff_pgup], (0.03, 0.03), (0.03, 0.03)),
+        ],
+    )
+
     keepers: list[CountdownTimer] = [
         fire_charge_buff,
         skill_buffs,
-        alpha_setting.BuffKeepers.pills,
+        pills_buff,
     ]
+    # keepers = []
     player = Player(eye=eye, keepers=keepers,alert_monitors=[])
 
     pyautogui.hotkey("alt", "tab")
