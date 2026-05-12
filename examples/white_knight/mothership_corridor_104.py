@@ -157,7 +157,7 @@ def how_to_play(player: Player):
             if random.random() < 0.5:
                 normal_attack.hold()
             """
-            if random.random() < 0.5:
+            if random.random() < 1:
                 player.hand.status[1].hold()
                 player.hand.status[4].hold()
                 # player.hand.status[2].hold()
