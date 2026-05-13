@@ -33,6 +33,14 @@ right_mid_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
     direction_keys=[KeyBinds.right], hold_time=(0.16, 0.17)
 )
 
+left_small_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
+    direction_keys=[KeyBinds.left], hold_time=(0.14, 0.15)
+)
+
+right_small_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
+    direction_keys=[KeyBinds.right], hold_time=(0.14, 0.15)
+)
+
 left_down_mid_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
     direction_keys=[KeyBinds.left, KeyBinds.down], hold_time=(0.35, 0.40)
 )
@@ -144,7 +152,7 @@ def how_to_play(player: Player):
         # platform 2
         case (x, y) if 73 <= y <= 90:
             if player.hand.status == 2:
-                right_mid_jump.hold()
+                right_small_jump.hold()
                 right_lightning_rush.hold()
                 lightning_attack.hold()
             else:
