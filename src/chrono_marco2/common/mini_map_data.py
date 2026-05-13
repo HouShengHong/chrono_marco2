@@ -58,3 +58,8 @@ class MiniMapData:
         "title":  (59, 67, 180, 105), 
         "region": (8, 124, 205, 271),
     }
+
+    leafre_entrance_to_sky_nest: dict[str, tuple[int, int, int, int]] = {
+        "title":  (59, 67, 195, 105), 
+        "region": (8, 124, 205, 271),
+    }
