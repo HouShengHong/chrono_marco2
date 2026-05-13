@@ -96,9 +96,9 @@ def how_to_play(player: Player):
         player.hand.status = r_list
     elif player.eye.status.current_yellow_point_position_in_mini_map is None:
         player.hand.status = r_list
-    elif 0 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 35:
+    elif 0 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 30:
         player.hand.status = r_list
-    elif 215 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 248:
+    elif 220 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 248:
         player.hand.status = l_list
 
     match player.eye.status.current_yellow_point_position_in_mini_map:
@@ -137,7 +137,7 @@ def how_to_play(player: Player):
 
         # platform 1
         case (x, y) if 58 <= y <= 71:
-            if random.random() < 0.6:
+            if random.random() < 0.55:
                 player.hand.status[1].hold()
                 player.hand.status[4].hold()
                 lightning_attack.hold()
