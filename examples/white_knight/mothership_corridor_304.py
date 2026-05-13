@@ -26,11 +26,11 @@ right_big_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
 )
 
 left_mid_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
-    direction_keys=[KeyBinds.left], hold_time=(0.16, 0.2)
+    direction_keys=[KeyBinds.left], hold_time=(0.16, 0.17)
 )
 
 right_mid_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
-    direction_keys=[KeyBinds.right], hold_time=(0.16, 0.2)
+    direction_keys=[KeyBinds.right], hold_time=(0.16, 0.17)
 )
 
 left_down_mid_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
@@ -149,7 +149,7 @@ def how_to_play(player: Player):
                 lightning_attack.hold()
             else:
                 left_big_jump.hold()
-                right_lightning_rush.hold()
+                left_lightning_rush.hold()
                 lightning_attack.hold()
 
         case (x, y):
