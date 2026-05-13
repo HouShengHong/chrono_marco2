@@ -172,7 +172,7 @@ def how_to_play(player: Player):
     match player.eye.status.current_yellow_point_position_in_mini_map:
         # platform 0
         case (x, y) if 139 <= x <= 160 and 12 <= y <= 47:
-            explosion_down_left_jump.hold()
+            explosion_down_left_jump_rush.hold()
 
         case (x, y) if 63 <= x <= 160 and 12 <= y <= 37:
             if random.random() < 0.9:
@@ -182,7 +182,7 @@ def how_to_play(player: Player):
 
         # platform 1
         case (x, y) if 47 <= x <= 66 and 62 <= y <= 76:
-            explosion_down_right_jump.hold()
+            explosion_down_right_jump_rush.hold()
 
         case (x, y) if 47 <= x <= 160 and 62 <= y <= 76:
             if random.random() < 0.9:
