@@ -5,7 +5,7 @@ from chrono_marco2.key_holder import KeyHolderWin
 from chrono_marco2.common import KeyBinds
 
 if __name__ == "__main__":
-    hold_time = (0.13, 0.13)
+    hold_time = (0.14, 0.14)
 
     left_mid_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
         direction_keys=[KeyBinds.left], hold_time=hold_time
@@ -29,7 +29,7 @@ if __name__ == "__main__":
 
     pyautogui.hotkey("alt", "tab")
     time.sleep(1)
-    i = 5
+    i = 8
     for _ in range(i):
         left_mid_jump.hold()
         left_lightning_rush.hold()
