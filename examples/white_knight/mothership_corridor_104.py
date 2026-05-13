@@ -96,9 +96,9 @@ def how_to_play(player: Player):
         player.hand.status = r_list
     elif player.eye.status.current_yellow_point_position_in_mini_map is None:
         player.hand.status = r_list
-    elif 0 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 40:
+    elif 0 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 35:
         player.hand.status = r_list
-    elif 210 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 248:
+    elif 215 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 248:
         player.hand.status = l_list
 
     match player.eye.status.current_yellow_point_position_in_mini_map:
