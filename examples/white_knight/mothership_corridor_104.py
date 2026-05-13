@@ -137,19 +137,12 @@ def how_to_play(player: Player):
 
         # platform 1
         case (x, y) if 58 <= y <= 71:
-            if random.random() < 0.75:
+            if random.random() < 0.6:
                 player.hand.status[1].hold()
                 player.hand.status[4].hold()
                 lightning_attack.hold()
-                player.hand.status[2].hold()
-                player.hand.status[4].hold()
-                lightning_attack.hold()
-
             else:
                 player.hand.status[2].hold()
-                player.hand.status[4].hold()
-                lightning_attack.hold()
-                player.hand.status[1].hold()
                 player.hand.status[4].hold()
                 lightning_attack.hold()
 
