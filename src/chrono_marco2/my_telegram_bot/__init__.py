@@ -227,39 +227,39 @@ async def input_lie_detecter(message):
             await bot.reply_to(message, "arg len should be 6")
         else:
             pyautogui.click(910, 514)
-            time.sleep(1)
+            time.sleep(0.1)
             for i in range(6):
                 match value[i]:
                     case "1":
                         pyautogui.click(897, 330)
-                        time.sleep(1)
+                        time.sleep(0.1)
                     case "2":
                         pyautogui.click(948, 330)
-                        time.sleep(1)
+                        time.sleep(0.1)
                     case "3":
                         pyautogui.click(999, 330)
-                        time.sleep(1)
+                        time.sleep(0.1)
                     case "4":
                         pyautogui.click(897, 375)
-                        time.sleep(1)
+                        time.sleep(0.1)
                     case "5":
                         pyautogui.click(948, 375)
-                        time.sleep(1)
+                        time.sleep(0.1)
                     case "6":
                         pyautogui.click(999, 375)
-                        time.sleep(1)
+                        time.sleep(0.1)
                     case "7":
                         pyautogui.click(897, 419)
-                        time.sleep(1)
+                        time.sleep(0.1)
                     case "8":
                         pyautogui.click(948, 419)
-                        time.sleep(1)
+                        time.sleep(0.1)
                     case "9":
                         pyautogui.click(999, 419)
-                        time.sleep(1)
+                        time.sleep(0.1)
                     case "0":
                         pyautogui.click(948, 464)
-                        time.sleep(1)
+                        time.sleep(0.1)
                     case _:
                         pass
             pyautogui.click(987, 514)
