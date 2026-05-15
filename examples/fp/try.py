@@ -5,24 +5,19 @@ import alpha_setting
 from chrono_marco2.common.action import KeyBinds
 
 
-
-
 if __name__ == "__main__":
     pyautogui.hotkey("alt", "tab")
     time.sleep(1)
 
+    with pyautogui.hold(["k", "a", "space"]):
+        for i in range(10):
+            KeyHolderWin(
+                [alpha_setting.AttackKeys.rush],
+                (0.03, 0.06),
+                (0.03, 0.06),
+            ).hold()
 
-    for i in range(1):
-        KeyHolderWin(
-            [
-                alpha_setting.AttackKeys.explosion, 
-                KeyBinds.left,
-            ],
-            (0.03, 0.06),
-        ).hold()
-    
     time.sleep(1)
 
     pyautogui.hotkey("alt", "tab")
 
-    
