@@ -4,6 +4,7 @@ from chrono_marco2.common.mini_map_data import MiniMapData
 from chrono_marco2.key_holder import KeyHolderWin
 from chrono_marco2.common import KeyBinds
 from chrono_marco2.keeper import CountdownTimer, FreeMarketKeeper
+from mothership_corridor_304 import how_to_play
 
 import alpha_setting
 
@@ -12,7 +13,7 @@ import time
 import random
 import pyautogui
 
-
+"""
 little_left: KeyHolderWin = KeyHolderWin([KeyBinds.left], (0.2, 0.2))
 little_right: KeyHolderWin = KeyHolderWin([KeyBinds.right], (0.2, 0.2))
 little_up: KeyHolderWin = KeyHolderWin([KeyBinds.up], (0.03, 0.06), (0.3, 0.3))
@@ -89,8 +90,9 @@ normal_attack = alpha_setting.normal_attack([alpha_setting.AttackKeys.charged_bl
 lightning_attack = alpha_setting.lightning_attack(
     [alpha_setting.AttackKeys.charged_blow]
 )
+"""
 
-
+"""
 def how_to_play(player: Player):
     if player.hand.status is None:
         player.hand.status = r_list
@@ -168,6 +170,7 @@ def how_to_play(player: Player):
 
     for keeper in player.keepers:
         keeper.do_on_finish()
+"""
 
 
 if __name__ == "__main__":
