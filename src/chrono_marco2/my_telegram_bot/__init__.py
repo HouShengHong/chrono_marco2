@@ -155,11 +155,11 @@ async def make_action(message):
     args = message.text.split(maxsplit=2)
 
     if len(args) < 3:
-        await bot.reply_to(message, "請提供參數, 須要有2個")
+        await bot.reply_to(message, "請提供參數, 須要至少2個")
     else:
         try:
-            hold_key = args[1]
-            hold_time = abs(float(args[2]))
+            hold_key = args[1:-1]
+            hold_time = abs(float(args[-1]))
             hold_time = min(hold_time, 5)
             KeyHolderWin(hold_key, (hold_time, hold_time)).hold()
 
