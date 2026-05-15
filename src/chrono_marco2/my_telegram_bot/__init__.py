@@ -134,6 +134,36 @@ async def take_screenshot(message):
         await bot.reply_to(message, f"截圖失敗：{str(e)}")
 
 
+@bot.message_handler(commands=["set"])
+@admin_only
+async def handle_set(message):
+    """
+     --------------------------------------
+    |      1     |      2     |      3     |
+    | (897, 330) | (948, 330) | (999, 330) |
+    |--------------------------------------|
+    |      4     |      5     |      6     |
+    | (897, 375) | (948, 375) | (999, 375) |
+    |--------------------------------------|
+    |      7     |      8     |      9     |
+    | (897, 419) | (948, 419) | (999, 419) |
+    |--------------------------------------|
+    |     <-     |      0     |            |
+    | (897, 464) | (948, 464) |            |
+    |--------------------------------------|
+    |       cancel      |        ok        |
+    |     (910, 514)    |    (987, 514)    |
+     --------------------------------------
+    """
+    args = message.text.split(maxsplit=1)
+
+    if len(args) < 2:
+        await bot.reply_to(message, "請提供參數")
+    else:
+        value = args[1]
+        await bot.reply_to(message, f"你輸入的是: {value}, len: {len(value)}")
+
+
 """
 # 使用 async def 定義處理器
 @bot.message_handler(commands=['start'])
