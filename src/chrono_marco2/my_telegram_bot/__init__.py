@@ -161,7 +161,7 @@ async def make_action(message):
             hold_key = args[1]
             hold_time = abs(float(args[2]))
             hold_time = min(hold_time, 5)
-            KeyHolderWin(hold_key, (hold_time, hold_time))
+            KeyHolderWin(hold_key, (hold_time, hold_time)).hold()
 
             await bot.reply_to(message, f"hold_key: {hold_key}, hold_time: {hold_time}")
         except:
