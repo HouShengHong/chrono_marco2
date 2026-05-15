@@ -9,7 +9,7 @@ if __name__ == "__main__":
     pyautogui.hotkey("alt", "tab")
     time.sleep(1)
 
-    with pyautogui.hold(["k", "a", "space"]):
+    with pyautogui.hold(["k", "d", "space"]):
         for i in range(100):
             KeyHolderWin(
                 [alpha_setting.AttackKeys.rush],
