@@ -167,6 +167,7 @@ async def send_message_in_game(message):
         time.sleep(3)
         KeyHolderWin(["enter"], (0.1, 0.1)).hold()
         pyautogui.write(value)
+        time.sleep(1)
         KeyHolderWin(["enter"], (0.1, 0.1)).hold()
         KeyHolderWin(["f8"], (0.1, 0.1)).hold()
 
