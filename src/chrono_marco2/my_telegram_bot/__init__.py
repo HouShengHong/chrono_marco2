@@ -1,4 +1,5 @@
 import asyncio
+import time
 from PIL import Image
 import numpy as np
 from telebot.async_telebot import AsyncTeleBot
@@ -112,7 +113,7 @@ def notify_user_image_array_external_trigger(
 
 @bot.message_handler(commands=["screenshot"])
 @admin_only
-async def take_screenshot(message):
+async def take_screenshot(message):args = message.text.split(maxsplit=1)
     try:
         # 1. 告知使用者正在處理（增加互動感）
         # await bot.send_chat_action(message.chat.id, "upload_photo")
@@ -139,7 +140,7 @@ async def take_screenshot(message):
 async def handle_set(message):
     """
      --------------------------------------
-    |      1     |      2     |      3     |
+    |      1     |      2     |      3     |args = message.text.split(maxsplit=1)
     | (897, 330) | (948, 330) | (999, 330) |
     |--------------------------------------|
     |      4     |      5     |      6     |
@@ -162,6 +163,78 @@ async def handle_set(message):
     else:
         value = args[1]
         await bot.reply_to(message, f"你輸入的是: {value}, len: {len(value)}")
+
+
+@bot.message_handler(commands=["lie"])
+@admin_only
+async def input_lie_detecter(message):
+    """
+     --------------------------------------
+    |      1     |      2     |      3     |
+    | (897, 330) | (948, 330) | (999, 330) |
+    |--------------------------------------|
+    |      4     |      5     |      6     |
+    | (897, 375) | (948, 375) | (999, 375) |
+    |--------------------------------------|
+    |      7     |      8     |      9     |
+    | (897, 419) | (948, 419) | (999, 419) |
+    |--------------------------------------|
+    |     <-     |      0     |            |
+    | (897, 464) | (948, 464) |            |
+    |--------------------------------------|
+    |       cancel      |        ok        |
+    |     (910, 514)    |    (987, 514)    |
+     --------------------------------------
+    """
+    args = message.text.split(maxsplit=1)
+
+    if len(args) < 2:
+        await bot.reply_to(message, "請提供參數")
+    else:
+        value = args[1]
+        if len(value) < 6:
+            await bot.reply_to(message, "arg len should be 6")
+        else:
+            pyautogui.click(910, 514)
+            time.sleep(1)
+            for i in range(6):
+                match value[i]:
+                    case "1":
+                        pyautogui.click(897, 330)
+                        time.sleep(1)
+                    case "2":
+                        pyautogui.click(948, 330)
+                        time.sleep(1)
+                    case "3":
+                        pyautogui.click(999, 330)
+                        time.sleep(1)
+                    case "4":
+                        pyautogui.click(897, 375)
+                        time.sleep(1)
+                    case "5":
+                        pyautogui.click(948, 375)
+                        time.sleep(1)
+                    case "6":
+                        pyautogui.click(999, 375)
+                        time.sleep(1)
+                    case "7":
+                        pyautogui.click(897, 419)
+                        time.sleep(1)
+                    case "8":
+                        pyautogui.click(948, 419)
+                        time.sleep(1)
+                    case "9":
+                        pyautogui.click(999, 419)
+                        time.sleep(1)
+                    case "0":
+                        pyautogui.click(948, 464)
+                        time.sleep(1)
+                    case _:
+                        pass
+            pyautogui.click(987, 514)
+            time.sleep(1)
+
+            await bot.reply_to(message, f"你輸入的是: {value}, len: {len(value)}")
 
 
 """
