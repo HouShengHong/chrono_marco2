@@ -152,7 +152,7 @@ async def handle_set(message):
 @admin_only
 async def make_action(message):
 
-    args = message.text.split(maxsplit=2)
+    args = message.text.split()
 
     if len(args) < 3:
         await bot.reply_to(message, "請提供參數, 須要至少2個")
