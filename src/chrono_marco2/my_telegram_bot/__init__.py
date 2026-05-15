@@ -112,6 +112,12 @@ def notify_user_image_array_external_trigger(
     )
 
 
+@bot.message_handler(commands=["help"])
+@admin_only
+async def help_info(message):
+    await bot.reply_to(message, "help, set, send, action, lie, screenshot")
+
+
 @bot.message_handler(commands=["screenshot"])
 @admin_only
 async def take_screenshot(message):
@@ -145,6 +151,25 @@ async def handle_set(message):
         await bot.reply_to(message, "請提供參數")
     else:
         value = args[1]
+        await bot.reply_to(message, f"你輸入的是: {value}, len: {len(value)}")
+
+
+@bot.message_handler(commands=["send"])
+@admin_only
+async def send_message_in_game(message):
+    args = message.text.split(maxsplit=1)
+
+    if len(args) < 2:
+        await bot.reply_to(message, "請提供參數")
+    else:
+        value = args[1]
+        KeyHolderWin(["f8"], (0.1, 0.1)).hold()
+        time.sleep(3)
+        KeyHolderWin(["enter"], (0.1, 0.1)).hold()
+        pyautogui.write(value)
+        KeyHolderWin(["enter"], (0.1, 0.1)).hold()
+        KeyHolderWin(["f8"], (0.1, 0.1)).hold()
+
         await bot.reply_to(message, f"你輸入的是: {value}, len: {len(value)}")
 
 
