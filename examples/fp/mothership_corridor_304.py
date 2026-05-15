@@ -14,6 +14,59 @@ import pyautogui
 
 explosion_hold_time: tuple[float, float] = (0.24, 0.27)
 
+list_explosion_left_jump: list[str] = [
+    alpha_setting.AttackKeys.explosion,
+    KeyBinds.left,
+    KeyBinds.jump,
+]
+list_explosion_right_jump: list[str] = [
+    alpha_setting.AttackKeys.explosion,
+    KeyBinds.right,
+    KeyBinds.jump,
+]
+
+list_explosion_up_jump: list[str] = [
+    alpha_setting.AttackKeys.explosion,
+    KeyBinds.up,
+    KeyBinds.jump,
+]
+list_explosion_left_up_jump: list[str] = [
+    alpha_setting.AttackKeys.explosion,
+    KeyBinds.left,
+    KeyBinds.up,
+    KeyBinds.jump,
+]
+list_explosion_right_up_jump: list[str] = [
+    alpha_setting.AttackKeys.explosion,
+    KeyBinds.right,
+    KeyBinds.up,
+    KeyBinds.jump,
+]
+
+list_explosion_down_jump: list[str] = [
+    alpha_setting.AttackKeys.explosion,
+    KeyBinds.down,
+    KeyBinds.jump,
+]
+list_explosion_left_down_jump: list[str] = [
+    alpha_setting.AttackKeys.explosion,
+    KeyBinds.left,
+    KeyBinds.down,
+    KeyBinds.jump,
+]
+list_explosion_right_down_jump: list[str] = [
+    alpha_setting.AttackKeys.explosion,
+    KeyBinds.right,
+    KeyBinds.down,
+    KeyBinds.jump,
+]
+
+little_rush: KeyHolderWin = KeyHolderWin(
+    [alpha_setting.AttackKeys.rush],
+    (0.03, 0.06),
+    (0.03, 0.06),
+)
+
 little_left: KeyHolderWin = KeyHolderWin([KeyBinds.left], (0.2, 0.2))
 little_right: KeyHolderWin = KeyHolderWin([KeyBinds.right], (0.2, 0.2))
 little_up: KeyHolderWin = KeyHolderWin([KeyBinds.up], (0.03, 0.06), (0.3, 0.3))
@@ -157,13 +210,13 @@ explosion_little_right: KeyHolderWin = KeyHolderWin(
 
 def how_to_play(player: Player):
     if player.hand.status is None:
-        player.hand.status = 2
+        player.hand.status = "r"
     elif player.eye.status.current_yellow_point_position_in_mini_map is None:
-        player.hand.status = 2
+        player.hand.status = "r"
     elif 0 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 25:
-        player.hand.status = 2
+        player.hand.status = "r"
     elif 225 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 248:
-        player.hand.status = 1
+        player.hand.status = "l"
 
     match player.eye.status.current_yellow_point_position_in_mini_map:
         # # rope 0
@@ -187,47 +240,69 @@ def how_to_play(player: Player):
 
         # platform -1
         case (x, y) if 35 <= y <= 48:
-            left_down_prev_jump.hold()
-            lightning_attack.hold()
+            if player.hand.status == "r":
+                with pyautogui.hold(list_explosion_right_down_jump):
+                    for _ in range(2):
+                        little_rush.hold()
+            else:
+                with pyautogui.hold(list_explosion_left_down_jump):
+                    for _ in range(2):
+                        little_rush.hold()
 
         # platform 0
         case (x, y) if 49 <= y <= 54:
-            left_down_prev_jump.hold()
-            lightning_attack.hold()
+            if player.hand.status == "r":
+                with pyautogui.hold(list_explosion_right_down_jump):
+                    for _ in range(2):
+                        little_rush.hold()
+            else:
+                with pyautogui.hold(list_explosion_left_down_jump):
+                    for _ in range(2):
+                        little_rush.hold()
 
         # platform 1
         case (x, y) if 58 <= y <= 71:
-            if player.hand.status == 1:
-                left_mid_jump.hold()
-                left_lightning_rush.hold()
-                lightning_attack.hold()
+            if player.hand.status == "r":
+                with pyautogui.hold(list_explosion_right_jump):
+                    for _ in range(5):
+                        little_rush.hold()
             else:
-                left_down_prev_jump.hold()
-                lightning_attack.hold()
+                with pyautogui.hold(list_explosion_left_jump):
+                    for _ in range(5):
+                        little_rush.hold()
+
+        # platform 2 left
+        case (x, y) if 0 <= x <= 41 and 73 <= y <= 90:
+            with pyautogui.hold(list_explosion_right_jump):
+                for _ in range(2):
+                    little_rush.hold()
 
         # platform 2
         case (x, y) if 73 <= y <= 90:
-            if player.hand.status == 2:
-                right_small_jump.hold()
-                right_lightning_rush.hold()
-                lightning_attack.hold()
+            if player.hand.status == "r":
+                with pyautogui.hold(list_explosion_right_up_jump):
+                    for _ in range(2):
+                        little_rush.hold()
             else:
-                left_big_jump.hold()
-                left_lightning_rush.hold()
-                lightning_attack.hold()
+                with pyautogui.hold(list_explosion_left_up_jump):
+                    for _ in range(2):
+                        little_rush.hold()
 
         case (x, y):
             if random.random() < 0.5:
-                right_prev_jump.hold()
+                with pyautogui.hold(list_explosion_right_jump):
+                    for _ in range(2):
+                        little_rush.hold()
             else:
-                left_prev_jump.hold()
-            lightning_attack.hold()
+                with pyautogui.hold(list_explosion_left_jump):
+                    for _ in range(2):
+                        little_rush.hold()
 
         case _:
             if random.random() < 0.7:
-                right_lightning_rush.hold()
+                explosion_right_jump_rush.hold()
             else:
-                right_lightning_rush.hold()
+                explosion_left_jump_rush.hold()
 
     for keeper in player.keepers:
         keeper.do_on_finish()
