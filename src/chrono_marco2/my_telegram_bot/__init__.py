@@ -169,6 +169,7 @@ async def send_message_in_game(message):
         pyautogui.write(value)
         time.sleep(1)
         KeyHolderWin(["enter"], (0.1, 0.1)).hold()
+        KeyHolderWin(["esc"], (0.1, 0.1)).hold()
         KeyHolderWin(["f8"], (0.1, 0.1)).hold()
 
         await bot.reply_to(message, f"你輸入的是: {value}, len: {len(value)}")
