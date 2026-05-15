@@ -309,11 +309,11 @@ def how_to_play(player: Player):
 
 
 if __name__ == "__main__":
-    path = Path().cwd() / "data" / "mini_map_titles" / "leafre_entrance_to_sky_nest.png"
+    path = Path().cwd() / "data" / "mini_map_titles" / "mothership_corridor_104.png"
     eye: Eye = Eye(
         path,
-        MiniMapData.leafre_entrance_to_sky_nest["title"],
-        MiniMapData.leafre_entrance_to_sky_nest["region"],
+        MiniMapData.mothership_corridor_104["title"],
+        MiniMapData.mothership_corridor_104["region"],
     )
 
     free_market_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.free_market
