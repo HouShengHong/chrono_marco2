@@ -10,7 +10,7 @@ if __name__ == "__main__":
     time.sleep(1)
 
     with pyautogui.hold(["k", "a", "space"]):
-        for i in range(10):
+        for i in range(100):
             KeyHolderWin(
                 [alpha_setting.AttackKeys.rush],
                 (0.03, 0.06),
