@@ -113,7 +113,7 @@ def notify_user_image_array_external_trigger(
 
 @bot.message_handler(commands=["screenshot"])
 @admin_only
-async def take_screenshot(message):args = message.text.split(maxsplit=1)
+async def take_screenshot(message):
     try:
         # 1. 告知使用者正在處理（增加互動感）
         # await bot.send_chat_action(message.chat.id, "upload_photo")
@@ -140,7 +140,7 @@ async def take_screenshot(message):args = message.text.split(maxsplit=1)
 async def handle_set(message):
     """
      --------------------------------------
-    |      1     |      2     |      3     |args = message.text.split(maxsplit=1)
+    |      1     |      2     |      3     |
     | (897, 330) | (948, 330) | (999, 330) |
     |--------------------------------------|
     |      4     |      5     |      6     |
