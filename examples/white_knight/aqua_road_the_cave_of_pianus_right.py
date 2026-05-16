@@ -77,13 +77,21 @@ threaten: BuffKeeper = BuffKeeper(
 left_threaten: BuffKeeper = BuffKeeper(
     80,
     None,
-    [KeyHolderWin([KeyBinds.left, alpha_setting.AttackKeys.threaten], (1, 1.2), (0.03, 0.03))],
+    [
+        KeyHolderWin(
+            [KeyBinds.left, alpha_setting.AttackKeys.threaten], (1, 1.2), (0.03, 0.03)
+        )
+    ],
 )
 
 right_threaten: BuffKeeper = BuffKeeper(
     80,
     None,
-    [KeyHolderWin([KeyBinds.right, alpha_setting.AttackKeys.threaten], (1, 1.2), (0.03, 0.03))],
+    [
+        KeyHolderWin(
+            [KeyBinds.right, alpha_setting.AttackKeys.threaten], (1, 1.2), (0.03, 0.03)
+        )
+    ],
 )
 
 
@@ -99,16 +107,17 @@ def how_to_play(player: Player):
         case (x, y) if 125 <= x <= 143 and 67 <= y <= 81:
             threaten.do_on_finish()
             right_power_strike.hold()
-        
+
         case (x, y):
             right_fire_rush.hold()
-        
+
         case _:
             if random.random() < 0.5:
                 right_prev_jump.hold()
             else:
                 left_prev_jump.hold()
             normal_attack.hold()
+
 
 if __name__ == "__main__":
     path = (
@@ -119,11 +128,15 @@ if __name__ == "__main__":
         MiniMapData.aqua_road_the_cave_of_pianus["title"],
         MiniMapData.aqua_road_the_cave_of_pianus["region"],
     )
-    
+
     fire_charge_buff: BuffKeeper = BuffKeeper(
         850,
         None,
-        [KeyHolderWin([alpha_setting.BuffKeys.fire_charge], (0.03, 0.06), (0.03, 0.03))],
+        [
+            KeyHolderWin(
+                [alpha_setting.BuffKeys.fire_charge], (0.03, 0.06), (0.03, 0.03)
+            )
+        ],
     )
 
     skill_buffs: BuffKeeper = BuffKeeper(
@@ -141,19 +154,19 @@ if __name__ == "__main__":
         580,
         None,
         [
-            KeyHolderWin([KeyBinds.buff_ins],  (0.03, 0.03), (0.03, 0.03)),
+            KeyHolderWin([KeyBinds.buff_ins], (0.03, 0.03), (0.03, 0.03)),
             KeyHolderWin([KeyBinds.buff_home], (0.03, 0.03), (0.03, 0.03)),
             KeyHolderWin([KeyBinds.buff_pgup], (0.03, 0.03), (0.03, 0.03)),
         ],
     )
 
     keepers: list[CountdownTimer] = [
-        fire_charge_buff,
-        skill_buffs,
-        pills_buff,
+        # fire_charge_buff,
+        # skill_buffs,
+        # pills_buff,
     ]
     # keepers = []
-    player = Player(eye=eye, keepers=keepers,alert_monitors=[])
+    player = Player(eye=eye, keepers=keepers, alert_monitors=[])
 
     pyautogui.hotkey("alt", "tab")
     time.sleep(1)
