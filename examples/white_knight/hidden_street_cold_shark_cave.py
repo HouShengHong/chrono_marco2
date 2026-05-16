@@ -87,7 +87,7 @@ def how_to_play(player: Player):
     elif 165 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 200:
         # x <= 187
         player.hand.status = "l"
-        lightning_attack.hold()
+        # lightning_attack.hold()
 
     match player.eye.status.current_yellow_point_position_in_mini_map:
         # platform 0
@@ -107,7 +107,7 @@ def how_to_play(player: Player):
                 lightning_attack.hold()
             else:
                 right_lightning_rush.hold()
-                # right_lightning_rush.hold()
+                right_lightning_rush.hold()
                 lightning_attack.hold()
 
         case (x, y):
