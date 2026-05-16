@@ -219,20 +219,17 @@ explosion_little_right: KeyHolderWin = KeyHolderWin(
 
 def how_to_play(player: Player):
     match player.eye.status.current_yellow_point_position_in_mini_map:
-
-        
         # # platform 0
         # case (x, y) if 19 <= x <= 63 and 33 <= y <= 48:
         #     with pyautogui.hold(list_explosion_left_down_jump):
         #         for _ in range(2):
         #             little_rush.hold()
-        
+
         # # platform 1
         # case (x, y) if 70 <= x <= 130 and 25 <= y <= 40:
         #     with pyautogui.hold(list_explosion_left_down_jump):
         #         for _ in range(2):
         #             little_rush.hold()
-        
 
         # platform 2
         case (x, y) if 12 <= x <= 71 and 58 <= y <= 72:
@@ -245,7 +242,7 @@ def how_to_play(player: Player):
             with pyautogui.hold(list_explosion_left):
                 for _ in range(5):
                     little_rush.hold()
-        
+
         # platform 5
         case (x, y) if 175 <= x <= 225 and 64 <= y <= 77:
             with pyautogui.hold(list_explosion_left_up_jump):
@@ -258,19 +255,19 @@ def how_to_play(player: Player):
             with pyautogui.hold(list_explosion_left_jump):
                 for _ in range(2):
                     little_rush.hold()
-        
+
         # platform 6 right right
         case (x, y) if 200 <= x <= 236 and 82 <= y <= 97:
             with pyautogui.hold(list_explosion_left_up_jump):
                 for _ in range(2):
                     little_rush.hold()
-        
+
         # platform 6 right
         case (x, y) if 175 <= x <= 236 and 82 <= y <= 97:
             with pyautogui.hold(list_explosion_right_up_jump):
                 for _ in range(2):
                     little_rush.hold()
-        
+
         # platform 6
         case (x, y) if 7 <= x <= 236 and 82 <= y <= 97:
             with pyautogui.hold(list_explosion_right):
@@ -302,7 +299,9 @@ def how_to_play(player: Player):
 
 
 if __name__ == "__main__":
-    path = Path().cwd() / "data" / "mini_map_titles" / "hidden_street_chiefs_prairie.png"
+    path = (
+        Path().cwd() / "data" / "mini_map_titles" / "hidden_street_chiefs_prairie.png"
+    )
     eye: Eye = Eye(
         path,
         MiniMapData.hidden_street_chiefs_prairie["title"],
