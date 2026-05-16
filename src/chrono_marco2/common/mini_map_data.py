@@ -63,3 +63,11 @@ class MiniMapData:
         "title":  (59, 67, 195, 105), 
         "region": (8, 124, 205, 271),
     }
+
+    hidden_street_chiefs_prairie: dict[str, tuple[int, int, int, int]] = {
+        "title":  (59, 67, 152, 105), 
+        "region": (8, 124, 245, 271),
+    }
+
+
+    
