@@ -13,30 +13,11 @@ import random
 import pyautogui
 
 
-little_left: KeyHolderWin = KeyHolderWin([KeyBinds.left], (0.2, 0.2))
-little_right: KeyHolderWin = KeyHolderWin([KeyBinds.right], (0.2, 0.2))
-little_up: KeyHolderWin = KeyHolderWin([KeyBinds.up], (0.03, 0.06), (0.3, 0.3))
-
-left_big_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
-    direction_keys=[KeyBinds.left], hold_time=(0.24, 0.27)
-)
-
-right_big_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
-    direction_keys=[KeyBinds.right], hold_time=(0.24, 0.27)
-)
-
 right_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
     direction_keys=[KeyBinds.right]
 )
 left_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
     direction_keys=[KeyBinds.left]
-)
-
-right_down_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
-    direction_keys=[KeyBinds.right, KeyBinds.down]
-)
-left_down_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
-    direction_keys=[KeyBinds.left, KeyBinds.down]
 )
 
 left_fire_rush: KeyHolderWin = alpha_setting.normal_rush(
@@ -47,36 +28,43 @@ right_fire_rush: KeyHolderWin = alpha_setting.normal_rush(
     direction_keys=[KeyBinds.right, KeyBinds.jump]
 )
 
-left_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
-    direction_keys=[KeyBinds.left, KeyBinds.jump]
-)
-
-right_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
-    direction_keys=[KeyBinds.right, KeyBinds.jump]
-)
-
-normal_attack = alpha_setting.normal_attack([alpha_setting.AttackKeys.charged_blow])
-lightning_attack = alpha_setting.lightning_attack(
-    [alpha_setting.AttackKeys.charged_blow]
-)
+power_strike_hold_time: tuple[float, float] = (0.24, 0.27)
 
 right_power_strike: KeyHolderWin = KeyHolderWin(
-    [KeyBinds.right, alpha_setting.AttackKeys.power_strike], (1, 1.2), (0, 0)
+    [
+        alpha_setting.AttackKeys.power_strike,
+        KeyBinds.right,
+    ],
+    power_strike_hold_time,
+    (0, 0),
 )
 
 left_power_strike: KeyHolderWin = KeyHolderWin(
-    [KeyBinds.left, alpha_setting.AttackKeys.power_strike], (1, 1.2), (0, 0)
+    [
+        alpha_setting.AttackKeys.power_strike,
+        KeyBinds.left,
+    ],
+    power_strike_hold_time,
+    (0, 0),
 )
 
 right_jump_power_strike: KeyHolderWin = KeyHolderWin(
-    [KeyBinds.right, KeyBinds.jump, alpha_setting.AttackKeys.power_strike],
-    (1, 1.2),
+    [
+        alpha_setting.AttackKeys.power_strike,
+        KeyBinds.right,
+        KeyBinds.jump,
+    ],
+    power_strike_hold_time,
     (0, 0),
 )
 
 left_jump_power_strike: KeyHolderWin = KeyHolderWin(
-    [KeyBinds.left, KeyBinds.jump, alpha_setting.AttackKeys.power_strike],
-    (1, 1.2),
+    [
+        alpha_setting.AttackKeys.power_strike,
+        KeyBinds.left,
+        KeyBinds.jump,
+    ],
+    power_strike_hold_time,
     (0, 0),
 )
 
@@ -127,10 +115,9 @@ def how_to_play(player: Player):
 
         case _:
             if random.random() < 0.5:
-                right_prev_jump.hold()
+                right_jump_power_strike.hold()
             else:
-                left_prev_jump.hold()
-            normal_attack.hold()
+                left_jump_power_strike.hold()
 
 
 if __name__ == "__main__":
