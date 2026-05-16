@@ -119,7 +119,7 @@ def how_to_play(player: Player):
 
         case (x, y) if 52 <= x <= 70 and 67 <= y <= 81:
             threaten.do_on_finish()
-            left_power_strike.hold()
+            # left_power_strike.hold()
             left_jump_power_strike.hold()
 
         case (x, y):
