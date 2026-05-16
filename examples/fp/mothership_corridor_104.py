@@ -274,6 +274,7 @@ def how_to_play(player: Player):
         # platform 2 left
         case (x, y) if 0 <= x <= 41 and 73 <= y <= 90:
             with pyautogui.hold(list_explosion_right_jump):
+                player.hand.status = "r"
                 for _ in range(2):
                     little_rush.hold()
 
