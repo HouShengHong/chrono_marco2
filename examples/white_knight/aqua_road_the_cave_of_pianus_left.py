@@ -68,6 +68,18 @@ left_power_strike: KeyHolderWin = KeyHolderWin(
     [KeyBinds.left, alpha_setting.AttackKeys.power_strike], (1, 1.2), (0, 0)
 )
 
+right_jump_power_strike: KeyHolderWin = KeyHolderWin(
+    [KeyBinds.right, KeyBinds.jump, alpha_setting.AttackKeys.power_strike],
+    (1, 1.2),
+    (0, 0),
+)
+
+left_jump_power_strike: KeyHolderWin = KeyHolderWin(
+    [KeyBinds.left, KeyBinds.jump, alpha_setting.AttackKeys.power_strike],
+    (1, 1.2),
+    (0, 0),
+)
+
 threaten: BuffKeeper = BuffKeeper(
     80,
     None,
@@ -102,11 +114,13 @@ def how_to_play(player: Player):
     match player.eye.status.current_yellow_point_position_in_mini_map:
         case (x, y) if 36 <= x <= 51 and 67 <= y <= 81:
             threaten.do_on_finish()
-            right_power_strike.hold()
+            # right_power_strike.hold()
+            right_jump_power_strike.hold()
 
         case (x, y) if 52 <= x <= 70 and 67 <= y <= 81:
             threaten.do_on_finish()
             left_power_strike.hold()
+            left_jump_power_strike.hold()
 
         case (x, y):
             left_fire_rush.hold()
