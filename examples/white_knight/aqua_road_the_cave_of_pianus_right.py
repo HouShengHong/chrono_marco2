@@ -100,7 +100,8 @@ def how_to_play(player: Player):
         keeper.do_on_finish()
 
     match player.eye.status.current_yellow_point_position_in_mini_map:
-        case (x, y) if 144 <= x <= 159 and 67 <= y <= 81:
+        # case (x, y) if 144 <= x <= 159 and 67 <= y <= 81:
+        case (x, y) if 144 <= x <= 200 and 67 <= y <= 81:
             threaten.do_on_finish()
             # left_power_strike.hold()
             left_jump_power_strike.hold()
