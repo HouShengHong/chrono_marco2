@@ -72,15 +72,15 @@ def how_to_play(player: Player):
 
         # platform 1 left
         case (x, y) if 0 <= x <= 33 and 67 <= y <= 87:
-            left_fire_rush.hold()
+            left_lightning_rush.hold()
             left_down_prev_jump.hold()
-            normal_attack.hold()
+            lightning_attack.hold()
 
         # platform 1
         case (x, y) if 0 <= x <= 118 and 67 <= y <= 87:
-            left_fire_rush.hold()
+            left_lightning_rush.hold()
             # left_prev_jump.hold()
-            normal_attack.hold()
+            lightning_attack.hold()
 
         # platform 2 teleport point
         case (x, y) if 188 <= x <= 192 and 93 <= y <= 113:
@@ -97,42 +97,42 @@ def how_to_play(player: Player):
         # platform 2 teleport point far left
         case (x, y) if 174 <= x <= 180 and 93 <= y <= 113:
             right_prev_jump.hold()
-            normal_attack.hold()
+            lightning_attack.hold()
 
         # platform 2 teleport point far right
         case (x, y) if 200 <= x <= 206 and 93 <= y <= 113:
             left_prev_jump.hold()
-            normal_attack.hold()
+            lightning_attack.hold()
 
         # platform 2 regular platform left
         case (x, y) if 0 <= x <= 190 and 93 <= y <= 113:
-            right_fire_rush.hold()
+            right_lightning_rush.hold()
             # right_prev_jump.hold()
-            normal_attack.hold()
+            lightning_attack.hold()
 
         # platform 2 regular platform right
         case (x, y) if 190 <= x <= 255 and 93 <= y <= 113:
-            left_fire_rush.hold()
+            left_lightning_rush.hold()
             # left_prev_jump.hold()
-            normal_attack.hold()
+            lightning_attack.hold()
 
         # other platforms 0
         case (x, y) if 36 <= x <= 110 and 37 <= y <= 57:
-            right_fire_rush.hold()
+            right_lightning_rush.hold()
             right_down_prev_jump.hold()
-            normal_attack.hold()
+            lightning_attack.hold()
 
         # other platforms 1
         case (x, y) if 110 <= x <= 199 and 20 <= y <= 42:
-            right_fire_rush.hold()
+            right_lightning_rush.hold()
             right_down_prev_jump.hold()
-            normal_attack.hold()
+            lightning_attack.hold()
 
         # other platforms 2
         case (x, y) if 155 <= x <= 242 and 58 <= y <= 77:
-            right_fire_rush.hold()
+            right_lightning_rush.hold()
             right_down_prev_jump.hold()
-            normal_attack.hold()
+            lightning_attack.hold()
 
         # any platforms
         case (x, y):
@@ -140,14 +140,14 @@ def how_to_play(player: Player):
                 left_down_prev_jump.hold()
             else:
                 right_down_prev_jump.hold()
-            normal_attack.hold()
+            lightning_attack.hold()
 
         # other
         case _:
             if random.random() < 0.8:
-                left_fire_rush.hold()
+                left_lightning_rush.hold()
             else:
-                right_fire_rush.hold()
+                right_lightning_rush.hold()
 
     for keeper in player.keepers:
         keeper.do_on_finish()
@@ -162,14 +162,14 @@ if __name__ == "__main__":
     )
 
     free_market_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.free_market
-    free_market_keeper.duration = 2000
+    free_market_keeper.duration = 1800
     take_a_break_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.take_a_break
     take_a_break_keeper.refresh()
     take_a_break_keeper.refresh_other_free_market_keepers = [free_market_keeper]
 
     keepers: list[CountdownTimer] = [
         take_a_break_keeper,
-        alpha_setting.BuffKeepers.fire_charge,
+        alpha_setting.BuffKeepers.lightning_charge,
         alpha_setting.BuffKeepers.skill_buffs,
         alpha_setting.BuffKeepers.pills,
         alpha_setting.BuffKeepers.sugar_rush_candy,
