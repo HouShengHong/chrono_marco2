@@ -100,15 +100,29 @@ def how_to_play(player: Player):
         keeper.do_on_finish()
 
     match player.eye.status.current_yellow_point_position_in_mini_map:
-        case (x, y) if 36 <= x <= 51 and 67 <= y <= 81:
+        case (x, y) if 39 <= x <= 41 and 54 <= y <= 68:
+            threaten.do_on_finish()
+            right_power_strike.hold()
+
+        case (x, y) if 42 <= x <= 45 and 54 <= y <= 68:
+            threaten.do_on_finish()
+            left_power_strike.hold()
+
+        case (x, y) if 36 <= x <= 51 and 63 <= y <= 81:
             threaten.do_on_finish()
             # right_power_strike.hold()
             right_jump_power_strike.hold()
 
-        case (x, y) if 52 <= x <= 70 and 67 <= y <= 81:
+        case (x, y) if 52 <= x <= 70 and 63 <= y <= 81:
             threaten.do_on_finish()
             # left_power_strike.hold()
             left_jump_power_strike.hold()
+
+        case (x, y) if 36 <= x <= 70:
+            if random.random() < 0.5:
+                right_jump_power_strike.hold()
+            else:
+                left_jump_power_strike.hold()
 
         case (x, y):
             left_fire_rush.hold()
