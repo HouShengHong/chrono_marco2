@@ -12,6 +12,7 @@ import time
 import random
 import pyautogui
 
+power_strike_hold_time: tuple[float, float] = (0.24, 0.27)
 
 right_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
     direction_keys=[KeyBinds.right]
@@ -21,14 +22,16 @@ left_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
 )
 
 left_fire_rush: KeyHolderWin = alpha_setting.normal_rush(
-    direction_keys=[KeyBinds.left, KeyBinds.jump]
+    direction_keys=[KeyBinds.left, KeyBinds.jump],
+    hold_time=power_strike_hold_time,
+    end_sleep_time=(0, 0),
 )
 
 right_fire_rush: KeyHolderWin = alpha_setting.normal_rush(
-    direction_keys=[KeyBinds.right, KeyBinds.jump]
+    direction_keys=[KeyBinds.right, KeyBinds.jump],
+    hold_time=power_strike_hold_time,
+    end_sleep_time=(0, 0),
 )
-
-power_strike_hold_time: tuple[float, float] = (0.24, 0.27)
 
 right_power_strike: KeyHolderWin = KeyHolderWin(
     [
