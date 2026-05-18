@@ -69,13 +69,13 @@ left_jump_power_strike: KeyHolderWin = KeyHolderWin(
 )
 
 threaten: BuffKeeper = BuffKeeper(
-    80,
+    90,
     None,
     [KeyHolderWin([alpha_setting.AttackKeys.threaten], (1, 1.2), (0.03, 0.03))],
 )
 
 left_threaten: BuffKeeper = BuffKeeper(
-    80,
+    90,
     None,
     [
         KeyHolderWin(
@@ -85,7 +85,7 @@ left_threaten: BuffKeeper = BuffKeeper(
 )
 
 right_threaten: BuffKeeper = BuffKeeper(
-    80,
+    90,
     None,
     [
         KeyHolderWin(
