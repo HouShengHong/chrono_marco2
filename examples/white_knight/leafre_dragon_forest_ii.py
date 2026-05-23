@@ -78,9 +78,9 @@ def how_to_play(player: Player):
 
         # platform 1
         case (x, y) if 0 <= x <= 118 and 67 <= y <= 87:
-            left_lightning_rush.hold()
             left_prev_jump.hold()
             lightning_attack.hold()
+            left_lightning_rush.hold()
 
         # platform 2 teleport point
         case (x, y) if 188 <= x <= 192 and 93 <= y <= 113:
@@ -106,15 +106,15 @@ def how_to_play(player: Player):
 
         # platform 2 regular platform left
         case (x, y) if 0 <= x <= 190 and 93 <= y <= 113:
-            right_lightning_rush.hold()
             right_prev_jump.hold()
             lightning_attack.hold()
+            right_lightning_rush.hold()
 
         # platform 2 regular platform right
         case (x, y) if 190 <= x <= 255 and 93 <= y <= 113:
-            left_lightning_rush.hold()
             left_prev_jump.hold()
             lightning_attack.hold()
+            left_lightning_rush.hold()
 
         # other platforms 0
         case (x, y) if 36 <= x <= 110 and 37 <= y <= 57:
