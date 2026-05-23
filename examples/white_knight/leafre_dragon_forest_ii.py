@@ -79,8 +79,7 @@ def how_to_play(player: Player):
         # platform 1
         case (x, y) if 0 <= x <= 118 and 67 <= y <= 87:
             left_lightning_rush.hold()
-            left_lightning_rush.hold()
-            # left_prev_jump.hold()
+            left_prev_jump.hold()
             lightning_attack.hold()
 
         # platform 2 teleport point
