@@ -82,6 +82,16 @@ normal_attack = alpha_setting.normal_attack([alpha_setting.AttackKeys.charged_bl
 lightning_attack = alpha_setting.lightning_attack(
     [alpha_setting.AttackKeys.charged_blow], hold_time=(0.02, 0.02)
 )
+right_jump_lightning_attack = alpha_setting.lightning_attack(
+    [KeyBinds.right, KeyBinds.jump, alpha_setting.AttackKeys.charged_blow],
+    hold_time=(0.5, 0.5),
+    end_sleep_time=(0.04, 0.04),
+)
+left_jump_lightning_attack = alpha_setting.lightning_attack(
+    [KeyBinds.left, KeyBinds.jump, alpha_setting.AttackKeys.charged_blow],
+    hold_time=(0.5, 0.5),
+    end_sleep_time=(0.04, 0.04),
+)
 
 
 def how_to_play(player: Player):
@@ -127,11 +137,10 @@ def how_to_play(player: Player):
         # platform 1
         case (x, y) if 58 <= y <= 71:
             if player.hand.status == 1:
-                # left_mid_jump.hold()
-                # left_lightning_rush.hold()
+                # left_prev_jump.hold()
                 # lightning_attack.hold()
-                left_prev_jump.hold()
-                lightning_attack.hold()
+                # left_lightning_rush.hold()
+                left_jump_lightning_attack.hold()
                 left_lightning_rush.hold()
 
             else:
@@ -141,11 +150,10 @@ def how_to_play(player: Player):
         # platform 2
         case (x, y) if 73 <= y <= 90:
             if player.hand.status == 2:
-                # right_small_jump.hold()
-                # right_lightning_rush.hold()
+                # right_prev_jump.hold()
                 # lightning_attack.hold()
-                right_prev_jump.hold()
-                lightning_attack.hold()
+                # right_lightning_rush.hold()
+                right_jump_lightning_attack.hold()
                 right_lightning_rush.hold()
             else:
                 left_big_jump.hold()
