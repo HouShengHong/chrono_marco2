@@ -95,7 +95,7 @@ l_list = [
 
 normal_attack = alpha_setting.normal_attack([alpha_setting.AttackKeys.charged_blow])
 lightning_attack = alpha_setting.lightning_attack(
-    [alpha_setting.AttackKeys.charged_blow], hold_time=(0.03, 0.04)
+    [alpha_setting.AttackKeys.charged_blow], hold_time=(0.03, 0.03)
 )
 
 
