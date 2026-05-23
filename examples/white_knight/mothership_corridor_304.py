@@ -131,11 +131,6 @@ def how_to_play(player: Player):
 
         # platform 0
         case (x, y) if 49 <= y <= 54:
-            left_down_prev_jump.hold()
-            lightning_attack.hold()
-
-        # platform 1
-        case (x, y) if 58 <= y <= 71:
             if player.hand.status == 1:
                 # left_prev_jump.hold()
                 # lightning_attack.hold()
@@ -144,6 +139,17 @@ def how_to_play(player: Player):
                     time.sleep(0.015)
                     lightning_attack.hold()
                 left_lightning_rush.hold()
+
+            else:
+                left_down_prev_jump.hold()
+                lightning_attack.hold()
+
+        # platform 1
+        case (x, y) if 58 <= y <= 71:
+            if player.hand.status == 1:
+                left_big_jump.hold()
+                left_lightning_rush.hold()
+                lightning_attack.hold()
 
             else:
                 left_down_prev_jump.hold()
