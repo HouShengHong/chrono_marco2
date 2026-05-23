@@ -50,10 +50,10 @@ right_down_mid_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
 )
 
 right_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
-    direction_keys=[KeyBinds.right], hold_time=(0.015, 0.015)
+    direction_keys=[KeyBinds.right]
 )
 left_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
-    direction_keys=[KeyBinds.left], hold_time=(0.015, 0.015)
+    direction_keys=[KeyBinds.left]
 )
 
 right_down_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
@@ -71,11 +71,11 @@ right_fire_rush: KeyHolderWin = alpha_setting.normal_rush(
 )
 
 left_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
-    direction_keys=[KeyBinds.left, KeyBinds.jump], hold_time=(0.04, 0.07)
+    direction_keys=[KeyBinds.left, KeyBinds.jump]
 )
 
 right_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
-    direction_keys=[KeyBinds.right, KeyBinds.jump], hold_time=(0.04, 0.07)
+    direction_keys=[KeyBinds.right, KeyBinds.jump]
 )
 
 normal_attack = alpha_setting.normal_attack([alpha_setting.AttackKeys.charged_blow])
