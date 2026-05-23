@@ -89,10 +89,12 @@ def how_to_play(player: Player):
         # platform 2 teleport point left
         case (x, y) if 181 <= x <= 187 and 93 <= y <= 113:
             little_right.hold()
+            lightning_attack.hold()
 
         # platform 2 teleport point right
         case (x, y) if 193 <= x <= 199 and 93 <= y <= 113:
             little_left.hold()
+            lightning_attack.hold()
 
         # platform 2 teleport point far left
         case (x, y) if 174 <= x <= 180 and 93 <= y <= 113:
