@@ -141,7 +141,7 @@ def how_to_play(player: Player):
                 # lightning_attack.hold()
                 # left_lightning_rush.hold()
                 with pyautogui.hold([KeyBinds.left, KeyBinds.jump]):
-                    time.sleep(0.01)
+                    time.sleep(0.015)
                     lightning_attack.hold()
                 left_lightning_rush.hold()
 
@@ -156,7 +156,7 @@ def how_to_play(player: Player):
                 # lightning_attack.hold()
                 # right_lightning_rush.hold()
                 with pyautogui.hold([KeyBinds.right, KeyBinds.jump]):
-                    time.sleep(0.01)
+                    time.sleep(0.015)
                     lightning_attack.hold()
                 right_lightning_rush.hold()
             else:
