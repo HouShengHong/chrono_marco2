@@ -93,7 +93,7 @@ def how_to_play(player: Player):
 
         # platform 2 teleport point right
         case (x, y) if 193 <= x <= 197 and 93 <= y <= 113:
-            lightning_attack.hold()
+            # lightning_attack.hold()
             little_left.hold()
 
         # platform 2 teleport point far left
