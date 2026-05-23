@@ -80,17 +80,7 @@ right_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
 
 normal_attack = alpha_setting.normal_attack([alpha_setting.AttackKeys.charged_blow])
 lightning_attack = alpha_setting.lightning_attack(
-    [alpha_setting.AttackKeys.charged_blow], hold_time=(0.02, 0.02)
-)
-right_jump_lightning_attack = alpha_setting.lightning_attack(
-    [KeyBinds.right, KeyBinds.jump, alpha_setting.AttackKeys.charged_blow],
-    hold_time=(0.5, 0.5),
-    end_sleep_time=(0.04, 0.04),
-)
-left_jump_lightning_attack = alpha_setting.lightning_attack(
-    [KeyBinds.left, KeyBinds.jump, alpha_setting.AttackKeys.charged_blow],
-    hold_time=(0.5, 0.5),
-    end_sleep_time=(0.04, 0.04),
+    [alpha_setting.AttackKeys.charged_blow], hold_time=(0.03, 0.03)
 )
 
 
@@ -131,25 +121,15 @@ def how_to_play(player: Player):
 
         # platform 0
         case (x, y) if 49 <= y <= 54:
-            if player.hand.status == 1:
-                # left_prev_jump.hold()
-                # lightning_attack.hold()
-                # left_lightning_rush.hold()
-                with pyautogui.hold([KeyBinds.left, KeyBinds.jump]):
-                    time.sleep(0.015)
-                    lightning_attack.hold()
-                left_lightning_rush.hold()
-
-            else:
-                left_down_prev_jump.hold()
-                lightning_attack.hold()
+            left_down_prev_jump.hold()
+            lightning_attack.hold()
 
         # platform 1
         case (x, y) if 58 <= y <= 71:
             if player.hand.status == 1:
-                left_big_jump.hold()
-                left_lightning_rush.hold()
+                left_prev_jump.hold()
                 lightning_attack.hold()
+                left_lightning_rush.hold()
 
             else:
                 left_down_prev_jump.hold()
@@ -158,12 +138,8 @@ def how_to_play(player: Player):
         # platform 2
         case (x, y) if 73 <= y <= 90:
             if player.hand.status == 2:
-                # right_prev_jump.hold()
-                # lightning_attack.hold()
-                # right_lightning_rush.hold()
-                with pyautogui.hold([KeyBinds.right, KeyBinds.jump]):
-                    time.sleep(0.015)
-                    lightning_attack.hold()
+                right_prev_jump.hold()
+                lightning_attack.hold()
                 right_lightning_rush.hold()
             else:
                 left_big_jump.hold()
