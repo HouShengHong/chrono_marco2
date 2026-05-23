@@ -64,15 +64,15 @@ lightning_attack = alpha_setting.lightning_attack(
 def how_to_play(player: Player):
 
     match player.eye.status.current_yellow_point_position_in_mini_map:
-        # platform 0 right
+        # platform 0
         case (x, y) if (59 <= x <= 65 and 6 <= y <= 18) or (
             0 <= x <= 41 and 10 <= y <= 22
         ):
             right_down_prev_jump.hold()
 
         # platform 1 left
-        case (x, y) if 0 <= x <= 33 and 67 <= y <= 87:
-            left_lightning_rush.hold()
+        case (x, y) if 0 <= x <= 11 and 67 <= y <= 87:
+            # left_lightning_rush.hold()
             left_down_prev_jump.hold()
             lightning_attack.hold()
 
