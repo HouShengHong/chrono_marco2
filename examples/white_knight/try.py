@@ -30,7 +30,7 @@ if __name__ == "__main__":
     lightning_attack = alpha_setting.lightning_attack(
         [alpha_setting.AttackKeys.charged_blow],
         hold_time=(0.03, 0.03),
-        end_sleep_time=(0.485, 0.485),
+        end_sleep_time=(0.48, 0.48),
     )
 
     pyautogui.hotkey("alt", "tab")
