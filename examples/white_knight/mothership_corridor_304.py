@@ -120,6 +120,7 @@ def how_to_play(player: Player):
         case (x, y) if 49 <= y <= 54:
             left_down_prev_jump.hold()
             lightning_attack.hold()
+            left_lightning_rush.hold()
 
         # platform 1
         case (x, y) if 58 <= y <= 71:
