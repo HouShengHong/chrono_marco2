@@ -11,7 +11,7 @@ attack_end_sleep_time_20off: tuple[float, float] = (0.52, 0.52)
 attack_end_sleep_time_40off: tuple[float, float] = (0.38, 0.38)
 
 sword_attack_end_sleep_time_20off: tuple[float, float] = (0.49, 0.49)
-sword_attack_end_sleep_time_40off: tuple[float, float] = (0.36, 0.36)
+sword_attack_end_sleep_time_40off: tuple[float, float] = (0.365, 0.365)
 
 attack_prev_jump_hold_time: tuple[float, float] = (0.02, 0.02)
 

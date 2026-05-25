@@ -30,32 +30,14 @@ if __name__ == "__main__":
     lightning_attack = alpha_setting.lightning_attack(
         [alpha_setting.AttackKeys.charged_blow],
         hold_time=(0.03, 0.03),
-        end_sleep_time=(0.49, 0.49),
+        end_sleep_time=(0.485, 0.485),
     )
 
     pyautogui.hotkey("alt", "tab")
     time.sleep(1)
     i = 20
     for _ in range(i):
-        right_lightning_rush.hold()
-
-    # for _ in range(i):
-    #     left_lightning_rush.hold()
-    #
-    # for _ in range(i):
-    #     right_lightning_rush.hold()
-    #
-    # for _ in range(i):
-    #     left_lightning_rush.hold()
-    #
-    # for _ in range(i):
-    #     right_lightning_rush.hold()
-    #
-    # for _ in range(i):
-    #     left_lightning_rush.hold()
-    #
-    # for _ in range(i * 4):
-    #     lightning_attack.hold()
+        lightning_attack.hold()
 
     time.sleep(1)
     pyautogui.hotkey("alt", "tab")
