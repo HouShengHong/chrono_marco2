@@ -35,9 +35,13 @@ if __name__ == "__main__":
 
     pyautogui.hotkey("alt", "tab")
     time.sleep(1)
-    i = 60
+    i = 5
     for _ in range(i):
-        lightning_attack.hold()
+        for _ in range(i):
+            right_lightning_rush.hold()
+
+        for _ in range(i):
+            left_lightning_rush.hold()
 
     time.sleep(1)
     pyautogui.hotkey("alt", "tab")
