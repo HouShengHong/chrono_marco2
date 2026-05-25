@@ -63,24 +63,21 @@ left_down_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
     direction_keys=[KeyBinds.left, KeyBinds.down]
 )
 
-left_fire_rush: KeyHolderWin = alpha_setting.normal_rush(
-    direction_keys=[KeyBinds.left, KeyBinds.jump]
-)
-right_fire_rush: KeyHolderWin = alpha_setting.normal_rush(
-    direction_keys=[KeyBinds.right, KeyBinds.jump]
-)
 
 left_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
-    direction_keys=[KeyBinds.left, KeyBinds.jump]
+    direction_keys=[KeyBinds.left, KeyBinds.jump],
+    end_sleep_time=alpha_setting.sword_attack_end_sleep_time_40off,
 )
 
 right_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
-    direction_keys=[KeyBinds.right, KeyBinds.jump]
+    direction_keys=[KeyBinds.right, KeyBinds.jump],
+    end_sleep_time=alpha_setting.sword_attack_end_sleep_time_40off,
 )
 
-normal_attack = alpha_setting.normal_attack([alpha_setting.AttackKeys.charged_blow])
 lightning_attack = alpha_setting.lightning_attack(
-    [alpha_setting.AttackKeys.charged_blow], hold_time=(0.03, 0.03)
+    [alpha_setting.AttackKeys.charged_blow],
+    hold_time=(0.03, 0.03),
+    end_sleep_time=alpha_setting.sword_attack_end_sleep_time_20off,
 )
 
 
@@ -127,12 +124,12 @@ def how_to_play(player: Player):
         # platform 1
         case (x, y) if 58 <= y <= 71:
             if player.hand.status == 1:
-                # left_prev_jump.hold()
-                # lightning_attack.hold()
-                # left_lightning_rush.hold()
-                left_mid_jump.hold()
-                left_lightning_rush.hold()
+                left_prev_jump.hold()
                 lightning_attack.hold()
+                left_lightning_rush.hold()
+                # left_mid_jump.hold()
+                # left_lightning_rush.hold()
+                # lightning_attack.hold()
 
             else:
                 left_down_prev_jump.hold()
@@ -141,12 +138,12 @@ def how_to_play(player: Player):
         # platform 2
         case (x, y) if 73 <= y <= 90:
             if player.hand.status == 2:
-                # right_prev_jump.hold()
-                # lightning_attack.hold()
-                # right_lightning_rush.hold()
-                right_small_jump.hold()
-                right_lightning_rush.hold()
+                right_prev_jump.hold()
                 lightning_attack.hold()
+                right_lightning_rush.hold()
+                # right_small_jump.hold()
+                # right_lightning_rush.hold()
+                # lightning_attack.hold()
             else:
                 left_big_jump.hold()
                 left_lightning_rush.hold()
