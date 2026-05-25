@@ -113,51 +113,51 @@ def how_to_play(player: Player):
 
         # platform -1
         case (x, y) if 35 <= y <= 48:
-            # left_down_prev_jump.hold()
-            # lightning_attack.hold()
-            # left_lightning_rush.hold()
-
             left_down_prev_jump.hold()
             lightning_attack.hold()
+            left_lightning_rush.hold()
+
+            # left_down_prev_jump.hold()
+            # lightning_attack.hold()
 
         # platform 0
         case (x, y) if 49 <= y <= 54:
-            # left_down_prev_jump.hold()
-            # lightning_attack.hold()
-            # left_lightning_rush.hold()
-
             left_down_prev_jump.hold()
             lightning_attack.hold()
+            left_lightning_rush.hold()
+
+            # left_down_prev_jump.hold()
+            # lightning_attack.hold()
 
         # platform 1
         case (x, y) if 58 <= y <= 71:
             if player.hand.status == 1:
-                # left_prev_jump.hold()
-                # lightning_attack.hold()
-                # left_lightning_rush.hold()
-
-                left_mid_jump.hold()
-                left_lightning_rush.hold()
+                left_prev_jump.hold()
                 lightning_attack.hold()
+                left_lightning_rush.hold()
+
+                # left_mid_jump.hold()
+                # left_lightning_rush.hold()
+                # lightning_attack.hold()
 
             else:
-                # left_down_prev_jump.hold()
-                # lightning_attack.hold()
-                # right_lightning_rush.hold()
-
                 left_down_prev_jump.hold()
                 lightning_attack.hold()
+                right_lightning_rush.hold()
+
+                # left_down_prev_jump.hold()
+                # lightning_attack.hold()
 
         # platform 2
         case (x, y) if 73 <= y <= 90:
             if player.hand.status == 2:
-                # right_prev_jump.hold()
-                # lightning_attack.hold()
-                # right_lightning_rush.hold()
-
-                right_small_jump.hold()
-                right_lightning_rush.hold()
+                right_prev_jump.hold()
                 lightning_attack.hold()
+                right_lightning_rush.hold()
+
+                # right_small_jump.hold()
+                # right_lightning_rush.hold()
+                # lightning_attack.hold()
             else:
                 left_big_jump.hold()
                 left_lightning_rush.hold()
