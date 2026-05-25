@@ -35,27 +35,27 @@ if __name__ == "__main__":
 
     pyautogui.hotkey("alt", "tab")
     time.sleep(1)
-    i = 3
+    i = 20
     for _ in range(i):
         right_lightning_rush.hold()
 
-    for _ in range(i):
-        left_lightning_rush.hold()
-
-    for _ in range(i):
-        right_lightning_rush.hold()
-
-    for _ in range(i):
-        left_lightning_rush.hold()
-
-    for _ in range(i):
-        right_lightning_rush.hold()
-
-    for _ in range(i):
-        left_lightning_rush.hold()
-
-    for _ in range(i * 4):
-        lightning_attack.hold()
+    # for _ in range(i):
+    #     left_lightning_rush.hold()
+    #
+    # for _ in range(i):
+    #     right_lightning_rush.hold()
+    #
+    # for _ in range(i):
+    #     left_lightning_rush.hold()
+    #
+    # for _ in range(i):
+    #     right_lightning_rush.hold()
+    #
+    # for _ in range(i):
+    #     left_lightning_rush.hold()
+    #
+    # for _ in range(i * 4):
+    #     lightning_attack.hold()
 
     time.sleep(1)
     pyautogui.hotkey("alt", "tab")
