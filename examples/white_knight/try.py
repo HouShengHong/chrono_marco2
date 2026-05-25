@@ -24,7 +24,7 @@ if __name__ == "__main__":
     right_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
         direction_keys=[KeyBinds.right],
         hold_time=(0.03, 0.03),
-        end_sleep_time=(0.36, 0.36),
+        end_sleep_time=(0.365, 0.365),
     )
 
     lightning_attack = alpha_setting.lightning_attack(
