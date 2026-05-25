@@ -35,7 +35,7 @@ if __name__ == "__main__":
 
     pyautogui.hotkey("alt", "tab")
     time.sleep(1)
-    i = 20
+    i = 60
     for _ in range(i):
         lightning_attack.hold()
 
