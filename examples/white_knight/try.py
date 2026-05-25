@@ -16,13 +16,13 @@ if __name__ == "__main__":
     )
 
     left_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
-        direction_keys=[KeyBinds.left, KeyBinds.jump],
+        direction_keys=[KeyBinds.left],
         hold_time=(0.03, 0.03),
         end_sleep_time=(0.36, 0.36),
     )
 
     right_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
-        direction_keys=[KeyBinds.right, KeyBinds.jump],
+        direction_keys=[KeyBinds.right],
         hold_time=(0.03, 0.03),
         end_sleep_time=(0.36, 0.36),
     )
