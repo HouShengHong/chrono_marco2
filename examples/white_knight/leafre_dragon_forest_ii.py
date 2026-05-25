@@ -48,16 +48,19 @@ right_fire_rush: KeyHolderWin = alpha_setting.normal_rush(
 )
 
 left_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
-    direction_keys=[KeyBinds.left, KeyBinds.jump]
+    direction_keys=[KeyBinds.left, KeyBinds.jump],
+    end_sleep_time=alpha_setting.sword_attack_end_sleep_time_40off,
 )
 
 right_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
-    direction_keys=[KeyBinds.right, KeyBinds.jump]
+    direction_keys=[KeyBinds.right, KeyBinds.jump],
+    end_sleep_time=alpha_setting.sword_attack_end_sleep_time_40off,
 )
 
 normal_attack = alpha_setting.normal_attack([alpha_setting.AttackKeys.charged_blow])
 lightning_attack = alpha_setting.lightning_attack(
-    [alpha_setting.AttackKeys.charged_blow]
+    [alpha_setting.AttackKeys.charged_blow],
+    end_sleep_time=alpha_setting.sword_attack_end_sleep_time_20off,
 )
 
 
