@@ -17,20 +17,20 @@ if __name__ == "__main__":
 
     left_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
         direction_keys=[KeyBinds.left, KeyBinds.jump],
-        # hold_time=(0.01, 0.01),
-        # end_sleep_time=(0.45, 0.45),
+        hold_time=(0.03, 0.03),
+        end_sleep_time=(0.38, 0.38),
     )
 
     right_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
         direction_keys=[KeyBinds.right, KeyBinds.jump],
-        # hold_time=(0.01, 0.01),
-        # end_sleep_time=(0.45, 0.45),
+        hold_time=(0.03, 0.03),
+        end_sleep_time=(0.38, 0.38),
     )
 
     lightning_attack = alpha_setting.lightning_attack(
         [alpha_setting.AttackKeys.charged_blow],
-        hold_time=(0.01, 0.01),
-        end_sleep_time=(0.51, 0.51),
+        hold_time=(0.03, 0.03),
+        end_sleep_time=(0.48, 0.48),
     )
 
     pyautogui.hotkey("alt", "tab")
@@ -41,6 +41,9 @@ if __name__ == "__main__":
 
     for _ in range(i):
         left_lightning_rush.hold()
+
+    for _ in range(i * 4):
+        lightning_attack.hold()
 
     time.sleep(1)
     pyautogui.hotkey("alt", "tab")
