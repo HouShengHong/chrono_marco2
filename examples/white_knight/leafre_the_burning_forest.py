@@ -122,6 +122,7 @@ def how_to_play(player: Player):
         case (x, y) if 47 <= x <= 135 and 18 <= y <= 33:
             right_lightning_rush.hold()
             right_lightning_rush.hold()
+            right_lightning_rush.hold()
             right_down_prev_jump.hold()
             lightning_attack.hold()
 
