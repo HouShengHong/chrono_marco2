@@ -157,11 +157,11 @@ if __name__ == "__main__":
         alpha_setting.BuffKeepers.pills,
     ]
 
-    free_market_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.free_market
-    free_market_keeper.duration = 1200
+    # free_market_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.free_market
+    # free_market_keeper.duration = 1200
     take_a_break_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.take_a_break
     take_a_break_keeper.refresh()
-    take_a_break_keeper.refresh_other_free_market_keepers = [free_market_keeper]
+    # take_a_break_keeper.refresh_other_free_market_keepers = [free_market_keeper]
 
     keepers: list[CountdownTimer] = [
         take_a_break_keeper,
@@ -169,7 +169,7 @@ if __name__ == "__main__":
         alpha_setting.BuffKeepers.skill_buffs,
         alpha_setting.BuffKeepers.pills,
         alpha_setting.BuffKeepers.sugar_rush_candy,
-        free_market_keeper,
+        # free_market_keeper,
     ]
     player = Player(eye=eye, keepers=keepers)
 
