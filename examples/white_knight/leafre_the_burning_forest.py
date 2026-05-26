@@ -59,6 +59,22 @@ normal_attack_then_lightning = alpha_setting.normal_attack(
     change_element_keys=[alpha_setting.BuffKeys.lightning_charge],
 )
 
+left_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
+    direction_keys=[KeyBinds.left, KeyBinds.jump],
+    end_sleep_time=alpha_setting.sword_attack_end_sleep_time_40off,
+)
+
+right_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
+    direction_keys=[KeyBinds.right, KeyBinds.jump],
+    end_sleep_time=alpha_setting.sword_attack_end_sleep_time_40off,
+)
+
+lightning_attack = alpha_setting.lightning_attack(
+    [alpha_setting.AttackKeys.charged_blow],
+    hold_time=(0.03, 0.03),
+    end_sleep_time=alpha_setting.sword_attack_end_sleep_time_20off,
+)
+
 
 def how_to_play(player: Player):
     match player.eye.status.current_yellow_point_position_in_mini_map:
@@ -79,57 +95,45 @@ def how_to_play(player: Player):
         # teleport point far left
         case (x, y) if 78 <= x <= 89 and 99 <= y <= 108:
             right_prev_jump.hold()
-            normal_attack.hold()
+            lightning_attack.hold()
 
         # teleport point far right
         case (x, y) if 95 <= x <= 106 and 99 <= y <= 108:
             left_prev_jump.hold()
-            normal_attack.hold()
+            lightning_attack.hold()
 
         # platform 3 left
         case (x, y) if 23 <= x <= 89 and 99 <= y <= 108:
-            right_lightning_rush_then_ice.hold()
-            then_ice.hold()
-            normal_attack_then_lightning.hold()
+            right_lightning_rush.hold()
+            lightning_attack.hold()
 
         # platform 3 right
         case (x, y) if 95 <= x <= 180 and 99 <= y <= 108:
             left_lightning_rush.hold()
-            left_lightning_rush_then_ice.hold()
-            then_ice.hold()
-            normal_attack_then_lightning.hold()
+            lightning_attack.hold()
 
         # platform 0
         case (x, y) if 47 <= x <= 135 and 18 <= y <= 33:
-            right_lightning_rush_then_ice.hold()
-            then_ice.hold()
-            normal_attack.hold()
-            # normal_attack.hold()
+            right_lightning_rush.hold()
             right_down_prev_jump.hold()
-            normal_attack_then_lightning.hold()
+            lightning_attack.hold()
 
         # platform 1
         case (x, y) if 69 <= x <= 150 and 44 <= y <= 57:
-            right_lightning_rush_then_ice.hold()
-            then_ice.hold()
-            normal_attack.hold()
-            # normal_attack.hold()
+            right_lightning_rush.hold()
             right_down_prev_jump.hold()
-            normal_attack_then_lightning.hold()
+            lightning_attack.hold()
 
         # platform 2
         case (x, y) if 92 <= x <= 165 and 65 <= y <= 69:
             right_lightning_rush.hold()
-            right_lightning_rush_then_ice.hold()
-            then_ice.hold()
-            normal_attack.hold()
-            # normal_attack.hold()
+            right_lightning_rush.hold()
             right_down_prev_jump.hold()
-            normal_attack_then_lightning.hold()
+            lightning_attack.hold()
 
         case (x, y):
             right_down_prev_jump.hold()
-            normal_attack.hold()
+            lightning_attack.hold()
 
         case _:
             if random.random() < 0.5:
