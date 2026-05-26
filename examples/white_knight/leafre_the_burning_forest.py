@@ -22,17 +22,21 @@ lightning_charge: KeyHolderWin = KeyHolderWin(
 )
 
 right_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
-    direction_keys=[KeyBinds.right]
+    direction_keys=[KeyBinds.right],
+    hold_time=(0.03, 0.03),
 )
 left_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
-    direction_keys=[KeyBinds.left]
+    direction_keys=[KeyBinds.left],
+    hold_time=(0.03, 0.03),
 )
 
 right_down_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
-    direction_keys=[KeyBinds.right, KeyBinds.down]
+    direction_keys=[KeyBinds.right, KeyBinds.down],
+    hold_time=(0.03, 0.03),
 )
 left_down_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
-    direction_keys=[KeyBinds.left, KeyBinds.down]
+    direction_keys=[KeyBinds.left, KeyBinds.down],
+    hold_time=(0.03, 0.03),
 )
 
 left_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
