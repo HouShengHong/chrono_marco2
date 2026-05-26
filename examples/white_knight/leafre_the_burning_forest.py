@@ -127,8 +127,7 @@ def how_to_play(player: Player):
         # platform 2
         case (x, y) if 92 <= x <= 165 and 65 <= y <= 69:
             right_lightning_rush.hold()
-            right_lightning_rush.hold()
-            right_down_prev_jump.hold()
+            right_prev_jump.hold()
             lightning_attack.hold()
 
         case (x, y):
