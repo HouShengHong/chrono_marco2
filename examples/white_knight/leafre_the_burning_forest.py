@@ -115,22 +115,20 @@ def how_to_play(player: Player):
         case (x, y) if 95 <= x <= 180 and 99 <= y <= 108:
             left_lightning_rush.hold()
             left_lightning_rush.hold()
+            left_lightning_rush.hold()
             lightning_attack.hold()
 
         # platform 0
         case (x, y) if 47 <= x <= 135 and 18 <= y <= 33:
-            if random.random() < 0.5:
-                right_lightning_rush.hold()
-            else:
-                right_lightning_rush.hold()
-                right_lightning_rush.hold()
+            right_lightning_rush.hold()
+            right_lightning_rush.hold()
             right_down_prev_jump.hold()
             lightning_attack.hold()
 
         # platform 1
         case (x, y) if 69 <= x <= 150 and 44 <= y <= 57:
-            right_lightning_rush.hold()
-            right_down_prev_jump.hold()
+            left_lightning_rush.hold()
+            left_down_prev_jump.hold()
             lightning_attack.hold()
 
         # platform 2
