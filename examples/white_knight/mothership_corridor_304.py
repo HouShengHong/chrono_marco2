@@ -88,7 +88,7 @@ def how_to_play(player: Player):
         player.hand.status = 2
     elif 0 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 25:
         player.hand.status = 2
-    elif 236 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 248:
+    elif 220 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 248:
         player.hand.status = 1
 
     match player.eye.status.current_yellow_point_position_in_mini_map:
@@ -147,6 +147,21 @@ def how_to_play(player: Player):
 
                 # left_down_prev_jump.hold()
                 # lightning_attack.hold()
+
+        # platform 2
+        case (x, y) if 220 <= x <= 245 and 73 <= y <= 90:
+            if player.hand.status == 2:
+                right_prev_jump.hold()
+                lightning_attack.hold()
+                right_lightning_rush.hold()
+
+                # right_small_jump.hold()
+                # right_lightning_rush.hold()
+                # lightning_attack.hold()
+            else:
+                right_big_jump.hold()
+                right_lightning_rush.hold()
+                lightning_attack.hold()
 
         # platform 2
         case (x, y) if 73 <= y <= 90:
