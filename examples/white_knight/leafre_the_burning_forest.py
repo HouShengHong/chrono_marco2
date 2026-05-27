@@ -39,15 +39,6 @@ left_down_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
     hold_time=(0.03, 0.03),
 )
 
-right_down_prev_jump_then_ice: KeyHolderWin = alpha_setting.attack_prev_jump(
-    direction_keys=[alpha_setting.BuffKeys.ice_charge, KeyBinds.right, KeyBinds.down],
-    hold_time=(0.03, 0.03),
-)
-left_down_prev_jump_then_ice: KeyHolderWin = alpha_setting.attack_prev_jump(
-    direction_keys=[alpha_setting.BuffKeys.ice_charge, KeyBinds.left, KeyBinds.down],
-    hold_time=(0.03, 0.03),
-)
-
 left_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
     direction_keys=[KeyBinds.left, KeyBinds.jump]
 )
@@ -62,7 +53,7 @@ right_lightning_rush_then_ice: KeyHolderWin = alpha_setting.lightning_rush(
     direction_keys=[KeyBinds.right], end_sleep_time=(0, 0)
 )
 then_ice: KeyHolderWin = KeyHolderWin(
-    [alpha_setting.BuffKeys.ice_charge], (0.19, 0.19), (0.19, 0.19)
+    [alpha_setting.BuffKeys.ice_charge], (0.18, 0.18), (0.185, 0.185)
 )
 
 then_ice_001: KeyHolderWin = KeyHolderWin(
@@ -132,19 +123,18 @@ def how_to_play(player: Player):
             lightning_attack.hold()
 
         # platform 0
-        case (x, y) if 130 <= x <= 135 and 18 <= y <= 33:
-            then_ice_001.hold()
-            right_down_prev_jump.hold()
-            normal_attack_then_lightning.hold()
-
-        # platform 0
         case (x, y) if 47 <= x <= 135 and 18 <= y <= 33:
             right_lightning_rush.hold()
+            right_lightning_rush.hold()
+            right_lightning_rush_then_ice.hold()
+            then_ice.hold()
+            right_prev_jump.hold()
+            normal_attack_then_lightning.hold()
 
         # platform 1
         case (x, y) if 69 <= x <= 150 and 44 <= y <= 57:
-            left_lightning_rush.hold()
-            then_ice_001.hold()
+            left_lightning_rush_then_ice.hold()
+            then_ice.hold()
             left_down_prev_jump.hold()
             normal_attack_then_lightning.hold()
 
