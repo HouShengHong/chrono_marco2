@@ -56,6 +56,10 @@ then_ice: KeyHolderWin = KeyHolderWin(
     [alpha_setting.BuffKeys.ice_charge], (0.19, 0.19), (0.19, 0.19)
 )
 
+then_ice_001: KeyHolderWin = KeyHolderWin(
+    [alpha_setting.BuffKeys.ice_charge], (0.01, 0.01)
+)
+
 
 normal_attack = alpha_setting.normal_attack([alpha_setting.AttackKeys.charged_blow])
 normal_attack_then_lightning = alpha_setting.normal_attack(
@@ -119,18 +123,21 @@ def how_to_play(player: Player):
             lightning_attack.hold()
 
         # platform 0
+        case (x, y) if 130 <= x <= 135 and 18 <= y <= 33:
+            right_down_prev_jump.hold()
+            then_ice_001.hold()
+            normal_attack_then_lightning.hold()
+
+        # platform 0
         case (x, y) if 47 <= x <= 135 and 18 <= y <= 33:
             right_lightning_rush.hold()
-            right_lightning_rush.hold()
-            right_lightning_rush.hold()
-            right_down_prev_jump.hold()
-            lightning_attack.hold()
 
         # platform 1
         case (x, y) if 69 <= x <= 150 and 44 <= y <= 57:
             left_lightning_rush.hold()
             left_down_prev_jump.hold()
-            lightning_attack.hold()
+            then_ice_001.hold()
+            normal_attack_then_lightning.hold()
 
         # platform 2
         case (x, y) if 92 <= x <= 165 and 65 <= y <= 69:
