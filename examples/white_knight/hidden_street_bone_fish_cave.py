@@ -68,9 +68,9 @@ lightning_attack = alpha_setting.lightning_attack(
 def how_to_play(player: Player):
 
     if player.hand.status is None:
-        player.hand.status = "r"
+        player.hand.status = "l"
     elif player.eye.status.current_yellow_point_position_in_mini_map is None:
-        player.hand.status = "r"
+        player.hand.status = "l"
     elif 0 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 44:
         # 10 <= x
         player.hand.status = "r"
@@ -89,7 +89,7 @@ def how_to_play(player: Player):
 
         # platform 1
         case (x, y) if 65 <= y <= 83:
-            if player.hand.status == "l":
+            if player.hand.status == "r":
                 left_big_jump.hold()
                 left_lightning_rush.hold()
                 lightning_attack.hold()
