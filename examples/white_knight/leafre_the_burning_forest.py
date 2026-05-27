@@ -133,6 +133,7 @@ def how_to_play(player: Player):
 
         # platform 0
         case (x, y) if 130 <= x <= 135 and 18 <= y <= 33:
+            then_ice_001.hold()
             right_down_prev_jump.hold()
             normal_attack_then_lightning.hold()
 
@@ -143,6 +144,7 @@ def how_to_play(player: Player):
         # platform 1
         case (x, y) if 69 <= x <= 150 and 44 <= y <= 57:
             left_lightning_rush.hold()
+            then_ice_001.hold()
             left_down_prev_jump.hold()
             normal_attack_then_lightning.hold()
 
