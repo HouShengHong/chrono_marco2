@@ -90,11 +90,11 @@ def how_to_play(player: Player):
         # platform 1
         case (x, y) if 65 <= y <= 83:
             if player.hand.status == "r":
-                left_big_jump.hold()
-                left_lightning_rush.hold()
+                right_big_jump.hold()
+                right_lightning_rush.hold()
                 lightning_attack.hold()
             else:
-                right_lightning_rush.hold()
+                left_lightning_rush.hold()
                 lightning_attack.hold()
 
         case (x, y):
