@@ -6,8 +6,7 @@ from chrono_marco2.player.ear import Ear
 from chrono_marco2.common.mini_map_data import MiniMapData
 
 if __name__ == "__main__":
-    path = Path().cwd() / "data" / "mini_map_titles" / "mothership_corridor_304"
-    print(path)
+    path = Path().cwd() / "data" / "mini_map_titles" / "mothership_corridor_304.png"
     eye: Eye = Eye(
         path,
         MiniMapData.mothership_corridor_304["title"],
