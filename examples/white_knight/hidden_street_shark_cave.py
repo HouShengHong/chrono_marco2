@@ -48,31 +48,21 @@ right_fire_rush: KeyHolderWin = alpha_setting.normal_rush(
 )
 
 left_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
-    direction_keys=[KeyBinds.left, KeyBinds.jump]
+    direction_keys=[KeyBinds.left, KeyBinds.jump],
+    end_sleep_time=alpha_setting.sword_attack_end_sleep_time_40off,
 )
 
 right_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
-    direction_keys=[KeyBinds.right, KeyBinds.jump]
+    direction_keys=[KeyBinds.right, KeyBinds.jump],
+    end_sleep_time=alpha_setting.sword_attack_end_sleep_time_40off,
 )
 
 normal_attack = alpha_setting.normal_attack([alpha_setting.AttackKeys.charged_blow])
+
 lightning_attack = alpha_setting.lightning_attack(
-    [alpha_setting.AttackKeys.charged_blow]
+    [alpha_setting.AttackKeys.charged_blow],
+    end_sleep_time=alpha_setting.sword_attack_end_sleep_time_20off,
 )
-
-fire_charge: KeyHolderWin = KeyHolderWin(
-    [alpha_setting.BuffKeys.fire_charge], (0.03, 0.06), (0.1, 0.1)
-)
-
-lightning_charge: KeyHolderWin = KeyHolderWin(
-    [alpha_setting.BuffKeys.lightning_charge], (0.03, 0.06), (0.1, 0.1)
-)
-
-r_list = [right_big_jump, right_lightning_rush]
-l_list = [left_lightning_rush, lightning_attack]
-
-# r_list = [right_big_jump, right_lightning_rush]
-# l_list = [left_lightning_rush, lightning_attack]
 
 
 def how_to_play(player: Player):
@@ -105,12 +95,9 @@ def how_to_play(player: Player):
                 right_big_jump.hold()
                 right_lightning_rush.hold()
                 lightning_attack.hold()
-                lightning_attack.hold()
             else:
                 left_lightning_rush.hold()
-                # left_lightning_rush.hold()
                 lightning_attack.hold()
-                # lightning_attack.hold()
 
         case (x, y):
             if random.random() < 0.5:
