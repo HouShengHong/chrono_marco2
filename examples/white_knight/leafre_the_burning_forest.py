@@ -128,7 +128,7 @@ def how_to_play(player: Player):
             right_lightning_rush.hold()
             right_lightning_rush_then_ice.hold()
             then_ice.hold()
-            right_prev_jump.hold()
+            right_down_prev_jump.hold()
             normal_attack_then_lightning.hold()
 
         # platform 1
