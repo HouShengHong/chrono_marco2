@@ -39,6 +39,15 @@ left_down_prev_jump: KeyHolderWin = alpha_setting.attack_prev_jump(
     hold_time=(0.03, 0.03),
 )
 
+right_down_prev_jump_then_ice: KeyHolderWin = alpha_setting.attack_prev_jump(
+    direction_keys=[alpha_setting.BuffKeys.ice_charge, KeyBinds.right, KeyBinds.down],
+    hold_time=(0.03, 0.03),
+)
+left_down_prev_jump_then_ice: KeyHolderWin = alpha_setting.attack_prev_jump(
+    direction_keys=[alpha_setting.BuffKeys.ice_charge, KeyBinds.left, KeyBinds.down],
+    hold_time=(0.03, 0.03),
+)
+
 left_lightning_rush: KeyHolderWin = alpha_setting.lightning_rush(
     direction_keys=[KeyBinds.left, KeyBinds.jump]
 )
@@ -124,8 +133,7 @@ def how_to_play(player: Player):
 
         # platform 0
         case (x, y) if 130 <= x <= 135 and 18 <= y <= 33:
-            right_down_prev_jump.hold()
-            then_ice_001.hold()
+            right_down_prev_jump_then_ice.hold()
             normal_attack_then_lightning.hold()
 
         # platform 0
@@ -135,8 +143,7 @@ def how_to_play(player: Player):
         # platform 1
         case (x, y) if 69 <= x <= 150 and 44 <= y <= 57:
             left_lightning_rush.hold()
-            left_down_prev_jump.hold()
-            then_ice_001.hold()
+            left_down_prev_jump_then_ice.hold()
             normal_attack_then_lightning.hold()
 
         # platform 2
