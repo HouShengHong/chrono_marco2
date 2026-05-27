@@ -74,7 +74,7 @@ def how_to_play(player: Player):
     elif 0 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 22:
         # 10 <= x
         player.hand.status = "r"
-    elif 155 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 200:
+    elif 165 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 200:
         # x <= 187
         player.hand.status = "l"
 
