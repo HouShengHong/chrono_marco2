@@ -16,8 +16,8 @@ attack_prev_jump_hold_time: tuple[float, float] = (0.02, 0.02)
 class AttackKeys:
     rush: str = KeyBinds.rush
     holy_arrow: str = KeyBinds.att_j
-    explosion: str = KeyBinds.att_k
-    poison_mist: str = KeyBinds.att_l
+    # explosion: str = KeyBinds.att_k
+    shining_ray: str = KeyBinds.att_l
     heal: str = KeyBinds.att_semicolon
 
 
@@ -35,7 +35,7 @@ class BuffKeepers:
         [
             # KeyHolderWin([BuffKeys.spell_booster], (0.2, 0.3), (1.5, 1.5)),
             KeyHolderWin([BuffKeys.bless], (0.2, 0.3), (1.2, 1.2)),
-            # KeyHolderWin([BuffKeys.magic_guard], (0.2, 0.3), (1.3, 1.3)),
+            KeyHolderWin([BuffKeys.magic_guard], (0.2, 0.3), (1.3, 1.3)),
             KeyHolderWin([BuffKeys.nimble_feet], (0.2, 0.3), (1.1, 1.1)),
         ],
         True,
@@ -74,9 +74,9 @@ class BuffKeepers:
         580,
         Path(__file__).parent / "keepers" / "pills.txt",
         [
-            # KeyHolderWin([KeyBinds.buff_ins], (0.1, 0.3), (0.1, 0.3)),
+            KeyHolderWin([KeyBinds.buff_ins], (0.1, 0.3), (0.1, 0.3)),
             KeyHolderWin([KeyBinds.buff_home], (0.1, 0.3), (0.1, 0.3)),
-            # KeyHolderWin([KeyBinds.buff_pgup], (0.1, 0.3), (0.1, 0.3)),
+            KeyHolderWin([KeyBinds.buff_pgup], (0.1, 0.3), (0.1, 0.3)),
         ],
     )
 
