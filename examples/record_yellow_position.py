@@ -6,11 +6,11 @@ from chrono_marco2.player.ear import Ear
 from chrono_marco2.common.mini_map_data import MiniMapData
 
 if __name__ == "__main__":
-    path = Path().cwd() / "data" / "mini_map_titles" / "mothership_corridor_304.png"
+    path = Path().cwd() / "data" / "mini_map_titles" / "orbis_cloud_park_vi.png"
     eye: Eye = Eye(
         path,
-        MiniMapData.mothership_corridor_304["title"],
-        MiniMapData.mothership_corridor_304["region"],
+        MiniMapData.orbis_cloud_park_vi["title"],
+        MiniMapData.orbis_cloud_park_vi["region"],
     )
     ear = Ear()
 

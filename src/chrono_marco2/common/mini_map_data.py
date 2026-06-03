@@ -69,3 +69,7 @@ class MiniMapData:
         "region": (8, 124, 245, 271),
     }
 
+    orbis_cloud_park_vi: dict[str, tuple[int, int, int, int]] = {
+        "title": (59, 67, 146, 105),
+        "region": (8, 124, 205, 271),
+    }
