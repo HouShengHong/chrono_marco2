@@ -76,7 +76,7 @@ class BuffKeepers:
         [
             KeyHolderWin([KeyBinds.buff_ins], (0.1, 0.3), (0.1, 0.3)),
             KeyHolderWin([KeyBinds.buff_home], (0.1, 0.3), (0.1, 0.3)),
-            KeyHolderWin([KeyBinds.buff_pgup], (0.1, 0.3), (0.1, 0.3)),
+            # KeyHolderWin([KeyBinds.buff_pgup], (0.1, 0.3), (0.1, 0.3)),
         ],
     )
 

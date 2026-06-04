@@ -209,10 +209,7 @@ def how_to_play(player: Player):
             shining_ray_left_up_jump_rush.hold()
 
         case (x, y) if 65 <= y <= 83:
-            if random.random() < 0.9:
-                shining_ray_left_rush.hold()
-            else:
-                shining_ray_left_jump_rush.hold()
+            shining_ray_left_rush.hold()
 
         case (x, y):
             if random.random() < 0.5:
