@@ -4,6 +4,7 @@ from chrono_marco2.common.mini_map_data import MiniMapData
 from chrono_marco2.key_holder import KeyHolderWin
 from chrono_marco2.common import KeyBinds
 from chrono_marco2.keeper import CountdownTimer, FreeMarketKeeper
+from mothership_corridor_104 import how_to_play
 
 import alpha_setting
 
@@ -177,91 +178,12 @@ shining_ray_little_right: KeyHolderWin = KeyHolderWin(
 )
 
 
-def how_to_play(player: Player):
-    if player.hand.status is None:
-        player.hand.status = "r"
-    elif player.eye.status.current_yellow_point_position_in_mini_map is None:
-        player.hand.status = "r"
-    elif 0 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 25:
-        player.hand.status = "r"
-    elif 225 <= player.eye.status.current_yellow_point_position_in_mini_map[0] <= 248:
-        player.hand.status = "l"
-
-    match player.eye.status.current_yellow_point_position_in_mini_map:
-        # # rope 0
-        # case (x, y) if (41 <= x <= 44 and 35 <= y <= 88):
-        #     random_holding_keys(player)
-        #     alpha_setting.Actions.jump.hold()
-        #     alpha_setting.Actions.frostbolt.hold()
-
-        # # rope 1
-        # case (x, y) if (124 <= x <= 127 and 35 <= y <= 88):
-        #     random_holding_keys(player)
-        #     alpha_setting.Actions.jump.hold()
-        #     alpha_setting.Actions.frostbolt.hold()
-
-        # # rope 2
-
-        # case (x, y) if (206 <= x <= 209 and 35 <= y <= 88):
-        #     random_holding_keys(player)
-        #     alpha_setting.Actions.jump.hold()
-        #     alpha_setting.Actions.frostbolt.hold()
-
-        # platform -1
-        case (x, y) if 35 <= y <= 48:
-            if player.hand.status == "r":
-                shining_ray_down_right_jump_rush.hold()
-            else:
-                shining_ray_down_left_jump_rush.hold()
-
-        # platform 0
-        case (x, y) if 49 <= y <= 54:
-            if player.hand.status == "r":
-                shining_ray_down_right_jump_rush.hold()
-            else:
-                shining_ray_down_left_jump_rush.hold()
-
-        # platform 1
-        case (x, y) if 58 <= y <= 71:
-            if player.hand.status == "r":
-                shining_ray_right_jump_rush.hold()
-            else:
-                shining_ray_left_jump_rush.hold()
-
-        # platform 2 left
-        case (x, y) if 0 <= x <= 41 and 73 <= y <= 90:
-            player.hand.status = "r"
-            shining_ray_right_jump_rush.hold()
-
-        # platform 2
-        case (x, y) if 73 <= y <= 90:
-            if player.hand.status == "r":
-                shining_ray_right_up_jump_rush.hold()
-            else:
-                shining_ray_left_up_jump_rush.hold()
-
-        case (x, y):
-            if random.random() < 0.5:
-                shining_ray_right_jump_rush.hold()
-            else:
-                shining_ray_left_jump_rush.hold()
-
-        case _:
-            if random.random() < 0.7:
-                shining_ray_right_jump_rush.hold()
-            else:
-                shining_ray_left_jump_rush.hold()
-
-    for keeper in player.keepers:
-        keeper.do_on_finish()
-
-
 if __name__ == "__main__":
-    path = Path().cwd() / "data" / "mini_map_titles" / "mothership_corridor_104.png"
+    path = Path().cwd() / "data" / "mini_map_titles" / "mothership_corridor_304.png"
     eye: Eye = Eye(
         path,
-        MiniMapData.mothership_corridor_104["title"],
-        MiniMapData.mothership_corridor_104["region"],
+        MiniMapData.mothership_corridor_304["title"],
+        MiniMapData.mothership_corridor_304["region"],
     )
 
     free_market_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.free_market
@@ -274,7 +196,8 @@ if __name__ == "__main__":
         take_a_break_keeper,
         alpha_setting.BuffKeepers.skill_buffs,
         alpha_setting.BuffKeepers.pills,
-        alpha_setting.BuffKeepers.sugar_rush_candy,
+        # alpha_setting.BuffKeepers.sugar_rush_candy,
+        alpha_setting.BuffKeepers.summon_dragon,
         free_market_keeper,
     ]
     player = Player(eye=eye, keepers=keepers)
