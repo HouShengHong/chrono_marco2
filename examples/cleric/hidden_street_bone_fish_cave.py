@@ -176,6 +176,7 @@ shining_ray_little_right: KeyHolderWin = KeyHolderWin(
     (0.03, 0.06),
 )
 
+
 def how_to_play(player: Player):
 
     if player.hand.status is None:
@@ -204,7 +205,7 @@ def how_to_play(player: Player):
                 shining_ray_left_rush.hold()
 
         # platform 1
-        case (x, y) if 0 <= x <= 160 and 65 <= y <= 83:
+        case (x, y) if 0 <= x <= 40 and 65 <= y <= 83:
             shining_ray_left_up_jump_rush.hold()
 
         case (x, y) if 65 <= y <= 83:
@@ -228,7 +229,9 @@ def how_to_play(player: Player):
 
 
 if __name__ == "__main__":
-    path = Path().cwd() / "data" / "mini_map_titles" / "hidden_street_bone_fish_cave.png"
+    path = (
+        Path().cwd() / "data" / "mini_map_titles" / "hidden_street_bone_fish_cave.png"
+    )
     eye: Eye = Eye(
         path,
         MiniMapData.hidden_street_bone_fish_cave["title"],
@@ -236,7 +239,7 @@ if __name__ == "__main__":
     )
 
     free_market_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.free_market
-    free_market_keeper.duration = 1200
+    free_market_keeper.duration = 600
     take_a_break_keeper: FreeMarketKeeper = alpha_setting.BuffKeepers.take_a_break
     take_a_break_keeper.refresh()
     take_a_break_keeper.refresh_other_free_market_keepers = [free_market_keeper]

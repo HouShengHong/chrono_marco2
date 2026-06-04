@@ -33,7 +33,7 @@ class BuffKeepers:
         430,
         Path(__file__).parent / "keepers" / "skill_buffs.txt",
         [
-            # KeyHolderWin([BuffKeys.spell_booster], (0.2, 0.3), (1.5, 1.5)),
+            KeyHolderWin([BuffKeys.spell_booster], (0.2, 0.3), (1.5, 1.5)),
             KeyHolderWin([BuffKeys.bless], (0.2, 0.3), (1.2, 1.2)),
             KeyHolderWin([BuffKeys.magic_guard], (0.2, 0.3), (1.3, 1.3)),
             KeyHolderWin([BuffKeys.nimble_feet], (0.2, 0.3), (1.1, 1.1)),
