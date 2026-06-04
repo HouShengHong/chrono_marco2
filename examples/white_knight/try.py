@@ -33,15 +33,13 @@ if __name__ == "__main__":
         end_sleep_time=(0.49, 0.49),
     )
 
+    key_test:KeyHolderWin = KeyHolderWin(["j"],(59.999,59.999),(0,0))
+
     pyautogui.hotkey("alt", "tab")
     time.sleep(1)
-    i = 5
-    for _ in range(i):
-        for _ in range(i):
-            right_lightning_rush.hold()
-
-        for _ in range(i):
-            left_lightning_rush.hold()
-
+    time1 = time.time()
+    key_test.hold()
+    time2 = time.time()
+    print(time2 - time1)
     time.sleep(1)
     pyautogui.hotkey("alt", "tab")
