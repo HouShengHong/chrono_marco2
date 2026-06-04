@@ -22,6 +22,8 @@ class AttackKeys:
 
 
 class BuffKeys:
+    summon_dragon: str = KeyBinds.buff_5
+    holy_symbol: str = KeyBinds.buff_6
     spell_booster: str = KeyBinds.buff_7
     bless: str = KeyBinds.buff_8
     magic_guard: str = KeyBinds.buff_9
@@ -33,11 +35,20 @@ class BuffKeepers:
         430,
         Path(__file__).parent / "keepers" / "skill_buffs.txt",
         [
+            KeyHolderWin([BuffKeys.holy_symbol], (0.2, 0.3), (1.5, 1.5)),
             KeyHolderWin([BuffKeys.spell_booster], (0.2, 0.3), (1.5, 1.5)),
             KeyHolderWin([BuffKeys.bless], (0.2, 0.3), (1.2, 1.2)),
             KeyHolderWin([BuffKeys.magic_guard], (0.2, 0.3), (1.3, 1.3)),
             KeyHolderWin([BuffKeys.nimble_feet], (0.2, 0.3), (1.1, 1.1)),
         ],
+        True,
+        1,
+    )
+    
+    holy_symbol: BuffKeeper = BuffKeeper(
+        430,
+        Path(__file__).parent / "keepers" / "holy_symbol.txt",
+        [KeyHolderWin([BuffKeys.holy_symbol], (0.2, 0.3), (1.5, 1.5))],
         True,
         1,
     )
@@ -86,6 +97,14 @@ class BuffKeepers:
         [
             KeyHolderWin([KeyBinds.buff_pgdn], (0.1, 0.3), (0.1, 0.3)),
         ],
+    )
+
+    summon_dragon: BuffKeeper = BuffKeeper(
+        880,
+        Path(__file__).parent / "keepers" / "summon_dragon.txt",
+        [KeyHolderWin([BuffKeys.summon_dragon], (0.1, 0.3), (0.1, 0.3))],
+        False,
+        1,
     )
 
     free_market: FreeMarketKeeper = FreeMarketKeeper(

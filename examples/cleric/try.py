@@ -10,7 +10,7 @@ if __name__ == "__main__":
     time.sleep(1)
 
     for i in range(5):
-        KeyHolderWin("8",(0.1,0.1),(1.3,1.3)).hold()
+        KeyHolderWin("5",(0.1,0.1),(0.2,0.2)).hold()
     
     time.sleep(1)
 

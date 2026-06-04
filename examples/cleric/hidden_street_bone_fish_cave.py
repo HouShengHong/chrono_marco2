@@ -246,6 +246,7 @@ if __name__ == "__main__":
         alpha_setting.BuffKeepers.skill_buffs,
         alpha_setting.BuffKeepers.pills,
         alpha_setting.BuffKeepers.sugar_rush_candy,
+        alpha_setting.BuffKeepers.summon_dragon,
         free_market_keeper,
     ]
     player = Player(eye=eye, keepers=keepers)
